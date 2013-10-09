@@ -1,4 +1,6 @@
 Dmtc::Application.configure do
+  config.middleware.use "Rack::Insight::App",
+    :secret_key => "pzqSnofPQlxx30mtYRmZLn8m7XcPUmvmGIDUB4A20B0KFvUGjrtDdg"
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
