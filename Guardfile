@@ -10,7 +10,7 @@ guard 'livereload' do
   watch(%r{(app|vendor)/assets/\w+/(.+\.(css|js|html)).*})  { |m| "/assets/#{m[2]}" }
 end
 
-guard 'rspec', after_all_pass: false, cli: '--drb' do
+guard 'rspec', after_all_pass: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch('config/routes.rb')
 
