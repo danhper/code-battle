@@ -15,6 +15,12 @@ class ProblemsController < ApplicationController
   end
 
   def create
+    @problem = current_user.created_problems.build(problem_params)
+    if @problem.save
+      redirect_to @problem
+    else
+      render action: 'new'
+    end
   end
 
   def edit
