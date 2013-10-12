@@ -1,11 +1,15 @@
-<%= form_for @code do |f| %>
+<%= form_for [@quest, @code] do |f| %>
 
   <%= f.label :source %>
   <%= f.text_area :source %>
 
   <br>
 
-  <% guilds_array = current_user.guilds { |g| [g.name, g.id] } %>
+  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
 
   <%= f.select :guild_id, guilds_array %>
+
+  <br>
+
+  <%= f.submit %>
 <% end %>
