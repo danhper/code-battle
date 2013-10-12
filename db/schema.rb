@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012144838) do
+ActiveRecord::Schema.define(version: 20131012160000) do
 
   create_table "codes", force: true do |t|
     t.text     "source"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131012144838) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "guild_id"
-    t.integer  "problem_id"
+    t.integer  "quest_id"
   end
 
   create_table "guilds", force: true do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20131012144838) do
     t.datetime "updated_at"
   end
 
-  create_table "problems", force: true do |t|
+  create_table "quests", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 20131012144838) do
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "problem_id"
+    t.integer  "quest_id"
     t.integer  "guild_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["user_id", "problem_id"], name: "index_votes_on_user_id_and_problem_id"
+  add_index "votes", ["user_id", "quest_id"], name: "index_votes_on_user_id_and_quest_id"
 
 end
