@@ -1,0 +1,20 @@
+<%= form_for @problem do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <br>
+
+  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
+
+  <%= select :code, 'guild_id', guilds_array %>
+  <%= text_area :code, 'source' %>
+
+  <%= f.submit %>
+
+<% end %>

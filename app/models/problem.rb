@@ -7,10 +7,13 @@
 #  description :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  creator_id  :integer
 #
 
 class Problem < ActiveRecord::Base
   has_many :votes
-  has_many :guild, through: :votes
-  has_many :code
+  has_many :guilds, through: :votes
+  has_many :codes
+
+  belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 end

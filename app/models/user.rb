@@ -24,12 +24,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable
   devise :omniauthable, omniauth_providers: [:github]
 
-  has_and_belongs_to_many :guilds, join_table: 'user_guilds'
-  has_many :code
+  has_and_belongs_to_many :guilds, -> { uniq }, join_table: 'user_guilds'
+  has_many :codes
   has_many :user_like_codes
   has_many :code, through: :user_like_codes
   has_many :votes
-  has_many :problem, through: :votes
+  has_many :problems, through: :votes
+
+  has_many :created_problems, class_name: 'Problem', foreign_key: :creator_id
 
   def in_guild?(guild)
     guilds.exists?(guild)

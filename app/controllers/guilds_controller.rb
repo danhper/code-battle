@@ -1,7 +1,6 @@
 class GuildsController < ApplicationController
-  before_action :set_guild, except: [:index, :new, :create]
-
   before_filter :authenticate_user!, only: [:enter, :leave]
+  before_action :set_guild, except: [:index, :new, :create]
 
   def index
     @guilds = Guild.all

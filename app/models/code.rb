@@ -7,11 +7,13 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  guild_id   :integer
 #
 
 class Code < ActiveRecord::Base
   belongs_to :user
-  belongs_to :problems
+  belongs_to :problem
+  belongs_to :guild
   has_many :user_like_codes
   has_many :user, through: :user_like_codes
 end

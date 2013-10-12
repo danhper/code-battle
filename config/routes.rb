@@ -9,4 +9,7 @@ Dmtc::Application.routes.draw do
       delete 'leave'
     end
   end
+
+  resources :problems do
+  end
 end
