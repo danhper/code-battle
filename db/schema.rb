@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012113302) do
+ActiveRecord::Schema.define(version: 20131012123651) do
 
   create_table "codes", force: true do |t|
     t.text     "source"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20131012113302) do
   end
 
   add_index "user_guilds", ["guild_id"], name: "index_user_guilds_on_guild_id"
+  add_index "user_guilds", ["user_id", "guild_id"], name: "index_user_guilds_on_user_id_and_guild_id"
   add_index "user_guilds", ["user_id"], name: "index_user_guilds_on_user_id"
 
   create_table "user_like_codes", force: true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131012113302) do
   end
 
   add_index "user_like_codes", ["code_id"], name: "index_user_like_codes_on_code_id"
+  add_index "user_like_codes", ["user_id", "code_id"], name: "index_user_like_codes_on_user_id_and_code_id"
   add_index "user_like_codes", ["user_id"], name: "index_user_like_codes_on_user_id"
 
   create_table "users", force: true do |t|
@@ -67,6 +69,9 @@ ActiveRecord::Schema.define(version: 20131012113302) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
