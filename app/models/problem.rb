@@ -7,6 +7,7 @@
 #  description :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  creator_id  :integer
 #
 
 class Problem < ActiveRecord::Base

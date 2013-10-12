@@ -10,8 +10,10 @@
 
   <br>
 
-  <% guilds_array = current_user.guilds { |g| [g.name, g.id] } %>
+  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
 
+  <%= select :code, 'guild_id', guilds_array %>
+  <%= text_area :code, 'source' %>
 
   <%= f.submit %>
 

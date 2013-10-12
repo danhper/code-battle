@@ -12,11 +12,15 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new(params[:problem])
+    @code = Code.new(params[:code])
   end
 
   def create
     @problem = current_user.created_problems.build(problem_params)
-    if @problem.save
+    @code = current_user.codes.build(code_params)
+    if @problem.valid? && @code.valid?
+      @problem.codes << @code
+      @problem.save!
       redirect_to @problem
     else
       render action: 'new'
@@ -39,6 +43,10 @@ class ProblemsController < ApplicationController
 
   def problem_params
     params.require(:problem).permit(:title, :description)
+  end
+
+  def code_params
+    params.require(:code).permit(:source)
   end
 
   def check_creator!
