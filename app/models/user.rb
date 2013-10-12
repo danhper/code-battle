@@ -18,6 +18,7 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  name                   :string(255)
+#  username               :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -32,6 +33,8 @@ class User < ActiveRecord::Base
 
   has_many :created_quests, class_name: 'Quest', foreign_key: :creator_id
   has_many :created_codes, class_name: 'Code', foreign_key: :user_id
+
+  validates :username, uniqueness: true
 
   def in_guild?(guild)
     guilds.exists?(guild)

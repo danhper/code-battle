@@ -1,7 +1,8 @@
 class QuestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user_with_username!, except: [:index, :show]
   before_action :set_quest, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
+  before_action :check_guild!, only: [:new, :create]
 
   def index
     @quests = Quest.all
@@ -20,7 +21,7 @@ class QuestsController < ApplicationController
 
   def create
     @quest = current_user.created_quests.build(quest)
-    @code = current_user.codes.build(code_params)
+    @code = current_user.created_codes.build(code_params)
     if @quest.valid? && @code.valid?
       @quest.codes << @code
       @quest.save!

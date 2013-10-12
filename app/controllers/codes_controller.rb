@@ -1,14 +1,16 @@
 class CodesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user_with_username!, except: [:index, :show]
   before_action :set_quest
   before_action :set_code, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
+  before_action :check_guild!, only: [:new, :create]
 
   def index
     @codes = Code.all
   end
 
   def new
+    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
     @code = @quest.codes.build(params[:code])
   end
 
@@ -17,7 +19,8 @@ class CodesController < ApplicationController
   end
 
   def create
-    @code = current_user.codes.build(code_params)
+    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
+    @code = current_user.created_codes.build(code_params)
     @quest.codes << @code
     if @quest.save
       redirect_to [@quest, @code]
