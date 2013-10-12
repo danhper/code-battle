@@ -8,10 +8,11 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  guild_id   :integer
+#  quest_id   :integer
 #
 
 class Code < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :quest
   belongs_to :guild
   has_many :user_like_codes
