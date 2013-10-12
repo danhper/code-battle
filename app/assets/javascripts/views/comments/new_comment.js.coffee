@@ -16,8 +16,9 @@ class Dmtc.Views.NewComment extends Backbone.View
 
   postComment: (e) ->
     @model.set 'code_id', @options.codeId
-    @model.save(
-      sucess: =>
+    @model.save({},
+      success: (model, response, options) =>
+        @options.comments.add model
         $('#comment-textarea').val('')
         @resetModel()
     )

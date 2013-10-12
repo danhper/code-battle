@@ -13,12 +13,22 @@
   <%= render 'codes/like', code: @code %>
 <% end %>
 
-<% if user_signed_in? %>
-  <%= render 'comments/form' %>
-<% end %>
+
+<div id="comments">
+  <% if user_signed_in? %>
+    <%= render 'comments/form' %>
+  <% end %>
+
+  <div class="container">
+
+  </div>
+
+</div>
 
 <% content_for :javascript do %>
   <script>
-    new Dmtc.Views.NewComment({ codeId: <%= @code.id %> });
+    var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
+    new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
+    new Dmtc.Views.CommentsIndex({ collection: comments });
   </script>
 <% end %>
