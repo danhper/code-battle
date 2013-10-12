@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  quest_id :integer
+#  quest_id   :integer
 #  guild_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
