@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012191749) do
+ActiveRecord::Schema.define(version: 20131012203529) do
 
   create_table "codes", force: true do |t|
     t.text     "source"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20131012191749) do
     t.datetime "updated_at"
     t.integer  "guild_id"
     t.integer  "quest_id"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "guilds", force: true do |t|

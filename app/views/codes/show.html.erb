@@ -12,3 +12,13 @@
 <% else %>
   <%= render 'codes/like', code: @code %>
 <% end %>
+
+<% if user_signed_in? %>
+  <%= render 'comments/form' %>
+<% end %>
+
+<% content_for :javascript do %>
+  <script>
+    new Dmtc.Views.NewComment();
+  </script>
+<% end %>

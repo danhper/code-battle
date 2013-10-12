@@ -43,6 +43,11 @@ GEM
       rake
     arel (4.0.0)
     atomic (1.1.14)
+    backbone-on-rails (1.0.0.1)
+      eco
+      ejs
+      jquery-rails
+      rails (>= 3.1)
     bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
@@ -70,6 +75,12 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -221,6 +232,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  backbone-on-rails
   better_errors
   binding_of_caller
   childprocess

@@ -1,4 +1,5 @@
 Dmtc::Application.routes.draw do
+
   get "codes/index"
   get "codes/new"
   root to: 'static_pages#index'
@@ -12,6 +13,8 @@ Dmtc::Application.routes.draw do
       delete 'leave'
     end
   end
+
+  resources :comments
 
   resources :quests do
     resources :codes do
