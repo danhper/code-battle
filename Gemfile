@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'jquery-rails'
+gem 'backbone-on-rails'
 gem 'turbolinks'
 
 gem 'devise'

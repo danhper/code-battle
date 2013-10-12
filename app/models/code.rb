@@ -17,4 +17,5 @@ class Code < ActiveRecord::Base
   belongs_to :guild
   has_many :user_like_codes
   has_many :user, through: :user_like_codes
+  has_many :comments
 end

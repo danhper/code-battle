@@ -1,0 +1,8 @@
+<div class="comment">
+  <span class="username">
+    <%= @comment.user.username %>
+  </span>
+  <div class="content">
+    <%= @comment.content %>
+  </div>
+</div>
