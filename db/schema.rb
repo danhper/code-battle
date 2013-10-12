@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20131012123651) do
   create_table "codes", force: true do |t|
     t.text     "source"
     t.integer  "user_id"
-    t.integer  "problems_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 20131012123651) do
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "problems_id"
+    t.integer  "problem_id"
     t.integer  "guild_id"
     t.datetime "created_at"
     t.datetime "updated_at"
