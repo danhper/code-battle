@@ -17,4 +17,18 @@ class Guild < ActiveRecord::Base
   def to_param
     name
   end
+
+
+  def get_guild_coefficient
+    1.0 - (self.users.count / Guild.count(:users))
+  end
+
+  def get_total_vote_point
+    h = Hash.new
+    h.default = 0
+    TotalVote.find_each do |i|
+      h[i.voted_id] += i.vote_num * GetGuildCoefficient(i.voting_id)
+    end
+  end
+
 end

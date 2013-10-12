@@ -18,34 +18,24 @@ class Quest < ActiveRecord::Base
   has_many :quest_total_votes
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
-  def GetGuildCoefficient gid
-    return 1.0 - (Guild.count(:users, :conditions => ["guild_id = gid"]) / Guild.count(:users))
-  end
 
-  def GetQuestTotalVotePoint qid
+  def get_quest_total_vote_point
     h = Hash.new
     h.default = 0
-    QuestTotalVote.where(:quest_id => qid).find_each do |i|
-      h[i.voting_id] += i.vote_num * GetGuildCoefficient(i.voted_id)
+    self.find_each do |i|
+      h[i.voted_id] += i.vote_num * GetGuildCoefficient(i.voting_id)
     end
-
-    return h
+    
+    h
   end
 
-  def GetTotalVotePoint
-    h = Hash.new
-    h.default = 0
-    TotalVote.find_each do |i|
-      h[i.voting_id] += i.vote_num * GetGuildCoefficient(i.voted_id)
-    end
-  end
 
-  def GetQuestGuildTop qid
+  def get_quest_guild_top
     h = Hash.new
     h.default = 0
     Guild.find_each do |g|
-      h[g.ids] =
-        Code.where(:quest_id => qid, :guild_id => g.ids).order("users DESC").first
+      h[g.id] =
+        Code.where(:quest_id => self.id, :guild_id => g.id).order("users DESC").first
     end
   end
 end

@@ -14,6 +14,4 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :quest
   belongs_to :guild
-  has_many :vote_like_guilds
-  has_many :guilds, through: :vote_like_guilds
 end
