@@ -8,6 +8,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  guild_id   :integer
+#  quest_id   :integer
 #
 
 class Code < ActiveRecord::Base

@@ -8,6 +8,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  guild_id   :integer
+#  quest_id   :integer
 #
 
 require 'spec_helper'
