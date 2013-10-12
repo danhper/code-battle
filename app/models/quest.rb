@@ -22,7 +22,8 @@ class Quest < ActiveRecord::Base
   def get_quest_total_vote_point
     h = Hash.new
     h.default = 0
-    self.find_each do |i|
+    q_all = QuestTotalVote.where(:quest_id => self.id)
+    q_all.each do |i|
       h[i.voted_id] += i.vote_num * GetGuildCoefficient(i.voting_id)
     end
     
@@ -33,9 +34,11 @@ class Quest < ActiveRecord::Base
   def get_quest_guild_top
     h = Hash.new
     h.default = 0
-    Guild.find_each do |g|
+    g_all = Guild.all
+    g_all.each do |g|
       h[g.id] =
         Code.where(:quest_id => self.id, :guild_id => g.id).order("users DESC").first
     end
+    h
   end
 end

@@ -26,7 +26,8 @@ class Guild < ActiveRecord::Base
   def get_total_vote_point
     h = Hash.new
     h.default = 0
-    TotalVote.find_each do |i|
+    tv_all = TotalVote.all
+    tv_all.each do |i|
       h[i.voted_id] += i.vote_num * GetGuildCoefficient(i.voting_id)
     end
   end
