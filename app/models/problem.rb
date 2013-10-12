@@ -13,4 +13,6 @@ class Problem < ActiveRecord::Base
   has_many :votes
   has_many :guilds, through: :votes
   has_many :codes
+
+  belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 end

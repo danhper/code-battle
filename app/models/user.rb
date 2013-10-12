@@ -29,7 +29,9 @@ class User < ActiveRecord::Base
   has_many :user_like_codes
   has_many :code, through: :user_like_codes
   has_many :votes
-  has_many :problem, through: :votes
+  has_many :problems, through: :votes
+
+  has_many :created_problems, class_name: 'Problem', foreign_key: :creator_id
 
   def in_guild?(guild)
     guilds.exists?(guild)
