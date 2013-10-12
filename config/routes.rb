@@ -11,5 +11,6 @@ Dmtc::Application.routes.draw do
   end
 
   resources :problems do
+    resources :codes
   end
 end
