@@ -7,6 +7,8 @@ gem 'rails', '4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
+gem 'devise'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
