@@ -13,6 +13,11 @@ Dmtc::Application.routes.draw do
   end
 
   resources :quests do
-    resources :codes
+    resources :codes do
+      member do
+        post 'like'
+        delete 'unlike'
+      end
+    end
   end
 end

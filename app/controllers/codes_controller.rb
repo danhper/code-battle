@@ -37,6 +37,31 @@ class CodesController < ApplicationController
     end
   end
 
+  def destroy
+    @code.destroy
+    redirect_to @quest
+  end
+
+  def like
+    if current_user.likes_code?(@code)
+      render json: { error: 'already likes code' }
+    elsif @code.author == current_user
+      render json: { error: 'cannot like own code' }
+    else
+      current_user.liked_codes << @code
+      head :no_content
+    end
+  end
+
+  def unlike
+    if current_user.likes_code?(@code)
+      current_user.liked_codes.delete(@code)
+      head :no_content
+    else
+      render json: { error: 'does not like code' }
+    end
+  end
+
   private
   def set_quest
     @quest = Quest.find(params[:quest_id])

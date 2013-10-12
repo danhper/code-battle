@@ -25,16 +25,20 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:github]
 
   has_and_belongs_to_many :guilds, -> { uniq }, join_table: 'user_guilds'
-  has_many :codes
   has_many :user_like_codes
-  has_many :codes, through: :user_like_codes
+  has_many :liked_codes, through: :user_like_codes, source: :code
   has_many :votes
   has_many :quests, through: :votes
 
   has_many :created_quests, class_name: 'Quest', foreign_key: :creator_id
+  has_many :created_codes, class_name: 'Code', foreign_key: :user_id
 
   def in_guild?(guild)
     guilds.exists?(guild)
+  end
+
+  def likes_code?(code)
+    liked_codes.exists?(code)
   end
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
