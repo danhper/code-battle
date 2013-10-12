@@ -24,9 +24,8 @@ class Quest < ActiveRecord::Base
     h.default = 0
     q_all = QuestTotalVote.where(:quest_id => self.id)
     q_all.each do |i|
-      h[i.voted_id] += i.vote_num * get_quild_coefficient(i.voting_id)
+      h[i.voted_guild_id] += i.vote_num * get_quild_coefficient(i.voting_guild_id)
     end
-    
     h
   end
 
