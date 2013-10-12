@@ -1,27 +1,27 @@
-class ProblemsController < ApplicationController
+class QuestsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_problem, except: [:index, :new, :create]
+  before_action :set_quest, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
 
   def index
-    @problems = Problem.all
+    @quests = Quest.all
   end
 
   def show
   end
 
   def new
-    @problem = Problem.new(params[:problem])
+    @quest = Quest.new(params[:quest])
     @code = Code.new(params[:code])
   end
 
   def create
-    @problem = current_user.created_problems.build(problem_params)
+    @quest = current_user.created_quests.build(quest)
     @code = current_user.codes.build(code_params)
-    if @problem.valid? && @code.valid?
-      @problem.codes << @code
-      @problem.save!
-      redirect_to @problem
+    if @quest.valid? && @code.valid?
+      @quest.codes << @code
+      @quest.save!
+      redirect_to @quest
     else
       render action: 'new'
     end
@@ -37,12 +37,12 @@ class ProblemsController < ApplicationController
   end
 
   private
-  def set_problem
-    @problem = Problem.find(params[:id])
+  def set_quest
+    @quest = Quest.find(params[:id])
   end
 
-  def problem_params
-    params.require(:problem).permit(:title, :description)
+  def quest
+    params.require(:quest).permit(:title, :description)
   end
 
   def code_params
@@ -50,7 +50,7 @@ class ProblemsController < ApplicationController
   end
 
   def check_creator!
-    if @problem.creator != current_user
+    if @quest.creator != current_user
       redirect_to root_path
     end
   end

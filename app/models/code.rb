@@ -12,7 +12,7 @@
 
 class Code < ActiveRecord::Base
   belongs_to :user
-  belongs_to :problem
+  belongs_to :quest
   belongs_to :guild
   has_many :user_like_codes
   has_many :users, through: :user_like_codes

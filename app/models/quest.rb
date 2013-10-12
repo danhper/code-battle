@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # == Schema Information
 #
-# Table name: problems
+# Table name: quests
 #
 #  id          :integer          not null, primary key
 #  title       :string(255)
@@ -11,7 +11,7 @@
 #  creator_id  :integer
 #
 
-class Problem < ActiveRecord::Base
+class Quest < ActiveRecord::Base
   has_many :votes
   has_many :guilds, through: :votes
   has_many :codes
