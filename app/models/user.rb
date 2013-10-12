@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :guilds, join_table: 'user_guilds'
 
+  def in_guild?(guild)
+    guilds.exists?(guild)
+  end
+
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user

@@ -6,7 +6,7 @@ Dmtc::Application.routes.draw do
   resources :guilds do
     member do
       post 'enter'
-      post 'leave'
+      delete 'leave'
     end
   end
 end

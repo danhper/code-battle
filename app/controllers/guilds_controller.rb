@@ -35,6 +35,12 @@ class GuildsController < ApplicationController
   end
 
   def leave
+    if @guild.users.exists?(current_user)
+      @guild.users.delete(current_user)
+      head :no_content
+    else
+      render json: { error: 'already in guild' }
+    end
   end
 
   private
