@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
 
 group :production do
   gem 'pg'
