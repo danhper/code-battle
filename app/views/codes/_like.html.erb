@@ -1,7 +1,7 @@
 <% if user_signed_in? && @code.author != current_user %>
-  <% if user.likes? code %>
-    <%= link_to 'Like', like_quest_code [@quest, @code], method: post, remote: true %>
+  <% if current_user.likes_code? code %>
+    <%= link_to 'Unlike', unlike_quest_code_path(@quest, @code), method: :delete, remote: true %>
   <% else %>
-    <%= link_to 'Unlike', unlike_quest_code [@quest, @code], method: delete, remote: true %>
+    <%= link_to 'Like', like_quest_code_path(@quest, @code), method: :post, remote: true %>
   <% end %>
 <% end %>
