@@ -11,6 +11,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
+gem 'seedbank', github: 'james2m/seedbank'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -26,6 +28,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard-livereload', '~> 2.0', require: false
+  gem 'annotate'
 end
 
 group :development, :test do

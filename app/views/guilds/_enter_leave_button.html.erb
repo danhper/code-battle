@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <% if current_user.in_guild?(guild) %>
+    <%= link_to 'Leave', leave_guild_path(guild), confirm: true, method: :delete, remote: true %>
+  <% else %>
+    <%= link_to 'Enter', enter_guild_path(guild), remote: true, method: :post %>
+  <% end %>
+<% end %>

@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/james2m/seedbank.git
+  revision: c7a272751336f0d17103028f45b88eac62cbedd7
+  specs:
+    seedbank (0.3.0.pre2)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 0dd45e59d3237b4c8f9efc215b46d9c07072a95e
   specs:
@@ -33,6 +39,8 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    annotate (2.5.0)
+      rake
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -212,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   childprocess
@@ -228,6 +237,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
+  seedbank!
   spork-rails!
   sqlite3
   turbolinks
