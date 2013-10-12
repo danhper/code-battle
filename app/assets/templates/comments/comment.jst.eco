@@ -1,6 +1,6 @@
 <div class="comment">
   <span class="username">
-    foo
+    <%= @comment.user.username %>
   </span>
   <div class="content">
     <%= @comment.content %>

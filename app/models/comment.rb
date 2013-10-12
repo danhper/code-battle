@@ -13,4 +13,9 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :code
+
+  def as_json(options={})
+    user_json = { user: { exclude: [:name, :email]} }
+    super({ include: user_json }.merge(options))
+  end
 end
