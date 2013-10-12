@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012105351) do
+ActiveRecord::Schema.define(version: 20131012113302) do
+
+  create_table "codes", force: true do |t|
+    t.text     "source"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guilds", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "problems", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_guilds", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "guild_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_guilds", ["guild_id"], name: "index_user_guilds_on_guild_id"
+  add_index "user_guilds", ["user_id"], name: "index_user_guilds_on_user_id"
+
+  create_table "user_like_codes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "code_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_like_codes", ["code_id"], name: "index_user_like_codes_on_code_id"
+  add_index "user_like_codes", ["user_id"], name: "index_user_like_codes_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +70,15 @@ ActiveRecord::Schema.define(version: 20131012105351) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.integer  "guild_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["user_id", "problem_id"], name: "index_votes_on_user_id_and_problem_id"
 
 end
