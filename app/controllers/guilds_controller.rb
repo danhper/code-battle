@@ -27,8 +27,10 @@ class GuildsController < ApplicationController
 
   def enter
     if @guild.users.exists?(current_user)
+      render json: { error: 'already in guild' }
     else
       @guild.users << current_user
+      head :no_content
     end
   end
 
@@ -37,7 +39,7 @@ class GuildsController < ApplicationController
 
   private
   def set_guild
-    @guild = Guild.find(params[:id])
+    @guild = Guild.find_by_name(params[:id])
   end
 
   def guild_params
