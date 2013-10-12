@@ -11,7 +11,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
-gem 'seedbank'
+gem 'seedbank', github: 'james2m/seedbank'
 
 group :production do
   gem 'pg'

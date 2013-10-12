@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/james2m/seedbank.git
+  revision: c7a272751336f0d17103028f45b88eac62cbedd7
+  specs:
+    seedbank (0.3.0.pre2)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 0dd45e59d3237b4c8f9efc215b46d9c07072a95e
   specs:
@@ -181,7 +187,6 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    seedbank (0.2.1)
     slop (3.4.6)
     spork (1.0.0rc4)
     sprockets (2.10.0)
@@ -232,7 +237,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
-  seedbank
+  seedbank!
   spork-rails!
   sqlite3
   turbolinks
