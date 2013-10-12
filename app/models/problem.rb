@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # == Schema Information
 #
 # Table name: problems
@@ -11,6 +12,7 @@
 
 class Problem < ActiveRecord::Base
   has_many :votes
-  has_many :guild, through: :votes
-  has_many :code
+  has_many :guilds, through: :votes
+  has_many :codes
+
 end

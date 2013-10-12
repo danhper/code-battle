@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:github]
 
   has_and_belongs_to_many :guilds, join_table: 'user_guilds'
-  has_many :code
+  has_many :codes
   has_many :user_like_codes
-  has_many :code, through: :user_like_codes
+  has_many :codes, through: :user_like_codes
   has_many :votes
   has_many :problem, through: :votes
 

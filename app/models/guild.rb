@@ -13,6 +13,8 @@ class Guild < ActiveRecord::Base
   has_many :codes
   has_many :votes
   has_many :problems, through: :votes
+  has_many :vote_like_guilds
+  has_many :votes, through: :guilds
 
   def to_param
     name
