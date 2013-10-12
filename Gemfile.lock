@@ -33,6 +33,8 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    annotate (2.5.0)
+      rake
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -179,6 +181,7 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    seedbank (0.2.1)
     slop (3.4.6)
     spork (1.0.0rc4)
     sprockets (2.10.0)
@@ -212,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   childprocess
@@ -228,6 +232,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
+  seedbank
   spork-rails!
   sqlite3
   turbolinks
