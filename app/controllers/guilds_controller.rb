@@ -1,4 +1,8 @@
 class GuildsController < ApplicationController
+  before_action :set_guild, except: [:index, :new, :create]
+
+  before_filter :authenticate_user!, only: [:enter, :leave]
+
   def index
     @guilds = Guild.all
   end
@@ -21,6 +25,16 @@ class GuildsController < ApplicationController
   def destroy
   end
 
+  def enter
+    if @guild.users.exists?(current_user)
+    else
+      @guild.users << current_user
+    end
+  end
+
+  def leave
+  end
+
   private
   def set_guild
     @guild = Guild.find(params[:id])
@@ -29,6 +43,4 @@ class GuildsController < ApplicationController
   def guild_params
     params.require(:guild).permit(:name)
   end
-
-
 end
