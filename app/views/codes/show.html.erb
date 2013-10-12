@@ -1,3 +1,11 @@
 <h2>code</h2>
 
 <%= render 'quests/short', quest: @quest %>
+
+<pre>
+  <%= @code.source %>
+</pre>
+
+<% if @is_owner %>
+  <%= link_to 'Edit code', edit_quest_code_path(@quest, @code) %>
+<% end %>

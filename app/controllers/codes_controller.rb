@@ -13,6 +13,7 @@ class CodesController < ApplicationController
   end
 
   def show
+    @is_owner = user_signed_in? && @code.author == current_user
   end
 
   def create
