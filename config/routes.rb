@@ -14,7 +14,7 @@ Dmtc::Application.routes.draw do
     end
   end
 
-  resources :comments
+  resources :comments, only: [:create]
 
   resources :quests do
     resources :codes do

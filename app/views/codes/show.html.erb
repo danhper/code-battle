@@ -19,6 +19,6 @@
 
 <% content_for :javascript do %>
   <script>
-    new Dmtc.Views.NewComment();
+    new Dmtc.Views.NewComment({ codeId: <%= @code.id %> });
   </script>
 <% end %>
