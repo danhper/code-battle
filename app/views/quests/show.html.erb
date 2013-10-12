@@ -1,4 +1,12 @@
 <h1><%= @quest.title %></h1>
 <p><%= @quest.description %></p>
 
-<%= link_to 'Post code', new_quest_code_path(@quest) %>
+<% if user_signed_in? %>
+  <% if @code %>
+    <%= link_to 'Show code', quest_code_path(@quest, @code) %>
+    <%= link_to 'Edit code', edit_quest_code_path(@quest, @code) %>
+  <% else %>
+    <%= link_to 'Post code', new_quest_code_path(@quest) %>
+  <% end %>
+
+<% end %>

@@ -12,7 +12,7 @@
 #
 
 class Code < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :quest
   belongs_to :guild
   has_many :user_like_codes

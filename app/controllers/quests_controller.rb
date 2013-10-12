@@ -8,6 +8,9 @@ class QuestsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      @code = Code.where(quest: @quest, user: current_user).first
+    end
   end
 
   def new
