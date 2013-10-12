@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   has_many :created_quests, class_name: 'Quest', foreign_key: :creator_id
   has_many :created_codes, class_name: 'Code', foreign_key: :user_id
 
+  validates :username, uniqueness: true
+
   def in_guild?(guild)
     guilds.exists?(guild)
   end
