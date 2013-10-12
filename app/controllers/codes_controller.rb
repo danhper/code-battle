@@ -37,6 +37,11 @@ class CodesController < ApplicationController
     end
   end
 
+  def destroy
+    @code.destroy
+    redirect_to @quest
+  end
+
   private
   def set_quest
     @quest = Quest.find(params[:quest_id])
