@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: problems
+# Table name: quests
 #
 #  id          :integer          not null, primary key
 #  title       :string(255)

@@ -10,7 +10,7 @@ Dmtc::Application.routes.draw do
     end
   end
 
-  resources :problems do
+  resources :quests do
     resources :codes
   end
 end
