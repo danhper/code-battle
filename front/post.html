@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Codebattle</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/font-awesome.css">
+
+	<link rel="stylesheet" href="css/monokai.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">CodeBattle</a>
+	</div>
+
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Link</a></li>
+			<li><a href="#">Link</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li><a href="#">Separated link</a></li>
+					<li><a href="#">One more separated link</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<article id="post">
+
+	<section>
+		<h3 class="title">
+			クエストの投稿
+		</h3>
+		<p class="desc">このページからクエストを投稿することができます。<br>
+		投稿のさいには、<strong>自分もコードを書くことが必須です。</strong><br>
+		好きな言語を選んで、まずは自分で自分の問題を解いてから投稿しましょう。</p>
+
+		<div id="select-options">
+			<section id="select-lang-section">
+				<label for="select-lang"><span>自分が使用する言語を選択</span></label>
+				<select id="select-lang" class="lang form-control input-lg">
+					<option value="php">PHP</option>
+					<option value="python">Python</option>
+					<option value="ruby">Ruby</option>
+					<option value="perl">Perl</option>
+					<option value="haskell">Haskell</option>
+					<option value="scala">Scala</option>
+					<option value="c">C</option>
+					<option value="c++">C++</option>
+					<option value="c#">C#</option>
+				</select>
+			</section>
+
+			<section id="select-title-section">
+				<label for="select-title"><span>タイトルを入力</span></label>
+				<input id="select-title" class="form-control input-lg" type="text" placeholder="(例) 素数を数えるプログラムを作りたまえ"/>
+			</section>
+
+			<section id="select-desc-section">
+				<label for="select-desc"><span>問題の説明文を入力</span></label>
+				<textarea id="select-desc" class="form-control" placeholder="(例) 素数を数えてください。"></textarea>
+			</section>
+
+		</div>
+
+		<div class="code">
+			<!--<h4 class="python"><img class="lang" src="img/python-logo.png" alt="Python"/>で回答したぞ！ <span class="plusone liked btn btn-warning">+1</span><span class="plusone-result">100</span><span class="author">回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></span></h4>-->
+			<textarea placeholder="ここにコードを入力してください。"></textarea>
+		</div>
+		<div id="post-container">
+			<p>投稿したコードは、Web全体に公開されます。</p>
+			<a id="post" class="btn-default">投稿</a>
+		</div>
+		<!--<div id="comment-others-container" class="row">-->
+			<!--<div id="comment" class="col-lg-7 col-md-7">-->
+				<!--<h5>3件のコメント</h5>-->
+				<!--<div class="media">-->
+					<!--<a class="pull-left" href="#">-->
+						<!--<img class="avatar media-object" src="img/comment-img.png" alt="...">-->
+					<!--</a>-->
+					<!--<div class="media-body">-->
+						<!--<h4 class="media-heading"><a href="">Anderson</a><span class="date">4日前</span></h4>-->
+						<!--てすとてすとてすとてすとてすと！<br>-->
+						<!--てすとてすtesttesttestですかね？<br>-->
+						<!--kaklakldsfkdsfklfsklfdsklfds dslkfaj aflkdsjfas!-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="media">-->
+					<!--<a class="pull-left" href="#">-->
+						<!--<img class="avatar media-object" src="img/comment-img.png" alt="...">-->
+					<!--</a>-->
+					<!--<div class="media-body">-->
+						<!--<h4 class="media-heading"><a href="">Anderson</a><span class="date">6日前</span></h4>-->
+						<!--てすとてすとてすとてすと<br>-->
+						<!--kaklakldsfkdsfklfsklfdsklfds-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<hr>-->
+				<!--<form action="">-->
+					<!--<textarea class="form-control" rows="3"></textarea>-->
+					<!--<button type="button" class="comment-post btn btn-primary pull-right">コメントを投稿</button>-->
+				<!--</form>-->
+			<!--</div>-->
+			<!--<div id="others" class="col-lg-5 col-md-5">-->
+				<!--<h5>ほかのユーザーの回答</h5>-->
+				<!--<a class="code python" href="">-->
+					<!--<img class="lang" src="img/python-logo.png" alt="Python"/>で行く!-->
+					<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
+				<!--</a>-->
+				<!--<a class="code php" href="">-->
+					<!--<img class="lang" src="img/php-logo.png" alt="PHP"/>で行く!-->
+					<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
+				<!--</a>-->
+				<!--<a class="code ruby" href="">-->
+					<!--<img class="lang" src="img/ruby-logo.png" alt="Ruby"/>で行く!-->
+					<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
+				<!--</a>-->
+				<!--<a class="code python" href="">-->
+					<!--<img class="lang" src="img/python-logo.png" alt="Python"/>で行く!-->
+					<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
+				<!--</a>-->
+				<!--<a class="code ruby" href="">-->
+					<!--<img class="lang" src="img/ruby-logo.png" alt="Ruby"/>で行く!-->
+					<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
+				<!--</a>-->
+			<!--</div>-->
+		<!--</div>-->
+
+	</section>
+
+</article>
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/jsrender.js"></script>-->
+<!--<script src="js/jsviews.js"></script>-->
+<!--<script src="js/jquery.views.js"></script>-->
+<!--<script src="js/jquery.observable.js"></script>-->
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+	var _gaq = [
+		['_setAccount', 'UA-XXXXX-X'],
+		['_trackPageview']
+	];
+	(function (d, t) {
+		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+		g.src = '//www.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g, s)
+	}(document, 'script'));
+</script>
+
+</body>
+</html>
