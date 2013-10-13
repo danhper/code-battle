@@ -6064,7 +6064,12 @@ body {
   background-image: -o-linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
   background-image: linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
 }
+#quests section p.desc {
+  margin: 0;
+}
 #quests section div.code {
+  overflow: hidden;
+  background: #272822;
   position: relative;
 }
 #quests section div.code h4 {
@@ -6075,9 +6080,11 @@ body {
   padding-right: 10px;
   line-height: 50px;
 }
-#quests section div.code p {
+#quests section div.code pre {
   clear: both;
   text-align: left;
+  font-size: 12px;
+  border-radius: 0;
 }
 #quests section div.code a {
   color: #fff;
@@ -6096,13 +6103,30 @@ body {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
+#quests section div.code span.more {
+  position: relative;
+  bottom: 0;
+  display: inline-block;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQtdWNnZy1nZW5lcmF0ZWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIxMDAlIiB4Mj0iMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI3MjcyMSIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSI2MC4yOCUiIHN0b3AtY29sb3I9IiMyNzI3MjEiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0icmdiKDI1NSwyNTUsMjU1KSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPjwvc3ZnPg==);
+  background-image: -moz-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: -webkit-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: -o-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  width: 100%;
+  height: 100px;
+  padding: 0 20px;
+}
+#quests section div.code span.more a.btn-default {
+  margin-top: 50px;
+  width: 100%;
+  color: #000;
+}
 #quests section div.gold {
   top: 20px;
   left: 215px;
   width: 310px;
   height: 490px;
   border: 5px solid #edb305;
-  background-color: #fff;
   -webkit-box-shadow: 0 8px 10px rgba(0,0,0,.1);
   -moz-box-shadow: 0 8px 10px rgba(0,0,0,.1);
   box-shadow: 0 8px 10px rgba(0,0,0,.1);
@@ -6111,13 +6135,15 @@ body {
 #quests section div.gold h4 {
   border-bottom: 5px solid #edb305;
 }
+#quests section div.gold pre {
+  max-height: 315px;
+}
 #quests section div.silver {
   top: -442px;
   left: -70px;
   width: 290px;
   height: 440px;
   border: 5px solid #bfbfbf;
-  background-color: #fff;
   -webkit-box-shadow: 0 5px 5px rgba(0,0,0,.1);
   -moz-box-shadow: 0 5px 5px rgba(0,0,0,.1);
   box-shadow: 0 5px 5px rgba(0,0,0,.1);
@@ -6125,19 +6151,24 @@ body {
 #quests section div.silver h4 {
   border-bottom: 5px solid #bfbfbf;
 }
+#quests section div.silver pre {
+  max-height: 265px;
+}
 #quests section div.bronze {
   top: -884px;
   right: -520px;
   width: 290px;
   height: 440px;
   border: 5px solid #a88200;
-  background-color: #fff;
   -webkit-box-shadow: 0 5px 5px rgba(0,0,0,.1);
   -moz-box-shadow: 0 5px 5px rgba(0,0,0,.1);
   box-shadow: 0 5px 5px rgba(0,0,0,.1);
 }
 #quests section div.bronze h4 {
   border-bottom: 5px solid #a88200;
+}
+#quests section div.bronze pre {
+  max-height: 265px;
 }
 #quests section h3.title {
   margin-top: -50px;
@@ -6161,10 +6192,31 @@ body {
   background-image: -o-linear-gradient(bottom, #7a1111 0%, #952121 22.9%, #b04040 50.49%, #952121 95.12%, #791111 100%);
   background-image: linear-gradient(bottom, #7a1111 0%, #952121 22.9%, #b04040 50.49%, #952121 95.12%, #791111 100%);
 }
+#quests section h3.title a {
+  color: #fff;
+}
 #quests section h3.title span.author {
   font-size: 16px;
   padding-bottom: 5px;
 }
 #quests section h3.title cite {
   font-size: 20px;
+}
+.pagination {
+  margin-top: -30px;
+}
+footer {
+  background: #fff;
+}
+footer section {
+  margin: 0 auto;
+  width: 750px;
+  height: 200px;
+  background: #000;
+}
+.testtest {
+  font-size: 12px;
+}
+.testtesttest {
+  font-size: 12px;
 }
