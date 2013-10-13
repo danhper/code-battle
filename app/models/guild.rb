@@ -28,8 +28,15 @@ class Guild < ActiveRecord::Base
     h.default = 0
     tv_all = TotalVote.all
     tv_all.each do |i|
-      h[i.voted_guild_id] += i.vote_num * get_guild_coefficient(i.voting_guild_id)
+      h[i.voted_guild_id] += i.vote_num * Guild.find(i.voting_guild_id).get_guild_coefficient
     end
+    h
   end
 
+  def get_guild_ranking
+    h = get_total_vote_point.sort_by{|_,v| -v }
+    ary = Array.new
+    h.each{|i| ary << Guild.find_by_id(i[0])}
+    ary
+  end
 end

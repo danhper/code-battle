@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     quests.exists?(quest) ? true : false
   end
 
+  def large_guild
+    self.guilds.max{|x,y| x.users.count <=> y.users.count}
+  end
+
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user

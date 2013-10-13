@@ -50,6 +50,10 @@ class Quest < ActiveRecord::Base
   end
 
   def get_top_codes
+    h = self.get_quest_total_vote_point.sort_by{|_,v| -v }
+    ary = Array.new
+    h.each{|i| ary << Quest.find_by_id(i[0])}
+    ary
   end
 
 end

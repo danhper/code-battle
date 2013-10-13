@@ -73,6 +73,10 @@ class CodesController < ApplicationController
       render json: { error: 'cannot vote own code' }, status: 400
     else
       Vote.create(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id)
+      qtv = QuestTotalVote.create_with(vote_num: 0).find_or_create_by(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
+      qtv.inc_num
+      tv = TotalVote.create_with(vote_num: 0).find_or_create_by(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
+      tv.inc_num
       head :no_content
     end
   end
@@ -80,6 +84,10 @@ class CodesController < ApplicationController
   def unvote
     if current_user.votes_quest?(@quest)
       Vote.where(user_id: current_user, quest_id: @quest.id).first.destroy
+      qtv = QuestTotalVote.where(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id).first
+      #qtv.dec_num
+      tv = TotalVote.where(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id).first
+      tv.dec_num
       head :no_content
     else
       render json: { error: 'does not vote code' }, status: 400
