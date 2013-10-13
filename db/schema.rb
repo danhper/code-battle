@@ -37,12 +37,25 @@ ActiveRecord::Schema.define(version: 20131013045326) do
     t.string   "url_safe_name"
   end
 
+  create_table "quest_total_votes", force: true do |t|
+    t.integer "quest_id"
+    t.integer "voting_guild_id"
+    t.integer "voted_guild_id"
+    t.integer "vote_num"
+  end
+
   create_table "quests", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+  end
+
+  create_table "total_votes", force: true do |t|
+    t.integer "voting_guild_id"
+    t.integer "voted_guild_id"
+    t.integer "vote_num"
   end
 
   create_table "user_guilds", force: true do |t|
@@ -89,6 +102,13 @@ ActiveRecord::Schema.define(version: 20131013045326) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username"
+
+  create_table "vote_like_guilds", force: true do |t|
+    t.integer "vote_id"
+    t.integer "guild_id"
+  end
+
+  add_index "vote_like_guilds", ["vote_id", "guild_id"], name: "index_vote_like_guilds_on_vote_id_and_guild_id"
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
