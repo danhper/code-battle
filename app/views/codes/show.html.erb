@@ -3,7 +3,6 @@
     <h3 class="title">
       <span class="author">
         <%= t('quest.from', username: link_to(@quest.creator.username, @quest.creator)).html_safe %>
-        からのクエスト
       </span>
       <br>
       <cite>
@@ -73,7 +72,7 @@
 
 <% content_for :javascript do %>
   <script>
-    var codeJSON = _.extend(<%= @code.to_json.html_safe %>, { liked: <%= @liked %> });
+    var codeJSON = _.extend(<%= @code.to_json(methods: :likes_number).html_safe %>, { liked: <%= @liked %> });
     var codeModel = new Dmtc.Models.Code(codeJSON);
     new Dmtc.Views.ShowCode({ model: codeModel });
     var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
