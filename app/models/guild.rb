@@ -2,10 +2,11 @@
 #
 # Table name: guilds
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  url_safe_name :string(255)
 #
 
 class Guild < ActiveRecord::Base
@@ -15,7 +16,7 @@ class Guild < ActiveRecord::Base
   has_many :quests, through: :votes
 
   def to_param
-    name
+    url_safe_name
   end
 
 

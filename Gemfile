@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'jquery-rails'
+gem 'backbone-on-rails'
 gem 'turbolinks'
 
 gem 'devise'
@@ -12,6 +13,8 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'seedbank', github: 'james2m/seedbank'
+
+gem 'pygments.rb'
 
 group :production do
   gem 'pg'

@@ -44,7 +44,7 @@ class GuildsController < ApplicationController
 
   private
   def set_guild
-    @guild = Guild.find_by_name(params[:id])
+    @guild = Guild.find_by_url_safe_name(params[:id])
   end
 
   def guild_params
