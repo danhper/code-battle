@@ -10,6 +10,11 @@
     <%= link_to 'Delete code', quest_code_path(@quest, @code), method: :delete, confirm: true %>
   <% else %>
     <%= render 'codes/like', code: @code %>
+    <%= render 'codes/vote', code2: @code %>
+
+    <% if @quest.get_quest_guild_top[0] == @code.id %>
+      <%= render 'codes/vote', code2: @code %>
+    <% end  %>
   <% end %>
 </div>
 
@@ -33,5 +38,8 @@
     var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
     new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
     new Dmtc.Views.CommentsIndex({ collection: comments });
+    var code2JSON = _.extend(<%= @code.to_json.html_safe %>, { voted: <%= @voted %> });
+    var code2Model = new Dmtc.Models.Code2(code2JSON);
+    new Dmtc.Views.Show2Code({ model: code2Model });
   </script>
 <% end %>

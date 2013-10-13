@@ -17,6 +17,7 @@ class CodesController < ApplicationController
   def show
     @is_owner = user_signed_in? && @code.author == current_user
     @liked = user_signed_in? && current_user.likes_code?(@code)
+    @voted = user_signed_in? && current_user.votes_quest?(@quest)
   end
 
   def create
@@ -62,6 +63,26 @@ class CodesController < ApplicationController
       head :no_content
     else
       render json: { error: 'does not like code' }, status: 400
+    end
+  end
+
+  def vote
+    if current_user.votes_quest?(@quest)
+      render json: { error: 'already votes code' }, status: 400
+    elsif @code.author == current_user
+      render json: { error: 'cannot vote own code' }, status: 400
+    else
+      Vote.create(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id)
+      head :no_content
+    end
+  end
+
+  def unvote
+    if current_user.votes_quest?(@quest)
+      Vote.where(user_id: current_user, quest_id: @quest.id).destroy
+      head :no_content
+    else
+      render json: { error: 'does not vote code' }, status: 400
     end
   end
 
