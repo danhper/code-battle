@@ -37,12 +37,25 @@ ActiveRecord::Schema.define(version: 20131013045326) do
     t.string   "url_safe_name"
   end
 
+  create_table "quest_total_votes", force: true do |t|
+    t.integer "quest_id"
+    t.integer "voting_guild_id"
+    t.integer "voted_guild_id"
+    t.integer "vote_num"
+  end
+
   create_table "quests", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+  end
+
+  create_table "total_votes", force: true do |t|
+    t.integer "voting_guild_id"
+    t.integer "voted_guild_id"
+    t.integer "vote_num"
   end
 
   create_table "user_guilds", force: true do |t|

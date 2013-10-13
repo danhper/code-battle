@@ -1,8 +1,31 @@
-<%= @guild.name %>
+<h1>
+  <%= @guild.name %>
+</h1>
 
-<div class="users">
-  <%= render @guild.users %>
-</div>
-<div class="codes">
-  <%= render @guild.codes %>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#users" data-toggle="tab">Sources</a>
+  </li>
+  <li>
+    <a href="#codes" data-toggle="tab">Codes</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="users" class="users tab-pane active">
+    <% if @users.empty? %>
+      No member in this guild.
+    <% else %>
+      <%= render @users %>
+      <%= will_paginate @users, param_name: :user_page %>
+    <% end %>
+  </div>
+  <div id="codes" class="codes tab-pane">
+    <% if @codes.empty? %>
+      No spell casted by this guild.
+    <% else %>
+      <%= render partial: 'codes/code_line', collection: @codes, as: :code, locals: { fields: [:author, :quest] } %>
+      <%= will_paginate @codes, param_name: :code_page %>
+    <% end %>
+  </div>
 </div>

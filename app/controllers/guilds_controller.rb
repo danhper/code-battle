@@ -7,6 +7,8 @@ class GuildsController < ApplicationController
   end
 
   def show
+    @users = @guild.users.paginate(page: params[:user_page])
+    @codes = @guild.codes.paginate(page: params[:code_page])
   end
 
   def new

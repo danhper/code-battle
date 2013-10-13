@@ -4,22 +4,22 @@ class CodesController < ApplicationController
   before_action :set_code, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
   before_action :check_guild!, only: [:new, :create]
+  before_action :check_existence!, only: [:new, :create]
 
   def index
     @codes = Code.all
   end
 
   def new
-    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
     @code = @quest.codes.build(params[:code])
   end
 
   def show
     @is_owner = user_signed_in? && @code.author == current_user
+    @liked = user_signed_in? && current_user.likes_code?(@code)
   end
 
   def create
-    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
     @code = current_user.created_codes.build(code_params)
     @quest.codes << @code
     if @quest.save
@@ -47,9 +47,9 @@ class CodesController < ApplicationController
 
   def like
     if current_user.likes_code?(@code)
-      render json: { error: 'already likes code' }
+      render json: { error: 'already likes code' }, status: 400
     elsif @code.author == current_user
-      render json: { error: 'cannot like own code' }
+      render json: { error: 'cannot like own code' }, status: 400
     else
       current_user.liked_codes << @code
       head :no_content
@@ -61,7 +61,7 @@ class CodesController < ApplicationController
       current_user.liked_codes.delete(@code)
       head :no_content
     else
-      render json: { error: 'does not like code' }
+      render json: { error: 'does not like code' }, status: 400
     end
   end
 
@@ -72,6 +72,10 @@ class CodesController < ApplicationController
 
   def set_code
     @code = Code.find(params[:id])
+  end
+
+  def check_existence!
+    redirect_to @quest if Code.where(user_id: current_user, quest_id: @quest).exists?
   end
 
   def code_params
