@@ -1,4 +1,4 @@
-article#guild {
+article#profile {
 	text-align:center;
 	margin:140px auto 80px auto;
 	width:750px;
@@ -9,26 +9,29 @@ article#guild {
 	.background-image(~"linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%)");
 
 	section {
-		table.info {
-			background:#fff;
-			margin:10px auto 0 auto;
-			width:500px;
-			.box-shadow(~"0 2px 2px rgba(0,0,0,.15)");
 
-			tr th {
-				text-align: center;
-			}
-		}
-
-		div#members {
+		div#guilds {
 			margin:20px auto 0 auto;
+			padding:5px 0 20px 0;
 			width:580px;
-			img.avatar {
-				width:64px;
-				height:64px;
-				margin:0 5px 8px 0;
+			background:#ffffff;
+			.box-shadow(~"0 2px 2px rgba(0,0,0,.15)");
+			a.lang-icon {
+				display:inline-block;
+				width:80px;
+				height:80px;
+				padding-top:30px;
+				margin-right:5px;
 				.box-shadow(~"0 2px 2px rgba(0,0,0,.15)");
-				.avatar-circle();
+				img {
+					height:22px;
+				}
+			}
+			h4.guild {
+				font-weight:bold;
+//				padding-bottom:8px;
+//				margin-bottom:16px;
+//				border-bottom:2px dotted #ec971f;
 			}
 		}
 
@@ -76,26 +79,26 @@ article#guild {
 					float:right;
 				}
 
-				span.plusone {
-					margin-left:10px;
-					height:24px;
-					line-height:10px;
-					font-size:12px;
-					font-weight:bold;
-					margin-top:-4px;
-					border: 1px solid @gray-lighter;
-				}
-
-				span.plusone-result {
-					font-size:14px;
-					height:30px;
-					line-height:30px;
-					padding:0 4px;
-					color:@gray-dark;
-					margin-left:10px;
-					background:#fff;
-					border:1px solid @gray-lighter;
-				}
+//				span.plusone {
+//					margin-left:10px;
+//					height:24px;
+//					line-height:10px;
+//					font-size:12px;
+//					font-weight:bold;
+//					margin-top:-4px;
+//					border: 1px solid @gray-lighter;
+//				}
+//
+//				span.plusone-result {
+//					font-size:14px;
+//					height:30px;
+//					line-height:30px;
+//					padding:0 4px;
+//					color:@gray-dark;
+//					margin-left:10px;
+//					background:#fff;
+//					border:1px solid @gray-lighter;
+//				}
 
 			}
 			pre {
@@ -124,32 +127,39 @@ article#guild {
 			}
 		}
 		h3.title {
-			img.lang {
-				margin:0;
-				height:30px;
+//			img.lang {
+//				margin:0;
+//				height:30px;
+//			}
+			img.avatar {
+				width:128px;
+				height:128px;
+				margin:0 5px 8px 0;
+				border:3px solid #fff;
+				.box-shadow(~"0 6px 2px rgba(0,0,0,.15)");
+				.avatar-circle();
 			}
 			a {
-				color:#fff;
+				color:@gray-dark;
 			}
-			span.author {
-				font-size:16px;
-				line-height:28px;
-			}
-			span.link {
-				font-size:14px;
-			}
-			cite {
-				font-size:20px;
-				font-weight:bold;
-			}
-			margin-top:-50px;
-			padding:5px 30px 10px 30px;
-			color: #eee;
+//			span.author {
+//				font-size:16px;
+//				line-height:28px;
+//			}
+//			span.link {
+//				font-size:14px;
+//			}
+//			cite {
+//				font-size:20px;
+//				font-weight:bold;
+//			}
+			margin-top:-60px;
+//			padding:5px 30px 0 30px;
 			text-shadow: 0 3px 5px rgba(0,0,0,.22);
 			display:inline-block;
-			min-height:68.5px;
-			max-width: 500px;
-			.border-radius(5px);
+//			min-height:68.5px;
+//			max-width: 500px;
+//			.border-radius(5px);
 		}
 	}
 
