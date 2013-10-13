@@ -43,5 +43,6 @@ ja:
       other: '%{count}人'
     territory: 現在の領土
     possession_rate: 支配率
+    rank: '%{number}位'
   user:
     guilds: 所属ギルド
