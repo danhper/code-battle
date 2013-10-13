@@ -23,8 +23,11 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v4.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord-deprecated_finders (v1.0.3, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="annotate (v2.5.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v4.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.14, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="backbone-on-rails (v1.0.0.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.1.2, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="better_errors (v1.0.1, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.7.2, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.1.4, ruby-2.0.0-p-1) [gem]" level="application" />
@@ -36,21 +39,29 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.3, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug_inspector (v0.0.2, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="devise (v3.1.1, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.4, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="eco (v1.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="eco-source (v1.1.0.rc.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ejs (v1.1.1, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="em-websocket (v0.5.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="eventmachine (v1.0.3, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.0.2, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v0.8.8, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formatador (v0.2.4, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard (v2.0.5, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard-livereload (v2.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard-rspec (v4.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard-spork (v1.5.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hashie (v2.0.5, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.3, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http_parser.rb (v0.5.3, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="httpauth (v0.2.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.5, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.0.4, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jwt (v0.1.8, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v2.0.4, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lumberjack (v1.0.4, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.5.4, ruby-2.0.0-p-1) [gem]" level="application" />
@@ -58,9 +69,17 @@
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v4.7.5, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.8.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multipart-post (v1.2.0, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="oauth2 (v0.8.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth (v1.1.4, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth-github (v1.1.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth-oauth2 (v1.1.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.4.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.17.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="posix-spawn (v0.3.6, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.9.12.2, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pygments.rb (v0.5.2, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.5.2, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.0.0, ruby-2.0.0-p-1) [gem]" level="application" />
@@ -91,6 +110,8 @@
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v1.3.0, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.38, ruby-2.0.0-p-1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.2.1, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.3, ruby-2.0.0-p-1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="yajl-ruby (v1.1.0, ruby-2.0.0-p-1) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

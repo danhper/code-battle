@@ -29,7 +29,6 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'guard-livereload', '~> 2.0', require: false
   gem 'annotate'
 end
