@@ -6174,7 +6174,6 @@ body {
   margin-top: -50px;
   padding: 5px 30px 10px 30px;
   color: #eee;
-  font-family: "ヒラギノ角ゴ Pro";
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   display: inline-block;
   min-height: 68.5px;
@@ -6217,7 +6216,7 @@ footer section {
 }
 article#codepage {
   text-align: center;
-  margin: 0 auto 80px auto;
+  margin: 140px auto 80px auto;
   width: 750px;
   background-color: #fff;
   border: 5px solid #efefef;
@@ -6245,12 +6244,49 @@ article#codepage section div.code {
   position: relative;
 }
 article#codepage section div.code h4 {
+  text-align: left;
   color: #fff;
   font-size: 15px;
-  text-align: right;
   margin: 0;
   padding-right: 10px;
   line-height: 50px;
+}
+article#codepage section div.code h4 img.lang {
+  margin-right: 5px;
+}
+article#codepage section div.code h4 img.avatar {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  /* avatar image circle-ize */
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+article#codepage section div.code h4 span.author {
+  float: right;
+}
+article#codepage section div.code h4 span.plusone {
+  margin-left: 10px;
+  height: 24px;
+  line-height: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: -4px;
+  border: 1px solid #eeeeee;
+}
+article#codepage section div.code h4 span.plusone-result {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 4px;
+  color: #333333;
+  margin-left: 10px;
+  background: #fff;
+  border: 1px solid #eeeeee;
 }
 article#codepage section div.code pre {
   clear: both;
@@ -6260,20 +6296,6 @@ article#codepage section div.code pre {
 }
 article#codepage section div.code a {
   color: #fff;
-}
-article#codepage section div.code a img.avatar {
-  /* avatar img */
-
-  margin-left: 4px;
-  width: 32px;
-  height: 32px;
-  /* avatar image circle-ize */
-
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
 }
 article#codepage section div.code span.more {
   position: relative;
@@ -6303,7 +6325,6 @@ article#codepage section h3.title {
   margin-top: -50px;
   padding: 5px 30px 10px 30px;
   color: #eee;
-  font-family: "ヒラギノ角ゴ Pro";
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
   display: inline-block;
   min-height: 68.5px;
@@ -6326,22 +6347,46 @@ article#codepage section h3.title a {
 }
 article#codepage section h3.title span.author {
   font-size: 16px;
-  padding-bottom: 5px;
+  line-height: 28px;
+}
+article#codepage section h3.title span.link {
+  font-size: 14px;
 }
 article#codepage section h3.title cite {
   font-size: 20px;
+  font-weight: bold;
 }
-article#codepage #comment-container {
+article#codepage #vote-container #vote {
+  display: inline-block;
+  margin-top: 10px;
+  width: 500px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.4);
+}
+article#codepage #comment-others-container {
   margin: 20px;
   text-align: left;
 }
-article#codepage #comment-container h5 {
+article#codepage #comment-others-container .media {
+  margin-bottom: 10px;
+}
+article#codepage #comment-others-container .media:last-child {
+  margin-bottom: 0;
+}
+article#codepage #comment-others-container h5 {
   font-size: 18px;
   font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #c09853;
 }
-article#codepage #comment-container img {
+article#codepage #comment-others-container img.avatar {
   width: 64px;
   height: 64px;
+  margin-right: 5px;
   /* avatar image circle-ize */
 
   -webkit-border-radius: 50%;
@@ -6350,8 +6395,44 @@ article#codepage #comment-container img {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-article#codepage #comment-container span.date {
+article#codepage #comment-others-container span.date {
   margin-left: 10px;
   font-size: 14px;
   color: #B08742;
+}
+article#codepage #comment-others-container button.comment-post {
+  margin-top: 5px;
+  width: 100%;
+}
+article#codepage #others a.code {
+  display: inline-block;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #fff;
+}
+article#codepage #others a.code img.lang {
+  float: left;
+  margin-right: 5px;
+  height: 22px;
+}
+article#codepage #others a.code img.avatar {
+  width: 32px;
+  height: 32px;
+  margin-left: 2px;
+  /* avatar image circle-ize */
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+article#codepage #others a.code span.author {
+  float: right;
+}
+article#codepage #others a:hover {
+  text-decoration: none;
+  cursor: pointer;
 }

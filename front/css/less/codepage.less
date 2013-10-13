@@ -1,6 +1,6 @@
 article#codepage {
 	text-align:center;
-	margin:0 auto 80px auto;
+	margin:140px auto 80px auto;
 	width:750px;
 	background-color: #fff;
 	border: 5px solid #efefef;
@@ -18,12 +18,49 @@ article#codepage {
 			background:#272822;
 			position:relative;
 			h4 {
+				text-align:left;
 				color:#fff;
 				font-size:15px;
-				text-align:right;
 				margin:0;
 				padding-right:10px;
 				line-height:50px;
+
+				img.lang {
+					margin-right:5px;
+				}
+
+				img.avatar {
+					width:32px;
+					height:32px;
+					margin-left:5px;
+					.avatar-circle();
+				}
+
+				span.author {
+					float:right;
+				}
+
+				span.plusone {
+					margin-left:10px;
+					height:24px;
+					line-height:10px;
+					font-size:12px;
+					font-weight:bold;
+					margin-top:-4px;
+					border: 1px solid @gray-lighter;
+				}
+
+				span.plusone-result {
+					font-size:14px;
+					height:30px;
+					line-height:30px;
+					padding:0 4px;
+					color:@gray-dark;
+					margin-left:10px;
+					background:#fff;
+					border:1px solid @gray-lighter;
+				}
+
 			}
 			pre {
 				clear:both;
@@ -33,17 +70,6 @@ article#codepage {
 			}
 			a {
 				color:#fff;
-			}
-			a img.avatar { /* avatar img */
-				margin-left:4px;
-				width: 32px;
-				height: 32px;
-				/* avatar image circle-ize */
-				-webkit-border-radius: 50%;
-				-moz-border-radius: 50%;
-				-ms-border-radius: 50%;
-				-o-border-radius: 50%;
-				border-radius: 50%;
 			}
 			span.more {
 				a.btn-default {
@@ -75,19 +101,20 @@ article#codepage {
 			}
 			span.author {
 				font-size:16px;
-				padding-bottom:5px;
+				line-height:28px;
+			}
+			span.link {
+				font-size:14px;
 			}
 			cite {
 				font-size:20px;
+				font-weight:bold;
 			}
 			margin-top:-50px;
 			padding:5px 30px 10px 30px;
 			color: #eee;
-			font-family: "ヒラギノ角ゴ Pro";
 			text-shadow: 0 3px 5px rgba(0,0,0,.22);
-
 			display:inline-block;
-			//			.size(434.5px, 68.5px);
 			min-height:68.5px;
 			max-width: 500px;
 			.border-radius(5px);
@@ -95,18 +122,45 @@ article#codepage {
 			.background-image(~"linear-gradient(bottom, #7a1111 0%, #952121 22.9%, #b04040 50.49%, #952121 95.12%, #791111 100%)");
 		}
 	}
-	#comment-container {
+
+	#vote-container {
+		#vote {
+			display:inline-block;
+			margin-top:10px;
+			width:500px;
+			height:80px;
+			line-height:80px;
+			font-size:30px;
+			color:#fff;
+			cursor:pointer;
+			border-bottom:5px solid rgba(0,0,0,.40);
+
+		}
+	}
+
+	#comment-others-container {
 		margin:20px;
 		text-align: left;
 
-		h5{
-			font-size:18px;
-			font-weight:bold;
+		.media {
+			margin-bottom:10px;
 		}
 
-		img {
+		.media:last-child {
+			margin-bottom:0;
+		}
+
+		h5 {
+			font-size:18px;
+			font-weight:bold;
+			padding-bottom:10px;
+			border-bottom:1px dotted #c09853;
+		}
+
+		img.avatar {
 			width:64px;
 			height:64px;
+			margin-right:5px;
 			.avatar-circle();
 		}
 
@@ -114,6 +168,45 @@ article#codepage {
 			margin-left:10px;
 			font-size:14px;
 			color:#B08742;
+		}
+
+		button.comment-post {
+			margin-top:5px;
+			width:100%;
+		}
+	}
+
+	#others {
+		a.code {
+			color:#fff;
+			display:inline-block;
+			line-height:50px;
+			height:50px;
+			width:100%;
+			margin-bottom:10px;
+			color:#fff;
+
+			img.lang{
+				float:left;
+				margin-right:5px;
+				height:22px;
+
+			}
+
+			img.avatar {
+				width:32px;
+				height:32px;
+				margin-left:2px;
+				.avatar-circle();
+			}
+
+			span.author {
+				float:right;
+			}
+		}
+		a:hover {
+			text-decoration: none;
+			cursor: pointer;
 		}
 	}
 }
