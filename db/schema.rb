@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012212251) do
+ActiveRecord::Schema.define(version: 20131013045326) do
 
   create_table "codes", force: true do |t|
     t.text     "source"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20131012212251) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url_safe_name"
   end
 
   create_table "quests", force: true do |t|

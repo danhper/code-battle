@@ -15,6 +15,6 @@ class Guild < ActiveRecord::Base
   has_many :quests, through: :votes
 
   def to_param
-    name
+    url_safe_name
   end
 end
