@@ -16,6 +16,7 @@ class CodesController < ApplicationController
 
   def show
     @is_owner = user_signed_in? && @code.author == current_user
+    @liked = user_signed_in? && current_user.likes_code?(@code)
   end
 
   def create
@@ -46,9 +47,9 @@ class CodesController < ApplicationController
 
   def like
     if current_user.likes_code?(@code)
-      render json: { error: 'already likes code' }
+      render json: { error: 'already likes code' }, status: 400
     elsif @code.author == current_user
-      render json: { error: 'cannot like own code' }
+      render json: { error: 'cannot like own code' }, status: 400
     else
       current_user.liked_codes << @code
       head :no_content
@@ -60,7 +61,7 @@ class CodesController < ApplicationController
       current_user.liked_codes.delete(@code)
       head :no_content
     else
-      render json: { error: 'does not like code' }
+      render json: { error: 'does not like code' }, status: 400
     end
   end
 
