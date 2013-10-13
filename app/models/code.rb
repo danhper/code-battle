@@ -18,4 +18,11 @@ class Code < ActiveRecord::Base
   has_many :user_like_codes
   has_many :user, through: :user_like_codes
   has_many :comments
+
+  validates_presence_of :guild
+  validates_presence_of :quest
+
+  def formatted_source
+    Pygments.highlight(self.source, lexer: self.guild.url_safe_name)
+  end
 end

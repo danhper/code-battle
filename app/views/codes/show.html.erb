@@ -2,9 +2,7 @@
 
 <%= render 'quests/short', quest: @quest %>
 
-<pre>
-  <%= @code.source %>
-</pre>
+<%= @code.formatted_source.html_safe %>
 
 <% if @is_owner %>
   <%= link_to 'Edit code', edit_quest_code_path(@quest, @code) %>

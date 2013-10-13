@@ -7,7 +7,7 @@
 #  content    :text
 #  created_at :datetime
 #  updated_at :datetime
-#  comment_id :integer
+#  code_id    :integer
 #
 
 class Comment < ActiveRecord::Base

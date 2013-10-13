@@ -22,6 +22,7 @@ class QuestsController < ApplicationController
   def create
     @quest = current_user.created_quests.build(quest)
     @code = current_user.created_codes.build(code_params)
+    @code.quest = @quest
     if @quest.valid? && @code.valid?
       @quest.codes << @code
       @quest.save!
@@ -50,7 +51,7 @@ class QuestsController < ApplicationController
   end
 
   def code_params
-    params.require(:code).permit(:source)
+    params.require(:code).permit(:source, :guild_id)
   end
 
   def check_creator!

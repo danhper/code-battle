@@ -14,6 +14,8 @@ gem 'omniauth-github'
 
 gem 'seedbank', github: 'james2m/seedbank'
 
+gem 'pygments.rb'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
