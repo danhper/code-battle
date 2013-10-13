@@ -24,4 +24,13 @@ Dmtc::Application.routes.draw do
       end
     end
   end
+
+  resources :quests do
+    resources :codes do
+      member do
+        post 'vote'
+        delete 'unvote'
+      end
+    end
+  end
 end

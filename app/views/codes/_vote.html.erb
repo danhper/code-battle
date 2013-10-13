@@ -1,0 +1,7 @@
+<% if user_signed_in? && @code.author != current_user %>
+  <% if current_user.votes_quest? code2 %>
+    <%= link_to 'Unvote', unvote_quest_code_path(@quest, @code), class: 'vote-link' %>
+  <% else %>
+    <%= link_to 'Vote', vote_quest_code_path(@quest, @code), class: 'vote-link' %>
+  <% end %>
+<% end %>

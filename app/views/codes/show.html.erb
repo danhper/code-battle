@@ -30,7 +30,6 @@
 
         <span class="plusone btn btn-warning">+1</span>
         <span class="plusone-result"><%= @code.likes.count %></span>
-
         <span class="author">
           <%= t 'code.author' %>:
           <%= link_to @code.author do %>
@@ -46,6 +45,8 @@
       <div id="vote-container">
         <%= t 'code.can_be_voted' %>
         <%= link_to t('code.vote_for', language: @code.guild.name.capitalize), '#', class: @code.guild.url_safe_name, id: 'vote' %>
+        <%#= add %>
+        <%= render 'codes/vote', code2: @code %>
       </div>
     <% end %>
 
@@ -79,5 +80,8 @@
     var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
     new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
     new Dmtc.Views.CommentsIndex({ collection: comments });
+    var code2JSON = _.extend(<%= @code.to_json.html_safe %>, { voted: <%= @voted %> });
+    var code2Model = new Dmtc.Models.Code2(code2JSON);
+    new Dmtc.Views.Show2Code({ model: code2Model });
   </script>
 <% end %>

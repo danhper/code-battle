@@ -20,6 +20,7 @@ class Quest < ActiveRecord::Base
 
   self.per_page = 5
 
+  #return hash {key:Guild_id,value:Point}
   def guild_codes(guild)
     self.codes.where(quest_id: self).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
   end
@@ -40,10 +41,11 @@ class Quest < ActiveRecord::Base
 
 
   # 用修正
+  #return hash {key:Guild_id,value:Guild top code_id in quest}
   def get_quest_guild_top
     h = Hash.new
     h.default = 0
-    g_all = Guild.all
+    g_all = Guild.all##
     g_all.each do |g|
       codes = Code.where(:quest_id => self.id, :guild_id => g.id).joins(:likes)
       _h = Hash.new
@@ -56,6 +58,10 @@ class Quest < ActiveRecord::Base
   end
 
   def get_top_codes
+    h = self.get_quest_total_vote_point.sort_by{|_,v| -v }
+    ary = Array.new
+    h.each{|i| ary << Quest.find_by_id(i[0])}
+    ary
   end
 
 end

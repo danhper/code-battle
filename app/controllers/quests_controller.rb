@@ -10,9 +10,15 @@ class QuestsController < ApplicationController
 
   def show
     @codes = @quest.codes.paginate(page: params[:page])
+    @quest_rank = @quest.get_quest_total_vote_point.sort_by{|_,v|-v}
+    @quest_guild_top = @quest.get_quest_guild_top
+
     if user_signed_in?
-      @code = @quest.codes.where(user_id: current_user).first
+      @code = Code.where(quest_id: @quest, user_id: current_user).first
     end
+
+    @greeting = params[:greeting]
+    render
   end
 
   def new

@@ -103,6 +103,13 @@ ActiveRecord::Schema.define(version: 20131013045326) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username"
 
+  create_table "vote_like_guilds", force: true do |t|
+    t.integer "vote_id"
+    t.integer "guild_id"
+  end
+
+  add_index "vote_like_guilds", ["vote_id", "guild_id"], name: "index_vote_like_guilds_on_vote_id_and_guild_id"
+
   create_table "votes", force: true do |t|
     t.integer  "user_id"
     t.integer  "quest_id"
