@@ -1,0 +1,16 @@
+<div class="media comment">
+  <a class="pull-left" href="#">
+    <img src="{{comment.user.gravatar_url}}" alt="Gravatar">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <a href="/users/{{comment.user.id}}">
+        {{ comment.user.username }}
+      </a>
+      <span class="date">
+        {{ comment.humanCreatedAt }}
+      </span>
+    </h4>
+    {{{ comment.content }}}
+  </div>
+</div>

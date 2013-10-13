@@ -17,6 +17,7 @@
 //= require i18n/translations
 //= require twitter/bootstrap
 //= require backbone
+//= require handlebars.runtime
 //= require dmtc
 //= require_tree ../templates
 //= require_tree ./models
