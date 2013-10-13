@@ -20,7 +20,7 @@ class Guild < ActiveRecord::Base
 
 
   def get_guild_coefficient
-    1.0 - (self.users.count / Guild.count(:users))
+    1.0 - (self.users.count / User.count)
   end
 
   def get_total_vote_point

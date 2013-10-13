@@ -24,19 +24,24 @@ class Quest < ActiveRecord::Base
     h.default = 0
     q_all = QuestTotalVote.where(:quest_id => self.id)
     q_all.each do |i|
-      h[i.voted_guild_id] += i.vote_num * get_quild_coefficient(i.voting_guild_id)
+      h[i.voted_guild_id] += i.vote_num * Guild.find(i.voting_guild_id).get_guild_coefficient
     end
     h
   end
 
 
+  # 用修正
   def get_quest_guild_top
     h = Hash.new
     h.default = 0
     g_all = Guild.all
     g_all.each do |g|
-      h[g.id] =
-        Code.where(:quest_id => self.id, :guild_id => g.id).order("users DESC").first
+      codes = Code.where(:quest_id => 1, :guild_id => g.id).joins(:users)
+      _h = Hash.new
+      _h.default = 0
+      codes.each{|c| _h[c.id]+=1 }
+      hh = _h.max_by{ |_,v| v }
+      h[g.id] = hh.nil? ? 0 : hh[0]
     end
     h
   end
