@@ -1,0 +1,20 @@
+ja:
+  general:
+    introduction: |
+      CodeBattleは、プログラミングコードの戦場です。
+      あなたは中世さながらのプログラミング戦士となり、
+      PythonやC#、Scala、Erlangといったギルド(言語)に所属します。
+      クエスト(課題)が現れたら、まずはギルド内で最強の戦士が選ばれ、
+      各ギルド一番の戦士が一騎打ち！勝者はCode大陸で領土を広げます。
+      それは、あなたの愛する言語が地上を征服する日まで、、、
+    sub_header_alt: ようこそ、Codeの最前線へ。
+
+  quest:
+    quest: クエスト
+    from: '%{username}からのクエスト'
+    answers_number: 合計回答数
+    posted_date: クエスト出現日
+  code:
+    author: 回答者
+    read_more: 続きを読む
+
