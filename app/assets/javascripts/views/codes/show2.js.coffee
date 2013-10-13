@@ -24,6 +24,6 @@ class Dmtc.Views.Show2Code extends Backbone.View
     e.preventDefault()
     method = if @model.get('voted') then 'unvote' else 'vote'
     @model[method](
-      success: @VoteSuccess
+      success: @voteSuccess
     )
     false

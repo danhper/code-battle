@@ -79,7 +79,7 @@ class CodesController < ApplicationController
 
   def unvote
     if current_user.votes_quest?(@quest)
-      Vote.where(user_id: current_user, quest_id: @quest.id).destroy
+      Vote.where(user_id: current_user, quest_id: @quest.id).first.destroy
       head :no_content
     else
       render json: { error: 'does not vote code' }, status: 400
