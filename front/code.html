@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Codebattle</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/font-awesome.css">
+
+	<link rel="stylesheet" href="css/monokai.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">CodeBattle</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Link</a></li>
+				<li><a href="#">Link</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li><a href="#">Separated link</a></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<article id="top">
+
+	<section id="header" class="jumbotron">
+		<div class="container">
+			<h1><img src="img/header-codebattle-logo.png" alt="CodeBattle"/></h1>
+			<p><img src="img/header-subtitle.png" alt="THE WAR OF LANGUAGES"/></p>
+		</div>
+	</section>
+
+	<section id="sub-header">
+		<div class="container">
+			<h2><img src="img/sub-header-catchcopy.png" alt="ようこそ、Codeの最前線へ。"/></h2>
+			<p>CodeBattleは、プログラミングコードの戦場です。<br>
+				あなたは中世さながらのプログラミング戦士となり、<br>
+				PythonやC#、Scala、Erlangといったギルド(言語)に所属します。<br>
+				クエスト(課題)が現れたら、まずはギルド内で最強の戦士が選ばれ、<br>
+				各ギルド一番の戦士が一騎打ち！勝者はCode大陸で領土を広げます。<br>
+				それは、あなたの愛する言語が地上を征服する日まで、、、</p>
+		</div>
+	</section>
+
+	<article id="quests">
+
+		<section>
+			<h3 class="title">
+				<span class="author"><a href="">ididid</a> からのクエスト</span><br>
+				<cite>クエスト: <strong>1~100までの素数を数えてみよ</strong></cite>
+			</h3>
+			<p class="desc"><strong>現在の一位:</strong> Python (<a href="">ididid</a>の実装) / <strong>合計回答数:</strong> ○○ / <strong>クエスト出現日:</strong> 2013-10-13</p>
+			<div class="code gold">
+				<h4 class="python"><img class="lang" src="img/python-logo.png" alt="Python"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+			<div class="code silver">
+				<h4 class="php"><img class="lang" src="img/php-logo.png" alt="PHP"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+			<div class="code bronze">
+				<h4 class="ruby"><img class="lang" src="img/ruby-logo.png" alt="Ruby"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+		</section>
+
+		<section>
+			<h3 class="title">
+				<span class="author"><a href="">ididid</a> からのクエスト</span><br>
+				<cite>クエスト: <strong>1~100までの素数を数えてみよおおおおおおおおおおおおおおおおおおお</strong></cite>
+			</h3>
+			<p class="desc"><strong>現在の一位:</strong> Python (<a href="">ididid</a>の実装) / <strong>合計回答数:</strong> ○○ / <strong>クエスト出現日:</strong> 2013-10-13</p>
+			<div class="code gold">
+				<h4 class="python"><img class="lang" src="img/python-logo.png" alt="Python"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+			<div class="code silver">
+				<h4 class="php"><img class="lang" src="img/php-logo.png" alt="PHP"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+			<div class="code bronze">
+				<h4 class="ruby"><img class="lang" src="img/ruby-logo.png" alt="Ruby"/>回答者: <a href="">ididid <img class="avatar" src="img/mmarilyn.png" alt=""/></a></h4>
+				<div class="highlight">
+<pre>
+<span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Droppy</span><span class="err">¥</span><span class="nx">EventBundle</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">Type</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">AbstractType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony</span><span class="err">¥</span><span class="nx">Component</span><span class="err">¥</span><span class="nx">Form</span><span class="err">¥</span><span class="nx">FormBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DateTimeFormType</span> <span class="k">extends</span> <span class="nx">AbstractType</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$showAll</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$showAll</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span> <span class="o">=</span> <span class="nv">$showAll</span><span class="p">;</span>
+    <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">buildForm</span><span class="p">(</span><span class="nx">FormBuilder</span> <span class="nv">$builder</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="s1">'date_selector'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'required'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">))</span>
+				<span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'time_selector'</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">showAll</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="nv">$builder</span><span class="c1">//-&gt;add('timezone', 'timezone_selector')</span>
+				    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">'allDay'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="s1">'date_time_selector'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultOptions</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">'data_class'</span> <span class="o">=&gt;</span> <span class="s1">'Droppy¥EventBundle¥Entity¥EventDateTime'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre>
+				</div>
+				<span class="more" href="">
+					<a class="btn btn-default">続きを読む</a>
+				</span>
+			</div>
+		</section>
+
+		<ul class="pagination">
+			<li><a href="#">&laquo;</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+
+	</article>
+
+	<footer>
+		<section>footer</section>
+	</footer>
+
+	<div class="container"></div>
+</article>
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/jsrender.js"></script>-->
+<!--<script src="js/jsviews.js"></script>-->
+<!--<script src="js/jquery.views.js"></script>-->
+<!--<script src="js/jquery.observable.js"></script>-->
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+	var _gaq = [
+		['_setAccount', 'UA-XXXXX-X'],
+		['_trackPageview']
+	];
+	(function (d, t) {
+		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+		g.src = '//www.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g, s)
+	}(document, 'script'));
+</script>
+</body>
+</html>
