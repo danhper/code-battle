@@ -8,6 +8,7 @@ ja:
       各ギルド一番の戦士が一騎打ち！勝者はCode大陸で領土を広げます。
       それは、あなたの愛する言語が地上を征服する日まで、、、
     sub_header_alt: ようこそ、Codeの最前線へ。
+    to_top: '&lt;&lt; クエストページへ'
 
   quest:
     quest: クエスト
@@ -17,4 +18,7 @@ ja:
   code:
     author: 回答者
     read_more: 続きを読む
+    current_best: 現在の一位
+    written_by: '%{username}の実装'
+    used_language: '%{language}で回答したぞ！'
 
