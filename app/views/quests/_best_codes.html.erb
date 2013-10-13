@@ -16,12 +16,12 @@
     <strong><%= t 'quest.answers_number' %>:</strong>
     <%= quest.codes.count %> /
     <strong><%= t 'posted_date' %>:</strong>
-    <%= l quest.created_at, scope: :date %>
+    <%= l quest.created_at, format: :date_only %>
   </p>
 
   <% medals = ['gold', 'silver', 'bronze'] %>
 
-  <% @codes.each_with_index do |code, index| %>
-    <%= render 'code/medalist', code: code, medal: medals[index] %>
+  <% quest.codes.limit(3).each_with_index do |code, index| %>
+    <%= render 'codes/medalist', code: code, medal: medals[index] %>
   <% end %>
 </section>

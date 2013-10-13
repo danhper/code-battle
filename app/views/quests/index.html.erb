@@ -21,6 +21,8 @@
       </div>
     </section>
 
-    <%= render partial: 'quests/best_codes', collection: @codes %>
+    <div id="quests">
+      <%= render partial: 'quests/best_codes', collection: @quests, as: :quest %>
+    </div>
 
   </article>

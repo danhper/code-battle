@@ -37,7 +37,7 @@ class Quest < ActiveRecord::Base
     h.default = 0
     g_all = Guild.all
     g_all.each do |g|
-      codes = Code.where(:quest_id => 1, :guild_id => g.id).joins(:users)
+      codes = Code.where(:quest_id => self.id, :guild_id => g.id).joins(:likes)
       _h = Hash.new
       _h.default = 0
       codes.each{|c| _h[c.id]+=1 }
@@ -46,4 +46,8 @@ class Quest < ActiveRecord::Base
     end
     h
   end
+
+  def get_top_codes
+  end
+
 end

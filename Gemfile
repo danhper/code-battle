@@ -20,10 +20,11 @@ end
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'turbolinks'
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                              :github => 'anjlab/bootstrap-rails',
-                              :branch => '3.0.0'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'less-rails-bootstrap'
 gem 'sass-rails',   '~> 4.0.0'
+gem 'less-rails'
+gem 'therubyracer'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
