@@ -1,20 +1,33 @@
 <%= form_for @quest do |f| %>
+  <% guilds_array = current_user.guilds.map { |g| [g.name.capitalize, g.id] } %>
+  <div id="select-options">
+    <section id="select-lang-section">
+      <label for="select-lang">
+        <span><%= t 'code.choose_guild' %></span>
+      </label>
+      <%= select :code, 'guild_id', guilds_array, {}, { id: "select-lang", class: "lang form-control input-lg" } %>
+    </section>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <section id="select-title-section">
+      <%= f.label 'select-title' do %>
+      <span><%= t 'quest.input_title' %></span>
+      <% end %>
+      <%= f.text_field :title, class: "form-control input-lg", placeholder: t('quest.title_placehoder') %>
+    </section>
 
-  <br>
+    <section id="select-desc-section">
+      <%= f.label 'select-desc' do %>
+      <span><%= t 'quest.input_description' %></span>
+      <% end %>
+      <%= f.text_area :description, id: 'select-desc', class: "form-control", placeholder: t('quest.title_placehoder') %>
+    </section>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <br>
-
-  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
-
-  <%= select :code, 'guild_id', guilds_array %>
-  <%= text_area :code, 'source' %>
-
-  <%= f.submit %>
-
+  <div class="code">
+    <%= text_area :code, 'source', placeholder: t('code.placeholder') %>
+  </div>
+  <div id="post-container">
+    <p><%= t 'code.publish_warning' %></p>
+    <%= f.submit t('general.submit'), id: "post", class: "btn-default" %>
+  </div>
 <% end %>

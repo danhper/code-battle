@@ -1,5 +1,11 @@
-<h1>Post code</h1>
-
-<%= render 'quests/short', quest: @quest %>
-
-<%= render 'codes/form' %>
+<article id="post">
+  <section>
+    <h3 class="title">
+      <%= @quest.title %>
+    </h3>
+    <p class="desc">
+      <%= @quest.description %>
+    </p>
+    <%= render 'codes/form' %>
+  </section>
+</article>

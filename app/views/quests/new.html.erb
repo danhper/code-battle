@@ -1,3 +1,11 @@
-<h1>New Problem</h1>
-
-<%= render 'quests/form' %>
+<article id="post">
+  <section>
+    <h3 class="title">
+      クエストの投稿
+    </h3>
+    <p class="desc">
+      <%= t('quest.post_explanation').html_safe %>
+    </p>
+    <%= render 'quests/form' %>
+  </section>
+</article>

@@ -1,15 +1,19 @@
 <%= form_for [@quest, @code] do |f| %>
+  <% guilds_array = current_user.guilds.map { |g| [g.name.capitalize, g.id] } %>
+  <div id="select-options-single">
+    <section id="select-lang-section">
+      <label for="select-lang">
+        <span><%= t 'code.choose_guild' %></span>
+      </label>
+      <%= f.select :guild_id, guilds_array, {}, { id: "select-lang", class: "lang form-control input-lg" } %>
+    </section>
+  </div>
 
-  <%= f.label :source %>
-  <%= f.text_area :source %>
-
-  <br>
-
-  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
-
-  <%= f.select :guild_id, guilds_array %>
-
-  <br>
-
-  <%= f.submit %>
+  <div class="code">
+    <%= text_area :code, 'source', placeholder: t('code.placeholder') %>
+  </div>
+  <div id="post-container">
+    <p><%= t 'code.publish_warning' %></p>
+    <%= f.submit t('general.submit'), id: "post", class: "btn-default" %>
+  </div>
 <% end %>
