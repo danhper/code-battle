@@ -44,12 +44,9 @@
       <div id="vote-container">
         <%= t 'code.can_be_voted' %>
         <%= link_to t('code.vote_for', language: @code.guild.name.capitalize), '#', class: @code.guild.url_safe_name, id: 'vote' %>
+        <%#= add %>
+        <%= render 'codes/vote', code2: @code %>
       </div>
-
-      <%#= add %>
-      <% if @quest.get_quest_guild_top[0] == @code.id %>
-            <%= render 'codes/vote', code2: @code %>
-      <% end  %>
     <% end %>
 
     <div id="comment-others-container" class="row">

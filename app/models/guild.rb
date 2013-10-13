@@ -39,4 +39,19 @@ class Guild < ActiveRecord::Base
     h.each{|i| ary << Guild.find_by_id(i[0])}
     ary
   end
+
+  def get_territory_percent
+    total = 0
+    tvp = get_total_vote_point
+    tvp.each{|i| total += i[1]}
+    return tvp.has_key?(self.id) ? tvp[self.id] / total : 0
+  end
+
+  def get_my_rank
+    ary = get_guild_ranking
+    ary.each_with_index do |g,i|
+      return i+1 if g.id == self.id
+    end
+    ary.size + 1
+  end
 end
