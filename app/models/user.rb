@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
     liked_codes.exists?(code) ? true : false
   end
 
+  def votes_quest?(quest)
+    quests.exists?(quest) ? true : false
+  end
+
+  def large_guild
+    self.guilds.max{|x,y| x.users.count <=> y.users.count}
+  end
+  
   def gravatar_url
     GravatarImageTag.gravatar_url self.email
   end

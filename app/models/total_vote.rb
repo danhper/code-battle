@@ -11,4 +11,14 @@
 class TotalVote < ActiveRecord::Base
   belongs_to :guild, foreign_key:"voting_guild_id"
   belongs_to :guild, foreign_key:"voted_guild_id"
+
+  def inc_num
+    self.vote_num+=1
+    self.save
+  end
+
+  def dec_num
+    self.vote_num-=1
+    self.save
+  end
 end
