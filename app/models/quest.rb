@@ -64,4 +64,8 @@ class Quest < ActiveRecord::Base
     ary
   end
 
+  def get_top_code
+    self.get_top_codes.first
+  end
+
 end

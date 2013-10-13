@@ -14,6 +14,7 @@ ja:
       before: '%{time}前'
   quest:
     quest: クエスト
+    current_best: 現在の一位
     from: '%{username}からのクエスト'
     answers_number: 合計回答数
     posted_date: クエスト出現日
@@ -28,7 +29,6 @@ ja:
   code:
     author: 回答者
     read_more: 続きを読む
-    current_best: 現在の一位
     written_by: '%{username}の実装'
     used_language: '%{language}で回答したぞ！'
     other_used_language: '%{language}で行く!'

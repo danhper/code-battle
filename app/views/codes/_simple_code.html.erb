@@ -3,13 +3,15 @@
 <div class="code">
   <h4 class="<%= code.guild.url_safe_name %>">
     <%= t('code.used_language', language: link).html_safe %>
-    <br>
-    <span class="title">
-      <%= t 'quest.title' %>
-      <%= link_to code.quest.title, code.quest %>
-    </span>
+    <% unless defined?(skip_title) %>
+      <br>
+      <span class="title">
+        <%= t 'quest.title' %>
+        <%= link_to code.quest.title, code.quest %>
+      </span>
+    <% end %>
     <span class="author">
-    <%= render 'users/avatar', user: code.author %>
+    <%= render 'users/avatar', user: code.author, text_before: defined?(print_author) %>
     </span>
   </h4>
     <%= code.formatted_source.html_safe %>

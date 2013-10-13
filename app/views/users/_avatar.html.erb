@@ -1,4 +1,7 @@
 <%= link_to user do %>
+  <% if defined?(text_before) %>
+    <%= user.username %>
+  <% end %>
   <%= gravatar_image_tag user.email, alt: user.username, class: 'avatar' %>
   <% if defined?(text) && text %>
     <br>

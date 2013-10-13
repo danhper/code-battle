@@ -1,40 +1,32 @@
-<h1><%= @quest.title %></h1>
-<p><%= @quest.description %></p>
+  <article id="quest" class="clearfix">
 
+    <section>
+      <h3 class="title">
+        <span class="author">
+          <%= t('quest.from', username: link_to(@quest.creator.username, @quest.creator)).html_safe %>
+        </span>
+        <br>
+        <cite><%= @quest.title %></cite>
+        <br>
+      </h3>
+      <p class="desc">
+        <% top_code = @quest.get_top_code %>
+        <% unless top_code.blank? %>
+          <strong><%= t 'quest.current_best' %>:</strong>
+          <%= top_code.guild.name.capitalize %>
+          <%= t('code.written_by', author: link_to(top_code.author.username, top_code.author)).html_safe %> /
+        <% end %>
+        <strong><%= t 'quest.answers_number' %>:</strong> <%= @quest.codes.count %> / <strong><%= t 'quest.posted_date' %>:</strong>
+        <%= l @quest.created_at, format: :date_only %>
+      </p>
 
-<% if user_signed_in? %>
-  <div class="code-actions">
-    <% if @code %>
-      <%= link_to 'Show my spell', quest_code_path(@quest, @code) %>
-    <% else %>
-      <%= link_to 'Cast a spell', new_quest_code_path(@quest) %>
-    <% end %>
-  </div>
-<% end %>
+      <p class="description">
+        <%= @quest.description %>
+      </p>
 
-<div class="codes">
-  <% if @codes.empty? %>
-    No spell casted for this quest.
-  <% else %>
-    <%= render partial: 'codes/code_line', collection: @codes, as: :code, locals: { fields: [:author, :guild] } %>
-    <%= will_paginate @codes %>
-  <% end %>
-</div>
+      <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
+    </section>
 
-<div class="rank">
-  <%#=  test %>
-  <%#= p @quest_rank %><br>
-  <% @quest_rank.each do |pair| %>
-    <% @guild = Guild.find(pair[0]) %>
-    <% if Code.find_by_id(@quest_guild_top[pair[0]])  %>
-      <% @src = Code.find(@quest_guild_top[pair[0]]) %>
-    <% else %>
-      <% @src = Code.find_by_id(1) %>
-    <% end %>
-    <%= p @guild.name  %><br>
-    Point <%=  p pair[1] %><br>
-    Src <%#= @src.source %><br>
-    <button onclick="alert('OK')" id="button_<%= pair[0] %>" >vote</button>
-    <p>
-  <% end %>
-</div>
+  <%= will_paginate @codes %>
+
+</article>
