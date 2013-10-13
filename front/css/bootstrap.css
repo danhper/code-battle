@@ -6236,6 +6236,9 @@ article#codepage section p.desc {
   margin: 0;
 }
 article#codepage section div.code {
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
   margin: 20px;
   background: #272822;
   position: relative;
@@ -6452,6 +6455,9 @@ article#quest section p.desc {
   margin: 0;
 }
 article#quest section div.code {
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
   border: 5px solid #fff;
   width: 340px;
   height: 500px;
@@ -6569,5 +6575,187 @@ article#quest section h3.title cite {
   font-weight: bold;
 }
 article#quest .pagination {
+  margin-top: 25px;
+}
+article#guild {
+  text-align: center;
+  margin: 140px auto 80px auto;
+  width: 750px;
+  background-color: #fff;
+  border: 5px solid #efefef;
+  -webkit-border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 5px;
+  -moz-background-clip: padding;
+  border-radius: 5px;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 5px 5px rgba(0,0,0,.15);
+  box-shadow: 0 5px 5px rgba(0,0,0,.15);
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQtdWNnZy1nZW5lcmF0ZWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIxMDAlIiB4Mj0iMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VlZGZjNyIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSI4MC4yMiUiIHN0b3AtY29sb3I9IiNlZWRmYzciIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZhZDlhNCIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPjwvc3ZnPg==);
+  background-image: -moz-linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
+  background-image: -webkit-linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
+  background-image: -o-linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
+  background-image: linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%);
+}
+article#guild section table.info {
+  background: #fff;
+  margin: 10px auto 0 auto;
+  width: 500px;
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
+}
+article#guild section table.info tr th {
+  text-align: center;
+}
+article#guild section div#members {
+  margin: 20px auto 0 auto;
+  width: 580px;
+}
+article#guild section div#members img.avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 5px 8px 0;
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  /* avatar image circle-ize */
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+article#guild section p.desc {
+  margin: 0;
+}
+article#guild section div.code {
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  border: 5px solid #fff;
+  width: 340px;
+  height: 500px;
+  overflow: hidden;
+  margin: 20px 0 0 20px;
+  background: #272822;
+  float: left;
+}
+article#guild section div.code h4 {
+  text-align: left;
+  color: #fff;
+  font-size: 13px;
+  margin: 0;
+  padding-right: 10px;
+  height: 50px;
+  line-height: 22px;
+  padding-top: 3px;
+}
+article#guild section div.code h4 img.lang {
+  height: 16px;
+  margin: 5px 5px 0 10px;
+}
+article#guild section div.code h4 img.avatar {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  margin-top: -24px;
+  /* avatar image circle-ize */
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+article#guild section div.code h4 span.title {
+  margin-left: 10px;
+}
+article#guild section div.code h4 span.author {
+  float: right;
+}
+article#guild section div.code h4 span.plusone {
+  margin-left: 10px;
+  height: 24px;
+  line-height: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: -4px;
+  border: 1px solid #eeeeee;
+}
+article#guild section div.code h4 span.plusone-result {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 4px;
+  color: #333333;
+  margin-left: 10px;
+  background: #fff;
+  border: 1px solid #eeeeee;
+}
+article#guild section div.code pre {
+  clear: both;
+  text-align: left;
+  font-size: 12px;
+  border-radius: 0;
+  max-height: 330px;
+}
+article#guild section div.code a {
+  color: #fff;
+}
+article#guild section div.code span.more {
+  position: relative;
+  bottom: 0;
+  display: inline-block;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQtdWNnZy1nZW5lcmF0ZWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIxMDAlIiB4Mj0iMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI3MjcyMSIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSI2MC4yOCUiIHN0b3AtY29sb3I9IiMyNzI3MjEiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0icmdiKDI1NSwyNTUsMjU1KSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPjwvc3ZnPg==);
+  background-image: -moz-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: -webkit-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: -o-linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  background-image: linear-gradient(bottom, #272721 0%, #272721 60.28%, rgba(255,255,255,0) 100%);
+  width: 100%;
+  height: 100px;
+  padding: 0 20px;
+}
+article#guild section div.code span.more a.btn-default {
+  margin-top: 50px;
+  width: 100%;
+  color: #000;
+}
+article#guild section h3.title {
+  margin-top: -50px;
+  padding: 5px 30px 10px 30px;
+  color: #eee;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  display: inline-block;
+  min-height: 68.5px;
+  max-width: 500px;
+  -webkit-border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 5px;
+  -moz-background-clip: padding;
+  border-radius: 5px;
+  background-clip: padding-box;
+}
+article#guild section h3.title img.lang {
+  margin: 0;
+  height: 30px;
+}
+article#guild section h3.title a {
+  color: #fff;
+}
+article#guild section h3.title span.author {
+  font-size: 16px;
+  line-height: 28px;
+}
+article#guild section h3.title span.link {
+  font-size: 14px;
+}
+article#guild section h3.title cite {
+  font-size: 20px;
+  font-weight: bold;
+}
+article#guild .pagination {
   margin-top: 25px;
 }
