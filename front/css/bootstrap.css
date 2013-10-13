@@ -5996,6 +5996,7 @@ td.visible-print {
 }
 img.lang {
   float: left;
+  margin: 14px 0 0 12px;
   height: 22px;
 }
 /* -> override */
@@ -6076,6 +6077,7 @@ body {
 }
 #quests section div.code p {
   clear: both;
+  text-align: left;
 }
 #quests section div.code a {
   color: #fff;
