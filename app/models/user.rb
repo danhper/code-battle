@@ -22,6 +22,8 @@
 #
 
 class User < ActiveRecord::Base
+  include GravatarImageTag
+
   devise :database_authenticatable, :rememberable, :trackable
   devise :omniauthable, omniauth_providers: [:github]
 
@@ -43,6 +45,10 @@ class User < ActiveRecord::Base
 
   def likes_code?(code)
     liked_codes.exists?(code) ? true : false
+  end
+
+  def gravatar_url
+    GravatarImageTag.gravatar_url self.email
   end
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)

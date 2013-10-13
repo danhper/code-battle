@@ -3,7 +3,7 @@ class Dmtc.Views.NewComment extends Backbone.View
 
   events:
     'change #comment-textarea': 'updateModel'
-    'click input[type="submit"]': 'postComment'
+    'click .comment-post': 'postComment'
 
   initialize: (options) ->
     @resetModel()
@@ -15,6 +15,7 @@ class Dmtc.Views.NewComment extends Backbone.View
     @model.set 'content', $(e.target).val()
 
   postComment: (e) ->
+    return unless @model.get('content')?.length > 1
     @model.set 'code_id', @options.codeId
     @model.save({},
       success: (model, response, options) =>

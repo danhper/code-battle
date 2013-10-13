@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require i18n
+//= require i18n/translations
 //= require twitter/bootstrap
 //= require backbone
 //= require dmtc

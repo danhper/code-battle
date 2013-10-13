@@ -1,7 +1,6 @@
 <div id="new-comment">
-  <label for="comment-textarea">Comment</label>
-  <textarea name="comment" id="comment-textarea" cols="30" rows="10">
-  </textarea>
-  <br>
-  <input type="submit" value="Submit">
+  <textarea name="comment" id="comment-textarea" class="form-control" rows="3"></textarea>
+  <button type="button" class="comment-post btn btn-primary pull-right">
+    <%= t 'comment.post' %>
+  </button>
 </div>

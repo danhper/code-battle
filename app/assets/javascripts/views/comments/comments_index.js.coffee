@@ -1,11 +1,16 @@
 class Dmtc.Views.CommentsIndex extends Backbone.View
-  el: '#comments'
+  el: '#comment-others-container'
 
   initialize: (options) ->
     _.bindAll this, 'addOne', 'addAll'
     @collection.on 'reset', @addAll, this
     @collection.on 'add', @addOne, this
+    @collection.on 'add', @setTitle, this
+    @title = @$('h5')
     @render()
+
+  setTitle: ->
+    @title.text I18n.t('comment.count', {count: @collection.length })
 
   addOne: (model) ->
     view = new Dmtc.Views.Comment({ model: model })
