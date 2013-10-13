@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:github]
 
   has_and_belongs_to_many :guilds, -> { uniq }, join_table: 'user_guilds'
-  has_and_belongs_to_many :codes, -> { uniq }, join_table: 'user_like_codes'
+  has_and_belongs_to_many :liked_codes, -> { uniq }, join_table: 'user_like_codes', class_name: 'Code'
   has_many :votes
   has_many :quests, through: :votes
 
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def likes_code?(code)
-    liked_codes.exists?(code)
+    liked_codes.exists?(code) ? true : false
   end
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
