@@ -15,7 +15,7 @@ class Code < ActiveRecord::Base
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :quest
   belongs_to :guild
-  has_and_belongs_to_many :users, -> { uniq }, join_table: 'user_like_codes'
+  has_and_belongs_to_many :likes, -> { uniq }, join_table: 'user_like_codes', class_name: 'User'
   has_many :comments
 
   self.per_page = 10

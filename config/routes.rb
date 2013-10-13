@@ -2,7 +2,7 @@ Dmtc::Application.routes.draw do
 
   get "codes/index"
   get "codes/new"
-  root to: 'static_pages#index'
+  root to: 'quests#index'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :users

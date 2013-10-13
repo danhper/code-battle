@@ -5,7 +5,7 @@ class QuestsController < ApplicationController
   before_action :check_guild!, only: [:new, :create]
 
   def index
-    @quests = Quest.paginate(page: params[:page])
+    @quests = Quest.joins(:codes).paginate(page: params[:page])
   end
 
   def show
