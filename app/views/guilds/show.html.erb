@@ -12,9 +12,17 @@
 
 <div class="tab-content">
   <div id="users" class="users tab-pane active">
-    <%= render @guild.users %>
+    <% if @guild.users.empty? %>
+      No member in this guild.
+    <% else %>
+      <%= render @guild.users %>
+    <% end %>
   </div>
   <div id="codes" class="codes tab-pane">
-    <%= render partial: 'codes/code_line', collection: @guild.codes, as: :code, locals: { fields: [:author, :quest] } %>
+    <% if @guild.codes.empty? %>
+      No spell casted by this guild.
+    <% else %>
+      <%= render partial: 'codes/code_line', collection: @guild.codes, as: :code, locals: { fields: [:author, :quest] } %>
+    <% end %>
   </div>
 </div>

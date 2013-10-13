@@ -2,7 +2,13 @@
 <p><%= @quest.description %></p>
 
 
-<%= render partial: 'codes/code_line', collection: @quest.codes, as: :code, locals: { fields: [:author, :guild] } %>
+<div class="codes">
+  <% if @quest.codes.empty? %>
+    No spell casted for this quest.
+  <% else %>
+    <%= render partial: 'codes/code_line', collection: @quest.codes, as: :code, locals: { fields: [:author, :guild] } %>
+  <% end %>
+</div>
 
 <% if user_signed_in? %>
   <% if @code %>
