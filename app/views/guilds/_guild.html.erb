@@ -1,0 +1,12 @@
+<div class="guild"
+     data-name="<%= guild.name %>"
+     data-in-guild="<%= user_signed_in? && current_user.in_guild?(guild) %>"
+     data-url-safe-name="<%= guild.url_safe_name %>"
+     >
+
+  <%= link_to guild.name, guild %>
+  <% if user_signed_in? %>
+    <% text = current_user.in_guild?(guild) ? 'Leave' : 'Enter' %>
+    <%= link_to text, '#', class: 'enter-leave-link' %>
+  <% end %>
+</div>

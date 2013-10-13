@@ -1,0 +1,11 @@
+<h1>Guilds</h1>
+
+<div class="guilds">
+  <%= render @guilds %>
+</div>
+
+<% content_for :javascript do %>
+<script>
+  new Dmtc.Views.GuildsIndex();
+</script>
+<% end %>
