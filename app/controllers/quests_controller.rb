@@ -10,8 +10,11 @@ class QuestsController < ApplicationController
 
   def show
     if user_signed_in?
-      @code = Code.where(quest: @quest, user: current_user).first
+      @code = Code.where(quest_id: @quest, user_id: current_user).first
     end
+
+    @greeting = params[:greeting]
+    render
   end
 
   def new
@@ -44,6 +47,8 @@ class QuestsController < ApplicationController
   private
   def set_quest
     @quest = Quest.find(params[:id])
+    @quest_rank = @quest.get_quest_total_vote_point.sort_by{|_,v|-v}
+    @quest_guild_top = @quest.get_quest_guild_top
   end
 
   def quest

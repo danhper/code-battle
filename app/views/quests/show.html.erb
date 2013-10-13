@@ -10,3 +10,21 @@
   <% end %>
 
 <% end %>
+%<div class="rank">
+  <!--  test -->
+  <%#= p @quest_rank %><br>
+  <% @quest_rank.each do |pair| %>
+    <% @guild = Guild.find(pair[0]) %>
+    <% if Code.find_by_id(@quest_guild_top[pair[0]])  %>
+      <% @src = Code.find(@quest_guild_top[pair[0]]) %>
+    <% else %>
+      <% @src = Code.find(1) %>
+    <% end %>
+    <%= p @guild.name  %><br>
+    Point <%=  p pair[1] %><br>
+    Src <%= @src.source %><br>
+    <button onclick="alert('OK')" id=button_"<%= pair[0] %>" >vote</button>
+    <p>
+  <% end %>
+</div>
+

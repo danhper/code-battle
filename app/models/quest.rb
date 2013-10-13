@@ -19,6 +19,7 @@ class Quest < ActiveRecord::Base
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
 
+  #return hash {key:Guild_id,value:Point}
   def get_quest_total_vote_point
     h = Hash.new
     h.default = 0
@@ -31,10 +32,11 @@ class Quest < ActiveRecord::Base
 
 
   # 用修正
+  #return hash {key:Guild_id,value:Guild top code_id in quest}
   def get_quest_guild_top
     h = Hash.new
     h.default = 0
-    g_all = Guild.all
+    g_all = Guild.all##
     g_all.each do |g|
       codes = Code.where(:quest_id => 1, :guild_id => g.id).joins(:users)
       _h = Hash.new
