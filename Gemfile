@@ -4,28 +4,28 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
-gem 'jquery-rails'
-gem 'backbone-on-rails'
-gem 'turbolinks'
-
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-
 gem 'seedbank', github: 'james2m/seedbank'
-
 gem 'pygments.rb'
+gem 'will_paginate', '~> 3.0'
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 
-group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-end
+
+gem 'jquery-rails'
+gem 'backbone-on-rails'
+gem 'turbolinks'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'better_errors'

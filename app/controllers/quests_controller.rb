@@ -5,10 +5,11 @@ class QuestsController < ApplicationController
   before_action :check_guild!, only: [:new, :create]
 
   def index
-    @quests = Quest.all
+    @quests = Quest.paginate(page: params[:page])
   end
 
   def show
+    @codes = @quest.codes.paginate(page: params[:page])
     if user_signed_in?
       @code = Code.where(quest_id: @quest, user_id: current_user).first
     end
