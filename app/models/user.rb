@@ -27,8 +27,6 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :guilds, -> { uniq }, join_table: 'user_guilds'
   has_and_belongs_to_many :codes, -> { uniq }, join_table: 'user_like_codes'
-  #has_many :user_like_codes
-  #has_many :liked_codes, through: :user_like_codes, source: :code
   has_many :votes
   has_many :quests, through: :votes
 

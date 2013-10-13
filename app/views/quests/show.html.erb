@@ -2,20 +2,22 @@
 <p><%= @quest.description %></p>
 
 
+<% if user_signed_in? %>
+  <div class="code-actions">
+    <% if @code %>
+      <%= link_to 'Show my spell', quest_code_path(@quest, @code) %>
+    <% else %>
+      <%= link_to 'Cast a spell', new_quest_code_path(@quest) %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="codes">
-  <% if @quest.codes.empty? %>
+  <% if @codes.empty? %>
     No spell casted for this quest.
   <% else %>
-    <%= render partial: 'codes/code_line', collection: @quest.codes, as: :code, locals: { fields: [:author, :guild] } %>
+    <%= render partial: 'codes/code_line', collection: @codes, as: :code, locals: { fields: [:author, :guild] } %>
+    <%= will_paginate @codes %>
   <% end %>
 </div>
 
-<% if user_signed_in? %>
-  <% if @code %>
-    <%= link_to 'Show code', quest_code_path(@quest, @code) %>
-    <%= link_to 'Edit code', edit_quest_code_path(@quest, @code) %>
-  <% else %>
-    <%= link_to 'Post code', new_quest_code_path(@quest) %>
-  <% end %>
-
-<% end %>

@@ -18,6 +18,8 @@ class Quest < ActiveRecord::Base
   has_many :quest_total_votes
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
+  self.per_page = 10
+
 
   def get_quest_total_vote_point
     h = Hash.new
