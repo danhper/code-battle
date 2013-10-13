@@ -16,6 +16,7 @@ ja:
     from: '%{username}からのクエスト'
     answers_number: 合計回答数
     posted_date: クエスト出現日
+    title: お題
   code:
     author: 回答者
     read_more: 続きを読む
@@ -33,3 +34,12 @@ ja:
     count:
       one: '1件のコメント'
       other: '%{count}件のコメント'
+  guild:
+    house: ギルドハウス
+    conquer: '%{language}を使い、Code大陸を征服せよ！'
+    members_count_label: メンバー数
+    members_count:
+      one: 100人
+      other: '%{count}人'
+    territory: 現在の領土
+    possession_rate: 支配率

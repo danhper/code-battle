@@ -1,31 +1,47 @@
-<h1>
-  <%= @guild.name %>
-</h1>
+<article id="guild">
 
-<ul class="nav nav-tabs">
-  <li class="active">
-    <a href="#users" data-toggle="tab">Sources</a>
-  </li>
-  <li>
-    <a href="#codes" data-toggle="tab">Codes</a>
-  </li>
-</ul>
+  <section>
+    <h3 class="title <%= @guild.url_safe_name %>">
+      <span class="author">
+        <%= t 'guild.house' %>
+      </span>
+      <br>
+      <cite>
+        <%= image_tag "#{@guild.url_safe_name}-logo.png", alt: @guild.name, class: 'lang' %>
+        's House
+      </cite>
+      <br>
+    </h3>
+    <p class="desc">
+      <%= t 'guild.conquer', language: @guild.name.capitalize %>
+    </p>
+    <div id="code-container" class="clearfix">
 
-<div class="tab-content">
-  <div id="users" class="users tab-pane active">
-    <% if @users.empty? %>
-      No member in this guild.
-    <% else %>
-      <%= render @users %>
-      <%= will_paginate @users, param_name: :user_page %>
-    <% end %>
-  </div>
-  <div id="codes" class="codes tab-pane">
-    <% if @codes.empty? %>
-      No spell casted by this guild.
-    <% else %>
-      <%= render partial: 'codes/code_line', collection: @codes, as: :code, locals: { fields: [:author, :quest] } %>
-      <%= will_paginate @codes, param_name: :code_page %>
-    <% end %>
-  </div>
-</div>
+      <table class="info table table-bordered">
+        <thead>
+          <tr>
+            <th><%= t 'guild.members_count_label' %></th>
+            <th><%= t 'guild.territory' %></th>
+            <th><%= t 'guild.possession_rate' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= t 'guild.members_count', count: @guild.users.count %></td>
+            <td>20%</td>
+            <td>3位</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="members">
+        <%= render partial: 'users/avatar', collection: @users, as: :user %>
+      </div>
+
+      <%= render partial: 'codes/guild_code', collection: @codes, as: :code %>
+    </div>
+
+  </section>
+
+  <%= will_paginate @codes, param_name: :code_page %>
+</article>
