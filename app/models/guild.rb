@@ -18,4 +18,19 @@ class Guild < ActiveRecord::Base
   def to_param
     url_safe_name
   end
+
+
+  def get_guild_coefficient
+    1.0 - (self.users.count / User.count)
+  end
+
+  def get_total_vote_point
+    h = Hash.new
+    h.default = 0
+    tv_all = TotalVote.all
+    tv_all.each do |i|
+      h[i.voted_guild_id] += i.vote_num * get_guild_coefficient(i.voting_guild_id)
+    end
+  end
+
 end
