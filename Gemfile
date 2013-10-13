@@ -7,10 +7,9 @@ gem 'rails', '4.0.0'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-
 gem 'seedbank', github: 'james2m/seedbank'
-
 gem 'pygments.rb'
+gem 'will_paginate', '~> 3.0'
 
 group :production do
   gem 'pg'

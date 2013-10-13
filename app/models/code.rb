@@ -18,6 +18,8 @@ class Code < ActiveRecord::Base
   has_and_belongs_to_many :users, -> { uniq }, join_table: 'user_like_codes'
   has_many :comments
 
+  self.per_page = 10
+
   validates_presence_of :guild
   validates_presence_of :quest
 

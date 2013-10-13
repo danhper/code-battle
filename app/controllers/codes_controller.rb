@@ -4,13 +4,13 @@ class CodesController < ApplicationController
   before_action :set_code, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
   before_action :check_guild!, only: [:new, :create]
+  before_action :check_existence!, only: [:new, :create]
 
   def index
     @codes = Code.all
   end
 
   def new
-    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
     @code = @quest.codes.build(params[:code])
   end
 
@@ -19,7 +19,6 @@ class CodesController < ApplicationController
   end
 
   def create
-    redirect_to @quest if Code.where(user: current_user, quest: @quest).exists?
     @code = current_user.created_codes.build(code_params)
     @quest.codes << @code
     if @quest.save
@@ -72,6 +71,10 @@ class CodesController < ApplicationController
 
   def set_code
     @code = Code.find(params[:id])
+  end
+
+  def check_existence!
+    redirect_to @quest if Code.where(user_id: current_user, quest_id: @quest).exists?
   end
 
   def code_params
