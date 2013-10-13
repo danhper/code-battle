@@ -27,6 +27,7 @@ gem 'less-rails'
 gem 'therubyracer'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'i18n-js'
 
 group :development do
   gem 'better_errors'

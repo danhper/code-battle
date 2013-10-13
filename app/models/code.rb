@@ -26,4 +26,11 @@ class Code < ActiveRecord::Base
   def formatted_source
     Pygments.highlight(self.source, lexer: self.guild.url_safe_name)
   end
+
+  def best_for_quest?(quest)
+  end
+
+  def likes_number
+    self.likes.count
+  end
 end

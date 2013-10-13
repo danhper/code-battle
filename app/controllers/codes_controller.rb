@@ -15,9 +15,11 @@ class CodesController < ApplicationController
   end
 
   def show
+    @best_code = @quest.codes.first
     @is_owner = user_signed_in? && @code.author == current_user
     @liked = user_signed_in? && current_user.likes_code?(@code)
     @voted = user_signed_in? && current_user.votes_quest?(@quest)
+    @other_codes = @quest.codes.where('codes.user_id != ?', @code.author.id).order('created_at DESC').limit(5)
   end
 
   def create

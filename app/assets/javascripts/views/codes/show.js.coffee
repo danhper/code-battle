@@ -1,24 +1,28 @@
 class Dmtc.Views.ShowCode extends Backbone.View
-  el: '.code-container'
+  el: '.code'
 
   events:
-    'click .like-link': 'likeUnlikeCode'
+    'click .plusone': 'likeUnlikeCode'
 
   initialize: (options) ->
-    @setLink()
+    @setLikesNumber()
 
-  setLink: ->
-    link = @$('.like-link')
-    if @model.get 'liked'
-      link.text 'Unlike'
-      link.addClass 'liked'
+  setLikesNumber: ->
+    @$('.plusone-result').text @model.get('likes_number')
+    if @model.get('liked')
+      @$('.plusone-result').addClass 'liked'
     else
-      link.text 'Like'
-      link.removeClass 'liked'
+      @$('.plusone-result').removeClass 'liked'
+
 
   likeSuccess: =>
-    @model.set('liked', !@model.get('liked'))
-    @setLink()
+    if @model.get 'liked'
+      @model.set 'liked', false
+      @model.set 'likes_number', @model.get('likes_number') - 1
+    else
+      @model.set 'liked', true
+      @model.set 'likes_number', @model.get('likes_number') + 1
+    @setLikesNumber()
 
   likeUnlikeCode: (e) ->
     e.preventDefault()

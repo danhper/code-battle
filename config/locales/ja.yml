@@ -8,7 +8,9 @@ ja:
       各ギルド一番の戦士が一騎打ち！勝者はCode大陸で領土を広げます。
       それは、あなたの愛する言語が地上を征服する日まで、、、
     sub_header_alt: ようこそ、Codeの最前線へ。
-
+    to_top: '&lt;&lt; クエストページへ'
+    time:
+      before: '%{time}前'
   quest:
     quest: クエスト
     from: '%{username}からのクエスト'
@@ -17,4 +19,17 @@ ja:
   code:
     author: 回答者
     read_more: 続きを読む
-
+    current_best: 現在の一位
+    written_by: '%{username}の実装'
+    used_language: '%{language}で回答したぞ！'
+    other_used_language: '%{language}で行く!'
+    vote_for: '%{language}に一票を投じる'
+    others: ほかのユーザーの回答
+    can_be_voted: |
+      この回答がPythonギルドの中では現在"+1"数がNo.1です。
+      そのため、他言語との決選に挑んでいる最中です。
+  comment:
+    post: コメントを投稿
+    count:
+      one: '1件のコメント'
+      other: '%{count}件のコメント'

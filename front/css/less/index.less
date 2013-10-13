@@ -1,7 +1,7 @@
 /* -> override */
 
 body {
-	background: url("../img/back.png") #464D58;
+	background: image-url("back.png") #464D58;
 }
 
 .jumbotron{
@@ -25,7 +25,7 @@ body {
 
 #sub-header {
 	height:581px;
-	background:url("../img/sub-header-back.png");
+	background:image-url("sub-header-back.png");
 	background-size:1400px 581px;
 	background-position:center;
 	background-repeat:no-repeat;
@@ -48,7 +48,17 @@ body {
 	text-align:center;
 	margin-top:100px;
 	margin-bottom:60px;
+
 	section {
+		margin:0 auto 100px auto;
+		height:600px;
+		width:750px;
+		border: 5px solid #efefef;
+		.border-radius(5px);
+		background-color: #fff;
+		.box-shadow(~"0 5px 5px rgba(0,0,0,.15)");
+		.background-image(~"linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%)");
+
 		p.desc{
 			margin:0;
 		}
@@ -98,40 +108,28 @@ body {
 			top:20px;
 			left:215px;
 			.size(310px, 490px);
-			border: 5px solid #edb305;
 			.box-shadow(~"0 8px 10px rgba(0,0,0,.1)");
 			z-index:1;
-			h4 {
-				border-bottom:5px solid #edb305;
-			}
 			pre {
-				max-height:315px;
+				max-height:320px;
 			}
 		}
 		div.silver {
 			top:-442px;
 			left:-70px;
 			.size(290px, 440px);
-			border: 5px solid #bfbfbf;
 			.box-shadow(~"0 5px 5px rgba(0,0,0,.1)");
-			h4 {
-				border-bottom:5px solid #bfbfbf;
-			}
 			pre {
-				max-height:265px;
+				max-height:270px;
 			}
 		}
 		div.bronze {
 			top:-884px;
 			right:-520px;
 			.size(290px, 440px);
-			border: 5px solid #a88200;
 			.box-shadow(~"0 5px 5px rgba(0,0,0,.1)");
-			h4 {
-				border-bottom:5px solid #a88200;
-			}
 			pre {
-				max-height:265px;
+				max-height:270px;
 			}
 		}
 		h3.title {
@@ -159,28 +157,10 @@ body {
 			background-color: #fff;
 			.background-image(~"linear-gradient(bottom, #7a1111 0%, #952121 22.9%, #b04040 50.49%, #952121 95.12%, #791111 100%)");
 		}
-		margin:0 auto 80px auto;
-		height:600px;
-		width:750px;
-			border: 5px solid #efefef;
-			.border-radius(5px);
-			background-color: #fff;
-			.box-shadow(~"0 5px 5px rgba(0,0,0,.15)");
-			.background-image(~"linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%)");
-		}
-
-}
-
-.pagination {
-	margin-top:-30px;
-}
-
-footer {
-	background:#fff;
-	section {
-		margin:0 auto;
-		width:750px;
-		height:200px;
-		background:#000;
 	}
+
+	.pagination {
+		margin-top:-30px;
+	}
+
 }
