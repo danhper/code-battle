@@ -1,0 +1,11 @@
+<header>
+<% if user_signed_in? %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', new_user_session_path %>
+<% end %>
+
+<%= link_to 'Create quest', new_quest_path %>
+<%= link_to 'Quest list', quests_path %>
+<%= link_to 'Guild list', guilds_path %>
+</header>
