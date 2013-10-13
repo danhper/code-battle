@@ -6278,6 +6278,16 @@ article#codepage section div.code h4 span.plusone {
   margin-top: -4px;
   border: 1px solid #eeeeee;
 }
+article#codepage section div.code h4 span.plusone.liked {
+  background: #ccc;
+  color: graytext;
+  -moz-box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+article#codepage section div.code h4 span.plusone.liked:hover {
+  background: #dadada;
+}
 article#codepage section div.code h4 span.plusone-result {
   font-size: 14px;
   height: 30px;
