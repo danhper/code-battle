@@ -43,3 +43,5 @@ ja:
       other: '%{count}人'
     territory: 現在の領土
     possession_rate: 支配率
+  user:
+    guilds: 所属ギルド

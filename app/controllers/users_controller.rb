@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @codes = @user.created_codes.paginate(page: params[:page])
   end
 
   def edit

@@ -1,9 +1,19 @@
-<h1><%= @user.username %></h1>
+  <article id="profile">
 
-<div class="codes">
-  <% if @user.created_codes.empty? %>
-    No spell casted yet.
-  <% else %>
-    <%= render partial: 'codes/code_line', collection: @user.created_codes, as: :code, locals: { fields: [:quest, :guild] } %>
-  <% end %>
-</div>
+    <section>
+      <h3 class="title">
+        <%= render 'users/avatar', user: @user, text: true %>
+      </h3>
+      <div id="code-container" class="clearfix">
+
+        <div id="guilds">
+          <h4 class="guild"><%= t 'user.guilds' %></h4>
+          <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
+        </div>
+
+        <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
+      </div>
+    </section>
+
+    <%= will_paginate @codes %>
+</article>
