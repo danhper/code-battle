@@ -14,6 +14,32 @@ article#post {
 		p.desc{
 			margin:10px 0 20px 0;
 		}
+		div#select-options-single {
+			margin:0 20px;
+			height:70px;
+			text-align:left;
+
+			section {
+				float:left;
+				label {
+					width:100%;
+					border-bottom:1px solid #922a2a;
+					line-height:1px;
+					span {
+						background: #EEDFC7;
+						padding-right:5px;
+					}
+				}
+				input,select,textarea {
+					margin-top:10px;
+				}
+			}
+
+			#select-lang-section{
+				width:100%
+			}
+		}
+
 		div#select-options {
 			margin:0 20px;
 			height:250px;
@@ -50,20 +76,7 @@ article#post {
 				}
 			}
 		}
-		div.code {
-			.box-shadow(~"0 2px 2px rgba(0,0,0,.15)");
-			margin:20px;
-			background:#272822;
-			position:relative;
 
-			textarea {
-				width:100%;
-				height:400px;
-				background:#272822;
-				color:#fff;
-				padding:10px;
-			}
-		}
 		h3.title {
 			a {
 				color:#fff;
