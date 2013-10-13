@@ -10,7 +10,7 @@ class QuestsController < ApplicationController
 
   def show
     if user_signed_in?
-      @code = Code.where(quest: @quest, user: current_user).first
+      @code = Code.where(quest_id: @quest, user_id: current_user).first
     end
   end
 

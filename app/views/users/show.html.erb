@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
 
 <div>
-  <%= render @user.created_codes %>
+  <%= render partial: 'codes/code_line', collection: @user.codes, as: :code, locals: { fields: [:quest, :guild] } %>
 </div>
