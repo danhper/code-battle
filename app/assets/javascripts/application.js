@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require twitter/bootstrap
 //= require backbone
 //= require dmtc
 //= require_tree ../templates
