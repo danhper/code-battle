@@ -1,0 +1,9 @@
+ja:
+  quest:
+    quest: クエスト
+    from: '%{username}からのクエスト'
+    answers_number: 合計回答数
+    posted_date: クエスト出現日
+  code:
+    author: 回答者
+    read_more: 続きを読む

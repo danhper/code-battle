@@ -1,0 +1,27 @@
+<section>
+  <h3 class="title">
+    <span class="author">
+      <%= t('quest.from', username: link_to(quest.creator.username, quest.creator)).html_safe %>
+    </span>
+    <br>
+    <cite>
+      <%= t 'quest.quest' %>:
+      <strong>
+        <%= quest.title %>
+      </strong>
+    </cite>
+  </h3>
+
+  <p class="desc">
+    <strong><%= t 'quest.answers_number' %>:</strong>
+    <%= quest.codes.count %> /
+    <strong><%= t 'posted_date' %>:</strong>
+    <%= l quest.created_at, scope: :date %>
+  </p>
+
+  <% medals = ['gold', 'silver', 'bronze'] %>
+
+  <% @codes.each_with_index do |code, index| %>
+    <%= render 'code/medalist', code: code, medal: medals[index] %>
+  <% end %>
+</section>
