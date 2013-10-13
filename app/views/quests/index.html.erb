@@ -1,5 +1,26 @@
-<h1>Quests</h1>
+  <article id="top">
+    <section id="header" class="jumbotron">
+      <div class="container">
+        <h1>
+          <%= image_tag 'header-codebattle-logo.png', alt: "CodeBattle" %>
+        </h1>
+        <p>
+          <%= image_tag 'header-subtitle.png', alt: "THE WAR OF LANGUAGES" %>
+        </p>
+      </div>
+    </section>
 
-<%= render @quests %>
+    <section id="sub-header">
+      <div class="container">
+        <h2>
+          <%= image_tag 'sub-header-catchcopy.png', alt: t('general.sub_header_alt') %>
+        </h2>
+        <p>
+          <%= simple_format t('general.introduction') %>
+        </p>
+      </div>
+    </section>
 
-<%= will_paginate @quests %>
+    <%= render partial: 'quests/best_codes', collection: @codes %>
+
+  </article>
