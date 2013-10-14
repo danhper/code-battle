@@ -59,3 +59,7 @@ ja:
     rank: '%{number}位'
   user:
     guilds: 所属ギルド
+  will_paginate:
+    previous_label: 前
+    next_label: 次
+
