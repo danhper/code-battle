@@ -51,6 +51,18 @@ class User < ActiveRecord::Base
     quests.exists?(quest) ? true : false
   end
 
+  def codes_for_quest(quest)
+    self.created_codes.where(quest_id: quest)
+  end
+
+  def code_for_quest(quest)
+    self.codes_for_quest(quest).first
+  end
+
+  def wrote_code?(quest)
+    self.codes_for_quest(quest).exists? ? true : false
+  end
+
   def large_guild
     self.guilds.max{|x,y| x.users.count <=> y.users.count}
   end

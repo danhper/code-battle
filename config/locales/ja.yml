@@ -46,6 +46,8 @@ ja:
     choose_guild: 自分が使用する言語を選択
     placeholder: ここにコードを入力してください。
     publish_warning: 投稿したコードは、Web全体に公開されます。
+    post: このクエストにコードで回答
+    edit_long: 自分のコードを編集する
     edit: 編集
     delete: 削除
     can_be_voted: |
