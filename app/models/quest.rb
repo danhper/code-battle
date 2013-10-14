@@ -57,12 +57,22 @@ class Quest < ActiveRecord::Base
     h
   end
 
+  # def get_top_codes
+  #   h = self.get_quest_total_vote_point.sort_by{|_,v| -v }
+  #   ary = Array.new
+  #   h.each{|i| ary << Quest.find_by_id(i[0])}
+  #   ary
+  # end
+
   def get_top_codes
-    h = self.get_quest_total_vote_point.sort_by{|_,v| -v }
-    ary = Array.new
-    h.each{|i| ary << Quest.find_by_id(i[0])}
-    ary
+    guilds_id = self.get_quest_total_vote_point.sort_by{|_,v| -v }
+    codes = Array.new
+    guild_tops = get_quest_guild_top
+    codes = Array.new
+    guilds_id.each{|i| codes << Code.find_by_id(guild_tops[i[0]])}
+    codes
   end
+
 
   def get_top_code
     self.get_top_codes.first
