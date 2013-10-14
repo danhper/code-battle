@@ -1,4 +1,6 @@
 ja:
+  btn:
+    change: 変更
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -15,6 +17,8 @@ ja:
       before: '%{time}前'
     top: トップページ
     login_with_github: Githubアカウントでログイン
+    only_alphabet: アルファベットのみ
+    mail_warning: メールアドレスには、サービスにまつわる情報が配信されます。
   quest:
     foo: bar
     quest: クエスト
@@ -67,7 +71,10 @@ ja:
     possession_rate: 支配率
     rank: '%{number}位'
   user:
+    settings: ユーザー設定
     guilds: 所属ギルド
+    use_id: 使いたいIDを入力
+    enter_mail: メールアドレスを入力
   will_paginate:
     previous_label: 前
     next_label: 次

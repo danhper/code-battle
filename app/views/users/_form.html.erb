@@ -1,14 +1,22 @@
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <span>You cannot post before setting your username.</span>
+  <div id="select-options">
+    <section id="select-id-section">
+      <label for="select-id">
+        <span><%= t 'user.use_id' %></span>
+      </label>
+      <%= f.text_field :username, id: "select-id", class: 'form-control input-lg', placeholder: t('general.only-alphabet') %>
+    </section>
 
-  <br>
+    <section id="select-mailaddr-section">
+      <%= f.label :select-mailaddr do %>
+      <span><%= t 'user.enter_mail' %></span>
+      <% end %>
+      <%= f.text_field :email, id: "select-mailaddr", class: 'form-control input-lg', placeholder: 'foobar@example.com' %>
+    </section>
+  </div>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <br>
-
-  <%= f.submit %>
+  <div id="post-container">
+    <p><%= t 'general.mail_warning' %></p>
+    <%= f.submit t('btn.change'), id: 'post', class: 'btn-default' %>
+  </div>
 <% end %>
