@@ -22,7 +22,7 @@ class Quest < ActiveRecord::Base
 
   #return hash {key:Guild_id,value:Point}
   def guild_codes(guild)
-    self.codes.where(quest_id: self).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
+    self.codes.where(quest_id: self, guild_id: guild).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
   end
 
   def guild_best_code?(code)
