@@ -4,7 +4,6 @@ class Dmtc.Models.Guild extends Backbone.Model
   initialize: (attributes, options) ->
     @set 'inGuild', attributes.inGuild != ''
 
-
   toJSON: -> guild: _.clone @attributes
 
   enter: (options) ->

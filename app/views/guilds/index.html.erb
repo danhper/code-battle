@@ -1,11 +1,21 @@
-<h1>Guilds</h1>
+<article id="guildlist">
+<section>
+    <h3 class="title">
+      <%= t 'guild.index_title' %>
+    </h3>
+    <p class="desc"><%= t 'guild.choose' %></p>
+    <div id="code-container" class="guilds clearfix">
+      <%= render @guilds %>
+    </div>
+  </section>
+</article>
 
-<div class="guilds">
-  <%= render @guilds %>
-</div>
 
 <% content_for :javascript do %>
 <script>
+  I18n.translations[I18n.locale].guild = I18n.translations[I18n.locale].guild || {};
+  I18n.translations[I18n.locale].guild.enter = "<%= t 'guild.enter' %>";
+  I18n.translations[I18n.locale].guild.leave = "<%= t 'guild.leave' %>";
   new Dmtc.Views.GuildsIndex();
 </script>
 <% end %>
