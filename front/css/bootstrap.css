@@ -1579,11 +1579,11 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: border-color ease-in-out .15s box-shadow ease-in-out .15s;
 }
 .form-control:focus {
-  border-color: #66afe9;
+  border-color: #922a2a;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(146, 42, 42, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(146, 42, 42, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(146, 42, 42, 0.6);
 }
 .form-control[disabled],
 .form-control[readonly],
@@ -6080,8 +6080,8 @@ footer section {
   height: 40px;
 }
 .btn-inverse {
-  color: #f5f5f5;
-  background-color: #1f1f1b;
+  color: #cccccc;
+  background-color: #5bc0de;
   border-color: #46b8da;
 }
 .btn-inverse:hover,
@@ -6089,8 +6089,8 @@ footer section {
 .btn-inverse:active,
 .btn-inverse.active,
 .open .dropdown-toggle.btn-inverse {
-  color: #f5f5f5;
-  background-color: #090908;
+  color: #cccccc;
+  background-color: #39b3d7;
   border-color: #269abc;
 }
 .btn-inverse:active,
@@ -6113,7 +6113,7 @@ fieldset[disabled] .btn-inverse:active,
 .btn-inverse.disabled.active,
 .btn-inverse[disabled].active,
 fieldset[disabled] .btn-inverse.active {
-  background-color: #1f1f1b;
+  background-color: #5bc0de;
   border-color: #46b8da;
 }
 /* -> override */
