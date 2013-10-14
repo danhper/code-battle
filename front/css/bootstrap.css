@@ -6851,7 +6851,7 @@ article#profile {
 }
 article#profile section div#guilds {
   margin: 20px auto 0 auto;
-  padding: 5px 0 20px 0;
+  padding: 5px 0 10px 0;
   width: 580px;
   background: #ffffff;
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
@@ -6864,6 +6864,7 @@ article#profile section div#guilds a.lang-icon {
   height: 80px;
   padding-top: 30px;
   margin-right: 5px;
+  margin-bottom: 10px;
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
