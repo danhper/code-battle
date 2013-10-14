@@ -6081,7 +6081,7 @@ footer section {
 }
 .btn-inverse {
   color: #cccccc;
-  background-color: #5bc0de;
+  background-color: #1f1f1b;
   border-color: #46b8da;
 }
 .btn-inverse:hover,
@@ -6090,7 +6090,7 @@ footer section {
 .btn-inverse.active,
 .open .dropdown-toggle.btn-inverse {
   color: #cccccc;
-  background-color: #39b3d7;
+  background-color: #090908;
   border-color: #269abc;
 }
 .btn-inverse:active,
@@ -6113,7 +6113,7 @@ fieldset[disabled] .btn-inverse:active,
 .btn-inverse.disabled.active,
 .btn-inverse[disabled].active,
 fieldset[disabled] .btn-inverse.active {
-  background-color: #5bc0de;
+  background-color: #1f1f1b;
   border-color: #46b8da;
 }
 /* -> override */
