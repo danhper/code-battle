@@ -22,7 +22,8 @@ class Quest < ActiveRecord::Base
 
   def sorted_codes
     self.codes
-        .joins('LEFT JOIN user_like_codes ON user_like_codes.id = codes.id').select('"codes".*, count("user_like_codes".id) AS counter')
+        .joins('LEFT JOIN user_like_codes ON user_like_codes.id = codes.id')
+        .select('"codes".*, count("user_like_codes".id) AS counter')
         .group('codes.id')
         .order('counter DESC')
   end

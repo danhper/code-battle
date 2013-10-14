@@ -13,6 +13,8 @@ ja:
     logout: ログアウト
     time:
       before: '%{time}前'
+    top: トップページ
+    login_with_github: Githubアカウントでログイン
   quest:
     foo: bar
     quest: クエスト
