@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   def large_guild
     self.guilds.max{|x,y| x.users.count <=> y.users.count}
   end
-  
+
   def gravatar_url
     GravatarImageTag.gravatar_url self.email
   end
