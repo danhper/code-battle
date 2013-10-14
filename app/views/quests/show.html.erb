@@ -10,12 +10,7 @@
         <br>
       </h3>
       <p class="desc">
-        <% top_code = @quest.get_top_code %>
-        <% unless top_code.blank? %>
-          <strong><%= t 'quest.current_best' %>:</strong>
-          <%= top_code.guild.name.capitalize %>
-          <%= t('code.written_by', author: link_to(top_code.author.username, top_code.author)).html_safe %> /
-        <% end %>
+        <%= render 'quests/current_winner', code: @quest.get_top_code %>
         <strong><%= t 'quest.answers_number' %>:</strong> <%= @quest.codes.count %> / <strong><%= t 'quest.posted_date' %>:</strong>
         <%= l @quest.created_at, format: :date_only %>
       </p>

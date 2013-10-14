@@ -1,0 +1,5 @@
+<% unless code.blank? %>
+  <strong><%= t 'quest.current_best' %>:</strong>
+  <%= code.guild.name.capitalize %>
+  <%= t('code.written_by', author: link_to(code.author.username, code.author)).html_safe %> /
+<% end %>
