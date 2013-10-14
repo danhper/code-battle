@@ -7,7 +7,7 @@ class QuestsController < ApplicationController
   require 'will_paginate/array'
 
   def index
-    @quests = Quest.joins(:codes).paginate(page: params[:page])
+    @quests = Quest.joins(:codes).paginate(page: params[:page]).uniq
   end
 
   def show

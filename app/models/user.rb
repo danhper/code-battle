@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
-  validates :username, uniqueness: true, allow_blank: false
+  validates :username, uniqueness: true, allow_nil: true, length: { in: 1..255 }
 
   def in_guild?(guild)
     guilds.exists?(guild)

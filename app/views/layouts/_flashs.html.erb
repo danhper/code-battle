@@ -1,7 +1,7 @@
 <% unless flash.empty? %>
   <div class="flashs container">
     <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
+      <% if msg.is_a?(String) && name != :notice %>
         <div class="alert alert-<%= name == :notice ? "success" : "warning" %>">
           <a class="close" data-dismiss="alert">&#215;</a>
           <%= content_tag :div, t(msg), :id => "flash_#{name}" %>

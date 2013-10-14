@@ -1,4 +1,4 @@
-<% if user_signed_in? && code.author != current_user %>
+<% if user_signed_in? && code.author != current_user && current_user.guilds.count > 0 %>
   <% if current_user.votes_quest? code %>
     <%= link_to t('code.unvote_for', language: code.guild.name.capitalize), '#', class: code.guild.url_safe_name, id: 'vote' %>
   <% else %>

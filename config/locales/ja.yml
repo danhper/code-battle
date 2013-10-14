@@ -78,6 +78,7 @@ ja:
     guilds: 所属ギルド
     use_id: 使いたいIDを入力
     enter_mail: メールアドレスを入力
+    enter_username: まずユーザー名を記入してください
   will_paginate:
     previous_label: 前
     next_label: 次
