@@ -40,7 +40,7 @@ ja:
     placeholder: ここにコードを入力してください。
     publish_warning: 投稿したコードは、Web全体に公開されます。
     can_be_voted: |
-      この回答がPythonギルドの中では現在"+1"数がNo.1です。
+      この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
   comment:
     post: コメントを投稿
