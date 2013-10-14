@@ -10,6 +10,7 @@ ja:
     sub_header_alt: ようこそ、Codeの最前線へ。
     to_top: '&lt;&lt; クエストページへ'
     submit: 投稿
+    logout: ログアウト
     time:
       before: '%{time}前'
   quest:
