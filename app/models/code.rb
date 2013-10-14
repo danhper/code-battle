@@ -18,7 +18,7 @@ class Code < ActiveRecord::Base
   has_and_belongs_to_many :likes, -> { uniq }, join_table: 'user_like_codes', class_name: 'User'
   has_many :comments
 
-  self.per_page = 10
+  self.per_page = 6
 
   validates_presence_of :guild
   validates_presence_of :quest

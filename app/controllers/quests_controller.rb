@@ -9,7 +9,7 @@ class QuestsController < ApplicationController
   end
 
   def show
-    @codes = @quest.codes.paginate(page: params[:page])
+    @codes = @quest.sorted_codes.paginate(page: params[:page])
     @quest_rank = @quest.get_quest_total_vote_point.sort_by{|_,v|-v}
     @quest_guild_top = @quest.get_quest_guild_top
 

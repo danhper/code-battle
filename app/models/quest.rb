@@ -20,6 +20,10 @@ class Quest < ActiveRecord::Base
 
   self.per_page = 5
 
+  def sorted_codes
+    self.codes.where(quest_id: self).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
+  end
+
   #return hash {key:Guild_id,value:Point}
   def guild_codes(guild)
     self.codes.where(quest_id: self, guild_id: guild).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
