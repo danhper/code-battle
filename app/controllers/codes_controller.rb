@@ -49,6 +49,9 @@ class CodesController < ApplicationController
   end
 
   def like
+    unless in_guild?(current_user)
+      render json: { error: 'can only like own guild' }, status: 400
+    end
     if current_user.likes_code?(@code)
       render json: { error: 'already likes code' }, status: 400
     elsif @code.author == current_user
