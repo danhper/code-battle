@@ -19,6 +19,7 @@ end
 
 gem 'jquery-rails'
 gem 'backbone-on-rails'
+gem 'underscore-string-rails'
 gem 'turbolinks'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'less-rails-bootstrap'

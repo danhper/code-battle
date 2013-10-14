@@ -28,7 +28,7 @@
         <% link = link_to image_tag("#{@code.guild.url_safe_name}-logo.png", alt: @code.guild.name, class: :lang), @code.guild %>
         <%= t('code.used_language', language: link).html_safe %>
 
-        <% if user_signed_in? && !code_author?(@code) %>
+        <% if user_signed_in? && current_user != @code.author %>
           <span class="plusone btn btn-warning">+1</span>
         <% end %>
         <span class="plusone-result"><%= @code.likes.count %></span>
@@ -46,9 +46,7 @@
     <% if @quest.guild_best_code?(@code) %>
       <div id="vote-container">
         <%= t 'code.can_be_voted' %>
-        <%= link_to t('code.vote_for', language: @code.guild.name.capitalize), '#', class: @code.guild.url_safe_name, id: 'vote' %>
-        <%#= add %>
-        <%= render 'codes/vote', code2: @code %>
+        <%= render 'codes/vote', code: @code %>
       </div>
     <% end %>
 
@@ -82,8 +80,8 @@
     var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
     new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
     new Dmtc.Views.CommentsIndex({ collection: comments });
-    var code2JSON = _.extend(<%= @code.to_json.html_safe %>, { voted: <%= @voted %> });
-    var code2Model = new Dmtc.Models.Code2(code2JSON);
-    new Dmtc.Views.Show2Code({ model: code2Model });
+    var codeVoteJSON = _.extend(<%= @code.to_json(include: :guild).html_safe %>, { voted: <%= @voted %> });
+    var codeVote = new Dmtc.Models.CodeVote(codeVoteJSON);
+    new Dmtc.Views.CodeVote({ model: codeVote });
   </script>
 <% end %>

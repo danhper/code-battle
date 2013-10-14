@@ -13,6 +13,7 @@ ja:
     time:
       before: '%{time}前'
   quest:
+    foo: bar
     quest: クエスト
     current_best: 現在の一位
     from: '%{username}からのクエスト'
@@ -33,6 +34,7 @@ ja:
     used_language: '%{language}で回答したぞ！'
     other_used_language: '%{language}で行く!'
     vote_for: '%{language}に一票を投じる'
+    unvote: '%{language}の投票を取り消す'
     others: ほかのユーザーの回答
     choose_guild: 自分が使用する言語を選択
     placeholder: ここにコードを入力してください。

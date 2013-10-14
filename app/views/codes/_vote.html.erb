@@ -1,7 +1,7 @@
-<% if user_signed_in? && @code.author != current_user %>
-  <% if current_user.votes_quest? code2 %>
-    <%= link_to 'Unvote', unvote_quest_code_path(@quest, @code), class: 'vote-link' %>
+<% if user_signed_in? && code.author != current_user %>
+  <% if current_user.votes_quest? code %>
+    <%= link_to t('code.unvote_for', language: code.guild.name.capitalize), '#', class: code.guild.url_safe_name, id: 'vote' %>
   <% else %>
-    <%= link_to 'Vote', vote_quest_code_path(@quest, @code), class: 'vote-link' %>
+    <%= link_to t('code.vote_for', language: code.guild.name.capitalize), '#', class: code.guild.url_safe_name, id: 'vote' %>
   <% end %>
 <% end %>
