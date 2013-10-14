@@ -24,7 +24,7 @@ class Code < ActiveRecord::Base
   validates_presence_of :quest
 
   def formatted_source
-    Pygments.highlight(self.source, lexer: self.guild.url_safe_name)
+    Pygments.highlight(self.source, lexer: self.guild.url_safe_name) || ''
   end
 
   def best_for_quest?(quest)
