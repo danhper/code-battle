@@ -20,7 +20,7 @@ ja:
     only_alphabet: アルファベットのみ
     mail_warning: メールアドレスには、サービスにまつわる情報が配信されます。
   quest:
-    foo: bar
+    new: クエスト投稿
     quest: クエスト
     current_best: 現在の一位
     from: '%{username}からのクエスト'

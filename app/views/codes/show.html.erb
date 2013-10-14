@@ -41,9 +41,7 @@
         </span>
       </h4>
       <div class="highlight">
-        <pre>
-          <%= @code.formatted_source(nowrap: true).html_safe %>
-        </pre>
+        <pre><%= @code.formatted_source(nowrap: true).html_safe %></pre>
         <%= render 'codes/control_buttons', quest: @quest, code: @code %>
       </div>
     </div>

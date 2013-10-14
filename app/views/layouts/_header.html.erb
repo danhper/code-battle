@@ -19,6 +19,11 @@
         <li class="<%= "active" if request.path == guilds_path %>">
           <%= link_to t('guild.index_title'), guilds_path %>
         </li>
+        <% if user_signed_in? %>
+        <li class="<%= "active" if request.path == new_quest_path %>">
+          <%= link_to t('quest.new'), new_quest_path %>
+        </li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li>
