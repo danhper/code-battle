@@ -4,11 +4,11 @@
       <label for="select-id">
         <span><%= t 'user.use_id' %></span>
       </label>
-      <%= f.text_field :username, id: "select-id", class: 'form-control input-lg', placeholder: t('general.only-alphabet') %>
+      <%= f.text_field :username, id: "select-id", class: 'form-control input-lg', placeholder: t('general.only_alphabet') %>
     </section>
 
     <section id="select-mailaddr-section">
-      <%= f.label :select-mailaddr do %>
+      <%= f.label 'select-mailaddr' do %>
       <span><%= t 'user.enter_mail' %></span>
       <% end %>
       <%= f.text_field :email, id: "select-mailaddr", class: 'form-control input-lg', placeholder: 'foobar@example.com' %>
