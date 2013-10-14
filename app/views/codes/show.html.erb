@@ -74,6 +74,7 @@
 
 <% content_for :javascript do %>
   <script>
+    I18n.translations.ja.code.unvote = "<%= I18n.t('code.unvote') %>";
     var codeJSON = _.extend(<%= @code.to_json(methods: :likes_number).html_safe %>, { liked: <%= @liked %> });
     var codeModel = new Dmtc.Models.Code(codeJSON);
     new Dmtc.Views.ShowCode({ model: codeModel });

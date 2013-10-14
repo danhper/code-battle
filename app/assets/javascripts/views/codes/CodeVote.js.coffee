@@ -17,6 +17,7 @@ class Dmtc.Views.CodeVote extends Backbone.View
     else
       link.text I18n.t('code.vote_for', language: language)
       link.removeClass 'voted'
+    link.blur()
 
   voteSuccess: =>
     @model.set('voted', !@model.get('voted'))
