@@ -41,7 +41,9 @@
         </span>
       </h4>
       <div class="highlight">
-        <%= @code.formatted_source.html_safe %>
+        <pre>
+          <%= @code.formatted_source(nowrap: true).html_safe %>
+        </pre>
         <div class="code-edit">
           <%= link_to edit_quest_code_path(@quest, @code), class: 'btn btn-inverse' do %>
             <i class="icon-pencil"></i>

@@ -25,8 +25,8 @@ class Code < ActiveRecord::Base
   validates_presence_of :guild
   validates_presence_of :quest
 
-  def formatted_source
-    Pygments.highlight(self.source, lexer: self.guild.url_safe_name) || ''
+  def formatted_source(options={})
+    Pygments.highlight(self.source, options: { lexer: self.guild.url_safe_name }.merge(options)) || ''
   end
 
   def best_for_quest?(quest)
