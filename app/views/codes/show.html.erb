@@ -23,7 +23,7 @@
       <%= l @quest.created_at, format: :date_only %>
     </p>
 
-    <div class="code">
+    <div class="code clearfix">
       <h4 class="<%= @code.guild.url_safe_name %>">
         <% link = link_to image_tag("#{@code.guild.url_safe_name}-logo.png", alt: @code.guild.name, class: :lang), @code.guild %>
         <%= t('code.used_language', language: link).html_safe %>
