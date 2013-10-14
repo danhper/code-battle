@@ -21,7 +21,10 @@ class Quest < ActiveRecord::Base
   self.per_page = 5
 
   def sorted_codes
-    self.codes.select('"codes".*, count("user_like_codes".id) as counter').joins(:user_like_codes).group('codes.id').order('counter DESC')
+    self.codes
+        .joins('LEFT JOIN user_like_codes ON user_like_codes.id = codes.id').select('"codes".*, count("user_like_codes".id) AS counter')
+        .group('codes.id')
+        .order('counter DESC')
   end
 
   def guild_codes(guild)
