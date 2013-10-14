@@ -1,126 +1,21 @@
 <article id="guildlist">
-
 <section>
-<h3 class="title">
-  <%= t 'guild.index_title' %>
-</h3>
-<p class="desc"><%= t 'guild.choose' %></p>
-<div id="code-container" class="clearfix">
-  <%= render @guilds %>
-
-
-  <div class="code">
-    <h4 class="php"><img class="lang" src="img/php-logo.png" alt="PHP"/>メンバー数: 100</h4>
-    <p>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-      <a href=""><img class="avatar" src="img/mmarilyn.png" alt="ididid"/></a>
-    </p>
-        <span class="more" href="">
-          <a class="btn btn-default">ギルドに参加</a>
-        </span>
-  </div>
-</div>
-<!--<div class="code"></div>-->
-<!--<div id="comment-others-container" class="row">-->
-<!--<div id="comment" class="col-lg-7 col-md-7">-->
-<!--<h5>3件のコメント</h5>-->
-<!--<div class="media">-->
-<!--<a class="pull-left" href="#">-->
-<!--<img class="avatar media-object" src="img/comment-img.png" alt="...">-->
-<!--</a>-->
-<!--<div class="media-body">-->
-<!--<h4 class="media-heading"><a href="">Anderson</a><span class="date">4日前</span></h4>-->
-<!--てすとてすとてすとてすとてすと！<br>-->
-<!--てすとてすtesttesttestですかね？<br>-->
-<!--kaklakldsfkdsfklfsklfdsklfds dslkfaj aflkdsjfas!-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="media">-->
-<!--<a class="pull-left" href="#">-->
-<!--<img class="avatar media-object" src="img/comment-img.png" alt="...">-->
-<!--</a>-->
-<!--<div class="media-body">-->
-<!--<h4 class="media-heading"><a href="">Anderson</a><span class="date">6日前</span></h4>-->
-<!--てすとてすとてすとてすと<br>-->
-<!--kaklakldsfkdsfklfsklfdsklfds-->
-<!--</div>-->
-<!--</div>-->
-<!--<hr>-->
-<!--<form action="">-->
-<!--<textarea class="form-control" rows="3"></textarea>-->
-<!--<button type="button" class="comment-post btn btn-primary pull-right">コメントを投稿</button>-->
-<!--</form>-->
-<!--</div>-->
-<!--<div id="others" class="col-lg-5 col-md-5">-->
-<!--<h5>ほかのユーザーの回答</h5>-->
-<!--<a class="code python" href="">-->
-<!--<img class="lang" src="img/python-logo.png" alt="Python"/>で行く!-->
-<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
-<!--</a>-->
-<!--<a class="code php" href="">-->
-<!--<img class="lang" src="img/php-logo.png" alt="PHP"/>で行く!-->
-<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
-<!--</a>-->
-<!--<a class="code ruby" href="">-->
-<!--<img class="lang" src="img/ruby-logo.png" alt="Ruby"/>で行く!-->
-<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
-<!--</a>-->
-<!--<a class="code python" href="">-->
-<!--<img class="lang" src="img/python-logo.png" alt="Python"/>で行く!-->
-<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
-<!--</a>-->
-<!--<a class="code ruby" href="">-->
-<!--<img class="lang" src="img/ruby-logo.png" alt="Ruby"/>で行く!-->
-<!--<span class="author">回答者: <img class="avatar" src="img/mmarilyn.png" alt=""/></span>-->
-<!--</a>-->
-<!--</div>-->
-<!--</div>-->
-
-</section>
-
-<ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+    <h3 class="title">
+      <%= t 'guild.index_title' %>
+    </h3>
+    <p class="desc"><%= t 'guild.choose' %></p>
+    <div id="code-container" class="guilds clearfix">
+      <%= render @guilds %>
+    </div>
+  </section>
 </article>
 
 
-
-
-
-
-
-
-
-
-
-<h1>Guilds</h1>
-
-<div class="guilds">
-  <%= render @guilds %>
-</div>
-
 <% content_for :javascript do %>
 <script>
+  I18n.translations[I18n.locale].guild = I18n.translations[I18n.locale].guild || {};
+  I18n.translations[I18n.locale].guild.enter = "<%= t 'guild.enter' %>";
+  I18n.translations[I18n.locale].guild.leave = "<%= t 'guild.leave' %>";
   new Dmtc.Views.GuildsIndex();
 </script>
 <% end %>

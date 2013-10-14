@@ -1,9 +1,12 @@
-  <div class="code">
+  <div class="code guild"
+       data-in-guild="<%= current_user.in_guild?(guild) %>"
+       data-url-safe-name="<%= guild.url_safe_name %>"
+  >
     <h4 class="<%= guild.url_safe_name %>">
       <%= link_to guild do %>
         <%= image_tag "#{guild.url_safe_name}-logo.png", alt: guild.name %>
         <%= t 'guild.members_count_label' %>:
-        <%= guild.users.count %>
+        <span class="user-count"><%= guild.users.count %></span>
       <% end %>
     </h4>
     <p>
@@ -12,7 +15,7 @@
     <% if user_signed_in? %>
       <span class="more">
         <% text_key = current_user.in_guild?(guild) ? 'guild.leave' : 'guild.enter' %>
-          <%= link_to t(text_key), guild, class: 'btn btn-default' %>
+          <%= link_to t(text_key), guild, class: 'btn btn-default enter-leave-link' %>
       </span>
     <% end %>
 </div>
