@@ -42,6 +42,8 @@ ja:
     choose_guild: 自分が使用する言語を選択
     placeholder: ここにコードを入力してください。
     publish_warning: 投稿したコードは、Web全体に公開されます。
+    edit: 編集
+    delete: 削除
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
