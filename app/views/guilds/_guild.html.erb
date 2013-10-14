@@ -1,5 +1,5 @@
   <div class="code guild"
-       data-in-guild="<%= current_user.in_guild?(guild) %>"
+       data-in-guild="<%= user_signed_in? && current_user.in_guild?(guild) %>"
        data-url-safe-name="<%= guild.url_safe_name %>"
   >
     <h4 class="<%= guild.url_safe_name %>">

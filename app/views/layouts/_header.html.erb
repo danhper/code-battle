@@ -13,10 +13,10 @@
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="<%= "active" if request.path == root_path %>">
           <%= link_to t('general.top'), root_path %>
         </li>
-        <li>
+        <li class="<%= "active" if request.path == guilds_path %>">
           <%= link_to t('guild.index_title'), guilds_path %>
         </li>
       </ul>
