@@ -25,4 +25,6 @@
       <%= render partial: 'quests/best_codes', collection: @quests, as: :quest %>
     </div>
 
+    <%= will_paginate @quests %>
+
   </article>
