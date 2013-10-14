@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_guild!
-    redirect_to guilds_path, alert: 'choose a guild' if current_user.guilds.empty?
+    redirect_to guilds_path, alert: 'guild.please_enter' if current_user.guilds.empty?
   end
 end

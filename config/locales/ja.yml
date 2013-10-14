@@ -63,6 +63,7 @@ ja:
     choose: 自分の好きな言語のギルドに入ろう！
     enter: ギルドに参加
     leave: ギルドから抜ける
+    please_enter: まずギルドに入りましょう
     house: ギルドハウス
     conquer: '%{language}を使い、Code大陸を征服せよ！'
     members_count_label: メンバー数
