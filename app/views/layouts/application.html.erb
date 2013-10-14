@@ -10,11 +10,9 @@
     <%= content_tag :div, msg, class: name %>
   <% end -%>
 
-<div class="container">
   <%= render 'layouts/header' %>
 
   <%= yield %>
-</div>
 
 <%= javascript_include_tag "application" %>
 <script>
