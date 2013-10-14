@@ -21,25 +21,11 @@ class Quest < ActiveRecord::Base
   self.per_page = 5
 
   def sorted_codes
-    self.codes.find(:all,
-      select: '"codes".*, count("user_like_codes".id) as counter',
-      joins: :user_like_codes,
-      group: '"codes".id',
-      order: 'counter DESC'
-    )
-    # self.codes.group(:likes).order('count_user_like_counts desc').count('user_like_counts')
-    # self.codes.where(quest_id: self).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
+    self.codes.select('"codes".*, count("user_like_codes".id) as counter').joins(:user_like_codes).group('codes.id').order('counter DESC')
   end
 
-  #return hash {key:Guild_id,value:Point}
   def guild_codes(guild)
-    self.codes.where(guild: guild).find(:all,
-      :select => '"codes".*, count("user_like_codes".id) as counter',
-      :joins => :user_like_codes,
-      :group => '"codes".id',
-      :order => 'counter DESC'
-    )
-    # self.codes.where(quest_id: self, guild_id: guild).joins(:likes).group('user_like_codes.code_id').order('count(user_like_codes.code_id) desc')
+    self.sorted_codes.where(guild_id: guild)
   end
 
   def guild_best_code?(code)
