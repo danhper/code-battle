@@ -14,16 +14,18 @@
       </span>
     </h3>
     <p class="desc">
-      <strong><%= t 'code.current_first' %>:</strong>
-      <%= @code.guild.name %>
-      (<%= t('code.written_by', username: link_to(@best_code.author.username, @best_code.author)).html_safe %>) /
+      <% unless @best_code.nil? %>
+        <strong><%= t 'code.current_first' %>:</strong>
+        <%= @best_code.guild.name %>
+        (<%= t('code.written_by', username: link_to(@best_code.author.username, @best_code.author)).html_safe %>) /
+      <% end %>
       <strong><%= t 'quest.answers_number' %>:</strong>
       <%= @quest.codes.count %> /
       <strong><%= t 'posted_date' %>:</strong>
       <%= l @quest.created_at, format: :date_only %>
     </p>
 
-    <div class="code">
+    <div class="code clearfix">
       <h4 class="<%= @code.guild.url_safe_name %>">
         <% link = link_to image_tag("#{@code.guild.url_safe_name}-logo.png", alt: @code.guild.name, class: :lang), @code.guild %>
         <%= t('code.used_language', language: link).html_safe %>
@@ -40,7 +42,10 @@
           <% end %>
         </span>
       </h4>
-      <%= @code.formatted_source.html_safe %>
+      <div class="highlight">
+        <pre><%= @code.formatted_source(nowrap: true).html_safe %></pre>
+        <%= render 'codes/control_buttons', quest: @quest, code: @code %>
+      </div>
     </div>
 
     <% if @quest.guild_best_code?(@code) %>

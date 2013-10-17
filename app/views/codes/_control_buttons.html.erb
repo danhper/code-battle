@@ -1,0 +1,13 @@
+<% if user_signed_in? && current_user == code.author %>
+  <div class="code-edit">
+  <%= link_to edit_quest_code_path(code.quest, code), class: 'btn btn-inverse' do %>
+    <i class="icon-pencil"></i>
+    <%= t 'code.edit' %>
+    <% end %>
+    <%= link_to quest_code_path(code.quest, code), method: :delete, class: 'btn btn-inverse', confirm: 'Sure?' do %>
+    <i class="icon-trash"></i>
+    <%= t 'code.delete' %>
+    <% end %>
+  </div>
+
+<% end %>

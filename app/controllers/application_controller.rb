@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :check_username!
+
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
       if resource.username.blank?
@@ -13,10 +15,17 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_with_username!
     authenticate_user!
-    redirect_to edit_user_path(current_user) if current_user.username.blank?
+    self.check_username!
+  end
+
+  def check_username!
+    allowed_paths = [edit_user_path(current_user), destroy_user_session_path, user_path(current_user)]
+    if user_signed_in? && current_user.username.blank? && !allowed_paths.include?(request.path)
+      redirect_to edit_user_path(current_user), alert: 'user.enter_username'
+    end
   end
 
   def check_guild!
-    redirect_to guilds_path, alert: 'choose a guild' if current_user.guilds.empty?
+    redirect_to guilds_path, alert: 'guild.please_enter' if current_user.guilds.empty?
   end
 end

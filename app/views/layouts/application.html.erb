@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dmtc</title>
+  <title>Code Battle</title>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-  <% end -%>
 
-<div class="container">
   <%= render 'layouts/header' %>
 
+  <%= render 'layouts/flashs' %>
+
   <%= yield %>
-</div>
 
 <%= javascript_include_tag "application" %>
 <script>

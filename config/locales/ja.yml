@@ -1,4 +1,6 @@
 ja:
+  btn:
+    change: 変更
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -13,8 +15,12 @@ ja:
     logout: ログアウト
     time:
       before: '%{time}前'
+    top: トップページ
+    login_with_github: Githubアカウントでログイン
+    only_alphabet: アルファベットのみ
+    mail_warning: メールアドレスには、サービスにまつわる情報が配信されます。
   quest:
-    foo: bar
+    new: クエスト投稿
     quest: クエスト
     current_best: 現在の一位
     from: '%{username}からのクエスト'
@@ -40,6 +46,10 @@ ja:
     choose_guild: 自分が使用する言語を選択
     placeholder: ここにコードを入力してください。
     publish_warning: 投稿したコードは、Web全体に公開されます。
+    post: このクエストにコードで回答
+    edit_long: 自分のコードを編集する
+    edit: 編集
+    delete: 削除
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
@@ -53,6 +63,7 @@ ja:
     choose: 自分の好きな言語のギルドに入ろう！
     enter: ギルドに参加
     leave: ギルドから抜ける
+    please_enter: まずギルドに入りましょう
     house: ギルドハウス
     conquer: '%{language}を使い、Code大陸を征服せよ！'
     members_count_label: メンバー数
@@ -63,7 +74,11 @@ ja:
     possession_rate: 支配率
     rank: '%{number}位'
   user:
+    settings: ユーザー設定
     guilds: 所属ギルド
+    use_id: 使いたいIDを入力
+    enter_mail: メールアドレスを入力
+    enter_username: まずユーザー名を記入してください
   will_paginate:
     previous_label: 前
     next_label: 次

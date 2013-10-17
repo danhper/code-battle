@@ -7,7 +7,7 @@
       <br>
       <span class="title">
         <%= t 'quest.title' %>
-        <%= link_to code.quest.title, code.quest %>
+        <%= link_to truncate(code.quest.title, length: 16), code.quest %>
       </span>
     <% end %>
     <span class="author">

@@ -15,9 +15,15 @@
         <%= l @quest.created_at, format: :date_only %>
       </p>
 
-      <p class="description">
-        <%= @quest.description %>
-      </p>
+      <% if user_signed_in? %>
+        <div id="post-container">
+          <% if current_user.wrote_code?(@quest) %>
+            <%= link_to t('code.edit_long'), edit_quest_code_path(@quest, current_user.code_for_quest(@quest)), id: 'post', class: 'btn-default' %>
+          <% else %>
+            <%= link_to t('code.post'), new_quest_code_path(@quest), id: 'post', class: 'btn-default' %>
+          <% end %>
+        </div>
+      <% end %>
 
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
     </section>

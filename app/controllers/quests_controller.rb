@@ -4,8 +4,10 @@ class QuestsController < ApplicationController
   before_action :check_creator!, only: [:edit, :update, :destroy]
   before_action :check_guild!, only: [:new, :create]
 
+  require 'will_paginate/array'
+
   def index
-    @quests = Quest.joins(:codes).paginate(page: params[:page])
+    @quests = Quest.joins(:codes).paginate(page: params[:page]).uniq
   end
 
   def show
