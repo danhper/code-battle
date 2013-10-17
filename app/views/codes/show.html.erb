@@ -14,8 +14,10 @@
       </span>
     </h3>
     <p class="desc">
-      <strong><%= t 'code.current_first' %>:</strong>
-      <%= @best_code.guild.name %>
+      <% unless @best_code.nil? %>
+        <strong><%= t 'code.current_first' %>:</strong>
+        <%= @best_code.guild.name %>
+      <% end %>
       (<%= t('code.written_by', username: link_to(@best_code.author.username, @best_code.author)).html_safe %>) /
       <strong><%= t 'quest.answers_number' %>:</strong>
       <%= @quest.codes.count %> /
