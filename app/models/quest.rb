@@ -20,21 +20,14 @@ class Quest < ActiveRecord::Base
 
   self.per_page = 5
 
-  def sorted_codes
-    self.codes
-        .joins('LEFT JOIN user_like_codes ON user_like_codes.id = codes.id')
-        .select('"codes".*, count("user_like_codes".id) AS counter')
-        .group('codes.id')
-        .order('counter DESC')
-  end
-
   def guild_codes(guild)
-    self.sorted_codes.where(guild_id: guild)
+    self.codes.by_likes.where(guild_id: guild)
   end
 
   def guild_best_code?(code)
     code == guild_codes(code.guild).first
   end
+
 
   def get_quest_total_vote_point
     h = Hash.new
