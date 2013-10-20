@@ -27,8 +27,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable
   devise :omniauthable, omniauth_providers: [:github]
 
-  has_and_belongs_to_many :guilds, -> { uniq }, join_table: 'user_guilds'
-  has_and_belongs_to_many :liked_codes, -> { uniq }, join_table: 'user_like_codes', class_name: 'Code'
+  has_and_belongs_to_many :guilds,
+                          -> { uniq },
+                          join_table: 'user_guilds'
+
+  has_and_belongs_to_many :likes,
+                          -> { uniq },
+                          join_table: 'user_like_codes',
+                          class_name: 'Code',
+                          after_add: Proc.new { |u, c| c.increment_likes_counter! },
+                          after_remove: Proc.new { |u, c| c.decrement_likes_counter! }
+
   has_many :votes
   has_many :quests, through: :votes
 
@@ -44,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def likes_code?(code)
-    liked_codes.exists?(code) ? true : false
+    likes.exists?(code) ? true : false
   end
 
   def votes_quest?(quest)

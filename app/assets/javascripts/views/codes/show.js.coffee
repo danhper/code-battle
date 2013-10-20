@@ -8,7 +8,7 @@ class Dmtc.Views.ShowCode extends Backbone.View
     @setLikesNumber()
 
   setLikesNumber: ->
-    @$('.plusone-result').text @model.get('likes_number')
+    @$('.plusone-result').text @model.get('likes_count')
     if @model.get('liked')
       @$('.plusone').addClass 'liked'
     else
@@ -18,10 +18,10 @@ class Dmtc.Views.ShowCode extends Backbone.View
   likeSuccess: =>
     if @model.get 'liked'
       @model.set 'liked', false
-      @model.set 'likes_number', @model.get('likes_number') - 1
+      @model.set 'likes_count', @model.get('likes_count') - 1
     else
       @model.set 'liked', true
-      @model.set 'likes_number', @model.get('likes_number') + 1
+      @model.set 'likes_count', @model.get('likes_count') + 1
     @setLikesNumber()
 
   likeUnlikeCode: (e) ->

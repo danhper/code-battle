@@ -57,14 +57,14 @@ class CodesController < ApplicationController
     elsif @code.author == current_user
       render json: { error: 'cannot like own code' }, status: 400
     else
-      current_user.liked_codes << @code
+      current_user.likes << @code
       head :no_content
     end
   end
 
   def unlike
     if current_user.likes_code?(@code)
-      current_user.liked_codes.delete(@code)
+      current_user.likes.delete(@code)
       head :no_content
     else
       render json: { error: 'does not like code' }, status: 400
