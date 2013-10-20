@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <% if @quest.guild_best_code?(@code) %>
+    <% if @code.finalist? %>
       <div id="vote-container">
         <%= t 'code.can_be_voted', language: @code.guild.name.capitalize %>
         <%= render 'codes/vote', code: @code %>

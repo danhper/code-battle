@@ -6,11 +6,11 @@
       <%= link_to guild do %>
         <%= image_tag "#{guild.url_safe_name}-logo.png", alt: guild.name, class: 'lang' %>
         <%= t 'guild.members_count_label' %>:
-        <span class="user-count"><%= guild.users.count %></span>
+        <span class="user-count"><%= guild.users_count %></span>
       <% end %>
     </h4>
     <p>
-      <%= render partial: 'users/avatar', collection: guild.users.limit(16), as: :user %>
+      <%= render partial: 'users/avatar', collection: guild.recent_users, as: :user %>
     </p>
     <% if user_signed_in? %>
       <span class="more">

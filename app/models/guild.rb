@@ -19,13 +19,21 @@ class Guild < ActiveRecord::Base
                           after_add: -> (g, u) { g.increment_users_count! },
                           after_remove: -> (g, u) { g.decrement_users_count! }
 
+  has_and_belongs_to_many :recent_users,
+                          -> { order(created_at: :desc)
+                              .uniq
+                              .limit(16)
+                              .readonly },
+                          join_table: 'user_guilds',
+                          class_name: 'User'
+
   def to_param
     url_safe_name
   end
 
 
   def get_guild_coefficient
-    1.0 - (self.users.count / User.count)
+    1.0 - (self.users_count / User.count)
   end
 
   def get_total_vote_point

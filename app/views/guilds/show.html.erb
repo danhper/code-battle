@@ -28,7 +28,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= t 'guild.members_count', count: @guild.users.count %></td>
+            <td><%= t 'guild.members_count', count: @guild.users_count %></td>
             <td><%= number_to_percentage (@guild.get_territory_percent * 100), precision: 2 %></td>
             <td><%= t 'guild.rank', number: @guild.get_my_rank %></td>
           </tr>
