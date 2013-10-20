@@ -10,10 +10,14 @@
 #
 
 class Guild < ActiveRecord::Base
-  has_and_belongs_to_many :users, -> { uniq }, join_table: 'user_guilds'
   has_many :codes
   has_many :votes
   has_many :quests, through: :votes
+  has_and_belongs_to_many :users,
+                          -> { uniq },
+                          join_table: 'user_guilds',
+                          after_add: -> (g, u) { g.increment_users_count! },
+                          after_remove: -> (g, u) { g.decrement_users_count! }
 
   def to_param
     url_safe_name
@@ -54,5 +58,13 @@ class Guild < ActiveRecord::Base
       return i+1 if g.id == self.id
     end
     ary.size + 1
+  end
+
+  def increment_users_count!
+    self.increment!(:users_count)
+  end
+
+  def decrement_users_count!
+    self.decrement!(:users_count)
   end
 end
