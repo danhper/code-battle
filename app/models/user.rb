@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
                           after_add: Proc.new { |u, c| c.increment_likes_counter! },
                           after_remove: Proc.new { |u, c| c.decrement_likes_counter! }
 
+  scope :last_registered, -> { limit(16).order(created_at: :desc) }
+
   has_many :votes
   has_many :quests, through: :votes
 

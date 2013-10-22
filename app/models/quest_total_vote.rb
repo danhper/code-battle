@@ -11,8 +11,10 @@
 
 class QuestTotalVote < ActiveRecord::Base
   belongs_to :quest
-  belongs_to :guild, foreign_key:"voting_guild_id"
-  belongs_to :guild, foreign_key:"voted_guild_id"
+  belongs_to :voting_guild, foreign_key: "voting_guild_id", class_name: 'Guild'
+  belongs_to :voted_guild, foreign_key: "voted_guild_id", class_name: 'Guild'
+
+  default_scope { includes(:voted_guild, :voting_guild) }
 
   def inc_num
     self.vote_num+=1

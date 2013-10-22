@@ -10,7 +10,7 @@
         <br>
       </h3>
       <p class="desc">
-        <%= render 'quests/current_winner', code: @quest.get_top_code %>
+        <%= render 'quests/current_winner', code: @quest.best_code %>
         <strong><%= t 'quest.answers_number' %>:</strong> <%= @quest.codes.count %> / <strong><%= t 'quest.posted_date' %>:</strong>
         <%= l @quest.created_at, format: :date_only %>
       </p>
