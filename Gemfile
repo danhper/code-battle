@@ -36,14 +36,20 @@ group :development do
   gem 'annotate'
 end
 
-group :development, :test do
-  gem 'sqlite3'
+group :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-expectations'
   gem 'guard-spork'
   gem 'guard-rspec'
-  gem 'childprocess'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
-  gem 'factory_girl', '~> 4.0'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'childprocess'
+  gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem "rb-readline", "~> 0.5.0", require: false
   gem 'faker'
 end

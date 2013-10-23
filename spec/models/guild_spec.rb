@@ -7,10 +7,10 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  url_safe_name :string(255)
+#  users_count   :integer          default(0), not null
 #
 
 require 'spec_helper'
 
 describe Guild do
-  pending "add some examples to (or delete) #{__FILE__}"
 end

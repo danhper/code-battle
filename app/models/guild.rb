@@ -7,6 +7,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  url_safe_name :string(255)
+#  users_count   :integer          default(0), not null
 #
 
 class Guild < ActiveRecord::Base
