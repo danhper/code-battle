@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20131023074321) do
   end
 
   add_index "quest_total_votes", ["quest_id"], name: "index_quest_total_votes_on_quest_id"
+  add_index "quest_total_votes", ["voted_guild_id"], name: "index_quest_total_votes_on_voted_guild_id"
+  add_index "quest_total_votes", ["voting_guild_id"], name: "index_quest_total_votes_on_voting_guild_id"
 
   create_table "quests", force: true do |t|
     t.string   "title"

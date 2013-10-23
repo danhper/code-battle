@@ -8,5 +8,7 @@ class AddIndexToForeignKeys < ActiveRecord::Migration
     add_index :quest_total_votes, :quest_id
     add_index :quests, :creator_id
     add_index :votes, :guild_id
+    add_index :quest_total_votes, :voting_guild_id
+    add_index :quest_total_votes, :voted_guild_id
   end
 end
