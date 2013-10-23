@@ -11,14 +11,13 @@ class QuestsController < ApplicationController
   end
 
   def show
-    @codes = @quest.sorted_codes.paginate(page: params[:page])
+    @codes = @quest.codes.by_likes.paginate(page: params[:page])
 
     if user_signed_in?
       @code = Code.where(quest_id: @quest, user_id: current_user).first
     end
 
     @greeting = params[:greeting]
-    render
   end
 
   def new
@@ -35,7 +34,7 @@ class QuestsController < ApplicationController
       @quest.save!
       redirect_to @quest
     else
-      render action: 'new'
+      render 'new'
     end
   end
 

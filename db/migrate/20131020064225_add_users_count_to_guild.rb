@@ -3,7 +3,7 @@ class AddUsersCountToGuild < ActiveRecord::Migration
     add_column :guilds, :users_count, :integer, default: 0, null: false
     Guild.all.each do |guild|
       guild.users_count = guild.users.count
-      guild.save
+      guild.save!
     end
   end
 end

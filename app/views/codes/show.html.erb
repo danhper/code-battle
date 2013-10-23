@@ -2,7 +2,7 @@
   <section>
     <h3 class="title">
       <span class="author">
-        <%= t('quest.from', username: link_to(@quest.creator.username, @quest.creator)).html_safe %>
+        <%= t('quest.from', username: link_to(@quest.creator_username, @quest.creator)).html_safe %>
       </span>
       <br>
       <cite>
@@ -26,8 +26,8 @@
     </p>
 
     <div class="code clearfix">
-      <h4 class="<%= @code.guild.url_safe_name %>">
-        <% link = link_to image_tag("#{@code.guild.url_safe_name}-logo.png", alt: @code.guild.name, class: :lang), @code.guild %>
+      <h4 class="<%= @code.guild_url_safe_name %>">
+        <% link = link_to image_tag("#{@code.guild_url_safe_name}-logo.png", alt: @code.guild_name, class: :lang), @code.guild %>
         <%= t('code.used_language', language: link).html_safe %>
 
         <% if can_like?(@code) %>
@@ -37,8 +37,8 @@
         <span class="author">
           <%= t 'code.author' %>:
           <%= link_to @code.author do %>
-            <%= @code.author.username %>
-            <%= gravatar_image_tag @code.author.email, alt: @code.author.username, class: 'avatar' %>
+            <%= @code.author_username %>
+            <%= gravatar_image_tag @code.author_email, alt: @code.author_username, class: 'avatar' %>
           <% end %>
         </span>
       </h4>
@@ -50,7 +50,7 @@
 
     <% if @code.finalist? %>
       <div id="vote-container">
-        <%= t 'code.can_be_voted', language: @code.guild.name.capitalize %>
+        <%= t 'code.can_be_voted', language: @code.guild_name.capitalize %>
         <%= render 'codes/vote', code: @code %>
       </div>
     <% end %>

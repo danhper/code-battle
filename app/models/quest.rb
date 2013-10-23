@@ -28,6 +28,8 @@ class Quest < ActiveRecord::Base
            class_name: 'Code',
            foreign_key: 'quest_id'
 
+  delegate :username, to: :creator, prefix: true
+
   self.per_page = 5
 
   def guild_codes(guild)

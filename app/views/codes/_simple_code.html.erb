@@ -1,13 +1,13 @@
-<% link = link_to image_tag("#{code.guild.url_safe_name}-logo.png", alt: code.guild.name, class: :lang), code.guild %>
+<% link = link_to image_tag("#{code.guild_url_safe_name}-logo.png", alt: code.guild_name, class: :lang), code.guild %>
 
 <div class="code">
-  <h4 class="<%= code.guild.url_safe_name %>">
+  <h4 class="<%= code.guild_url_safe_name %>">
     <%= t('code.used_language', language: link).html_safe %>
     <% unless defined?(skip_title) %>
       <br>
       <span class="title">
         <%= t 'quest.title' %>
-        <%= link_to truncate(code.quest.title, length: 16), code.quest %>
+        <%= link_to truncate(code.quest_title, length: 16), code.quest %>
       </span>
     <% end %>
     <span class="author">

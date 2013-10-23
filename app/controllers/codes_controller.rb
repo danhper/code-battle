@@ -28,7 +28,7 @@ class CodesController < ApplicationController
     if @quest.save
       redirect_to [@quest, @code]
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -39,7 +39,7 @@ class CodesController < ApplicationController
     if @code.update(code_params)
       redirect_to [@quest, @code]
     else
-      render action: :edit
+      render :edit
     end
   end
 
@@ -77,7 +77,7 @@ class CodesController < ApplicationController
     elsif @code.author == current_user
       render json: { error: 'cannot vote own code' }, status: 400
     else
-      Vote.create(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id)
+      Vote.create!(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id)
       qtv = QuestTotalVote.create_with(vote_num: 0).find_or_create_by(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
       qtv.inc_num
       tv = TotalVote.create_with(vote_num: 0).find_or_create_by(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)

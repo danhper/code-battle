@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020064225) do
+ActiveRecord::Schema.define(version: 20131023074321) do
 
   create_table "codes", force: true do |t|
     t.text     "source"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20131020064225) do
     t.integer  "likes_count", default: 0, null: false
   end
 
+  add_index "codes", ["guild_id"], name: "index_codes_on_guild_id"
+  add_index "codes", ["quest_id"], name: "index_codes_on_quest_id"
+  add_index "codes", ["user_id"], name: "index_codes_on_user_id"
+
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.text     "content"
@@ -30,6 +34,9 @@ ActiveRecord::Schema.define(version: 20131020064225) do
     t.datetime "updated_at"
     t.integer  "code_id"
   end
+
+  add_index "comments", ["code_id"], name: "index_comments_on_code_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "guilds", force: true do |t|
     t.string   "name"
@@ -46,6 +53,10 @@ ActiveRecord::Schema.define(version: 20131020064225) do
     t.integer "vote_num"
   end
 
+  add_index "quest_total_votes", ["quest_id"], name: "index_quest_total_votes_on_quest_id"
+  add_index "quest_total_votes", ["voted_guild_id"], name: "index_quest_total_votes_on_voted_guild_id"
+  add_index "quest_total_votes", ["voting_guild_id"], name: "index_quest_total_votes_on_voting_guild_id"
+
   create_table "quests", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -53,6 +64,8 @@ ActiveRecord::Schema.define(version: 20131020064225) do
     t.datetime "updated_at"
     t.integer  "creator_id"
   end
+
+  add_index "quests", ["creator_id"], name: "index_quests_on_creator_id"
 
   create_table "total_votes", force: true do |t|
     t.integer "voting_guild_id"
@@ -120,6 +133,7 @@ ActiveRecord::Schema.define(version: 20131020064225) do
     t.datetime "updated_at"
   end
 
+  add_index "votes", ["guild_id"], name: "index_votes_on_guild_id"
   add_index "votes", ["user_id", "quest_id"], name: "index_votes_on_user_id_and_quest_id"
 
 end

@@ -1,7 +1,0 @@
-<% if user_signed_in? && @code.author != current_user %>
-  <% if current_user.likes_code? code %>
-    <%= link_to 'Unlike', unlike_quest_code_path(@quest, @code), class: 'like-link' %>
-  <% else %>
-    <%= link_to 'Like', like_quest_code_path(@quest, @code), class: 'like-link' %>
-  <% end %>
-<% end %>

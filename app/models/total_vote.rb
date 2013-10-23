@@ -14,11 +14,11 @@ class TotalVote < ActiveRecord::Base
 
   def inc_num
     self.vote_num+=1
-    self.save
+    self.save!
   end
 
   def dec_num
     self.vote_num-=1
-    self.save
+    self.save!
   end
 end

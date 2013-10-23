@@ -5,7 +5,7 @@ Dmtc::Application.routes.draw do
   root to: 'quests#index'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  resources :users
+  resources :users, except: [:destroy, :new, :create]
 
   resources :guilds do
     member do
