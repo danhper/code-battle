@@ -21,12 +21,15 @@ class Quest < ActiveRecord::Base
   has_many :finalists,
            -> { select('codes.*, max(codes.likes_count), guild_id')
                .includes(:author, :guild)
-               .group(:guild_id)
+               .group('codes.guild_id')
+               .references('codes.guild_id')
                .liked
                .by_likes
                .readonly },
            class_name: 'Code',
            foreign_key: 'quest_id'
+
+  scope :by_date, -> { order(created_at: :desc) }
 
   delegate :username, to: :creator, prefix: true
 
