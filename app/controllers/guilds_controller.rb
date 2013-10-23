@@ -48,8 +48,4 @@ class GuildsController < ApplicationController
   def set_guild
     @guild = Guild.find_by_url_safe_name(params[:id])
   end
-
-  def guild_params
-    params.require(:guild).permit(:name)
-  end
 end

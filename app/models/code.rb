@@ -28,6 +28,10 @@ class Code < ActiveRecord::Base
   scope :by_likes, -> { order(likes_count: :desc) }
   scope :liked, -> { where 'likes_count > 0' }
 
+  delegate :username, :email, to: :author, prefix: true
+  delegate :name, :url_safe_name, to: :guild, prefix: true
+  delegate :title, to: :quest, prefix: true
+
   validates_presence_of :guild
   validates_presence_of :quest
 

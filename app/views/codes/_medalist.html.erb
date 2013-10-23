@@ -1,12 +1,12 @@
       <div class="code <%= medal %>">
-        <h4 class="<%= code.guild.name %>">
+        <h4 class="<%= code.guild_name %>">
           <%= link_to code.guild do %>
-            <%= image_tag "#{code.guild.url_safe_name}-logo.png", alt: code.guild.name, class: 'lang' %>
+            <%= image_tag "#{code.guild_url_safe_name}-logo.png", alt: code.guild.name, class: 'lang' %>
           <% end %>
           <%= t 'code.author' %>:
           <%= link_to code.author do %>
-            <%= code.author.username %>
-            <%= gravatar_image_tag code.author.email, alt: code.author.username, class: 'avatar' %>
+            <%= code.author_username %>
+            <%= gravatar_image_tag code.author_email, alt: code.author_username, class: 'avatar' %>
           <% end %>
         </h4>
         <%= code.formatted_source.html_safe %>
