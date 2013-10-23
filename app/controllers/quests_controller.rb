@@ -18,7 +18,6 @@ class QuestsController < ApplicationController
     end
 
     @greeting = params[:greeting]
-    render
   end
 
   def new
@@ -35,7 +34,7 @@ class QuestsController < ApplicationController
       @quest.save!
       redirect_to @quest
     else
-      render action: 'new'
+      render 'new'
     end
   end
 

@@ -28,7 +28,7 @@ class CodesController < ApplicationController
     if @quest.save
       redirect_to [@quest, @code]
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -39,7 +39,7 @@ class CodesController < ApplicationController
     if @code.update(code_params)
       redirect_to [@quest, @code]
     else
-      render action: :edit
+      render :edit
     end
   end
 
