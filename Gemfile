@@ -14,7 +14,6 @@ gem 'gravatar_image_tag'
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
 end
 
 gem 'jquery-rails'
@@ -44,4 +43,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'childprocess'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'factory_girl', '~> 4.0'
+  gem 'pry-rails'
+  gem 'faker'
 end

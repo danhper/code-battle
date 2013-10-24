@@ -7,7 +7,7 @@ class QuestsController < ApplicationController
   require 'will_paginate/array'
 
   def index
-    @quests = Quest.includes(:creator).paginate(page: params[:page])
+    @quests = Quest.includes(:finalists, :creator).paginate(page: params[:page]).by_date
   end
 
   def show
