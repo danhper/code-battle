@@ -12,6 +12,8 @@ gem 'pygments.rb'
 gem 'will_paginate', '~> 3.0'
 gem 'gravatar_image_tag'
 
+gem 'coveralls', require: false
+
 group :production do
   gem 'pg'
 end

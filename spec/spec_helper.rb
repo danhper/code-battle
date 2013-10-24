@@ -2,6 +2,9 @@ require 'rubygems'
 require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
+require 'coveralls'
+
+Coveralls.wear!
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
