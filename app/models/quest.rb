@@ -19,15 +19,18 @@ class Quest < ActiveRecord::Base
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
   has_many :finalists,
-           -> { select('codes.*, max(codes.likes_count), guild_id')
-               .includes(:author, :guild)
-               .group('codes.guild_id')
-               .references('codes.guild_id')
-               .liked
+           -> { select('codes.*, max(codes.likes_count)')
+               .group('codes.guild_id', 'codes.quest_id')
+               .where('codes.likes_count > 0')
                .by_likes
                .readonly },
            class_name: 'Code',
            foreign_key: 'quest_id'
+
+  scope :with_finalists,
+        -> { includes(finalists: [:guild, :quest, :author])
+            .group('codes.guild_id', 'quests.id')
+            .order('codes.likes_count DESC') }
 
   scope :by_date, -> { order(created_at: :desc) }
 

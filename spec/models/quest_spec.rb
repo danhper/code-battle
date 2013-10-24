@@ -39,32 +39,33 @@ describe Quest do
 
   describe 'finalists' do
     let(:quest) { @quest }
-    subject { quest.finalists }
     let(:guild) { Guild.find(2) }
+    let(:other_guild) { Guild.where.not(id: guild.id).first }
 
+    subject { quest.finalists.to_a }
 
     it 'should not return codes not liked' do
-      # first count returns group_by hash
-      expect(subject.count.count).to be 0
+      expect(subject.count).to be 0
     end
-
 
     context 'should return most liked codes for each guild' do
       let(:finalist) { create(:code, author: User.find(2), guild: guild, quest: quest) }
       let(:non_finalist) { create(:code, author: User.find(3), guild: guild, quest: quest) }
+      let(:random_finalist) { create(:code, author: User.find(4), guild: other_guild, quest: quest) }
 
       before(:each) do
         finalist.update(likes_count: 4)
         non_finalist.update(likes_count: 3)
-        creator_code.update(likes_count: 3)
+        random_finalist.update(likes_count: 2)
+        quest.finalists.reload
       end
 
       after(:each) do
         Code.update_all(likes_count: 0)
       end
 
-      it { expect(subject.count.count).to be 2}
-      it { should include(finalist, creator_code) }
+      it { expect(subject.count).to be 2}
+      it { should include(finalist, random_finalist) }
       it { should_not include(non_finalist) }
     end
   end
