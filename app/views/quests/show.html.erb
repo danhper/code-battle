@@ -31,13 +31,16 @@
       <% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.id] } %>
       <script>
        function selectl(obj){
-         if(obj.value != "") {
-           var url = "/quests/" + <%= @quest.id %> + "/" + obj.value;
-           location.href = url;
+         var url;
+         if(obj.value == "") {
+           url = "/quests/" + <%= @quest.id %>;
+         } else {
+           url = "/quests/" + <%= @quest.id %> + "/" + obj.value;
          }
+         location.href = url;
        }
       </script>
-        <%= select :code, :guild_id, guilds_array, { :include_blank => true, :selected => ""} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
+        <%= select :code, :guild_id, guilds_array, { :include_blank => true, :selected => (params[:guild_id].nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
       <!-- add end -->
       
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
