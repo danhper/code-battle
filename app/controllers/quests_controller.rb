@@ -11,12 +11,11 @@ class QuestsController < ApplicationController
   end
 
   def show
-
-    #gid = params[:guild_id].nil? ? 0 : params[:guild_id];
-    if !Guild.exists?(params[:guild_id])
+    @guild = Guild.find_by_url_safe_name(params[:guild_id]);
+    if @guild.nil?
       @codes = @quest.codes.by_likes.paginate(page: params[:page])
      else
-      @codes = @quest.guild_codes(params[:guild_id]).paginate(page: params[:page])
+      @codes = @quest.guild_codes(@guild.id).paginate(page: params[:page])
     end
 
     if user_signed_in?
