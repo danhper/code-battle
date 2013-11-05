@@ -18,6 +18,7 @@ class Quest < ActiveRecord::Base
   has_many :quest_total_votes
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
+  # likeが0だと表示されない
   has_many :finalists,
            -> { select('codes.*, max(codes.likes_count), guild_id')
                .includes(:author, :guild)
@@ -39,6 +40,7 @@ class Quest < ActiveRecord::Base
     self.codes.by_likes.where(guild_id: guild)
   end
 
+  # voteが0だと表示されない
   def medalists
     scores = Hash.new
     scores.default = 0

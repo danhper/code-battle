@@ -39,7 +39,7 @@
          location.href = url;
        }
       </script>
-        <%= select :code, :guild_id, guilds_array, { :include_blank => true, :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
+        <%= select :code, :guild_id, guilds_array, { :include_blank => "ALL", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
       <!-- add end -->
       
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
