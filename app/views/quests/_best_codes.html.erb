@@ -22,7 +22,7 @@
 
   <% medals = ['gold', 'silver', 'bronze'] %>
 
-  <% quest.finalists.each_with_index do |code, index| %>
+  <% quest.medalists.each_with_index do |code, index| %>
     <%= render 'codes/medalist', code: code, medal: medals[index] if index < 3 && !code.nil? %>
   <% end %>
 </section>
