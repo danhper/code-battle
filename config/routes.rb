@@ -1,6 +1,6 @@
 Dmtc::Application.routes.draw do
 
-  #match "quests/:id/:guild_id" => "quests#show", :via => :get
+  get "quests/new"
   get "quests/:id(/:guild_id)", to: "quests#show"
   get "codes/index"
   get "codes/new"
