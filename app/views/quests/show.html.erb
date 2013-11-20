@@ -25,9 +25,26 @@
         </div>
       <% end %>
 
+      <!-- add -->
+      <label><span>閲覧したいコードの言語を選択</span></label>
+      <% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.url_safe_name] } %>
+      <script>
+       function selectl(obj){
+         var url;
+         if(obj.value == "") {
+           url = "/quests/" + <%= @quest.id %>;
+         } else {
+           url = "/quests/" + <%= @quest.id %> + "/" + obj.value;
+         }
+         location.href = url;
+       }
+      </script>
+        <%= select :code, :guild_id, guilds_array, { :include_blank => "ALL", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
+      <!-- add end -->
+      
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
     </section>
-
+    
   <%= will_paginate @codes %>
 
 </article>

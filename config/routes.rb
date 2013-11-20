@@ -1,5 +1,7 @@
 Dmtc::Application.routes.draw do
 
+  get "quests/new"
+  get "quests/:id(/:guild_id)", to: "quests#show"
   get "codes/index"
   get "codes/new"
   root to: 'quests#index'
@@ -33,4 +35,5 @@ Dmtc::Application.routes.draw do
       end
     end
   end
+  
 end
