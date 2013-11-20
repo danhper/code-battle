@@ -20,7 +20,7 @@ class Quest < ActiveRecord::Base
 
   has_many :finalists,
            -> { select('codes.*, max(codes.likes_count)')
-               .group('codes.guild_id', 'codes.quest_id')
+               .group('codes.guild_id')
                .where('codes.likes_count > 0')
                .by_likes
                .readonly },
@@ -52,12 +52,12 @@ class Quest < ActiveRecord::Base
     scores.sort_by { |_,v| -v }
     medalists_ary = Array.new
     scores.each{|i| medalists_ary << self.finalists.where(guild_id: i[0]).first }
-    
+
     if medalists_ary.length < 3
       medalists_ary.concat(self.finalists)
       medalists_ary.concat(self.codes) if medalists_ary.uniq.length < 3
     end
-    
+
     medalists_ary.uniq
   end
 
