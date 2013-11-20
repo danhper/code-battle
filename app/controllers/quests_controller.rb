@@ -11,7 +11,12 @@ class QuestsController < ApplicationController
   end
 
   def show
-    @codes = @quest.codes.by_likes.paginate(page: params[:page])
+    @guild = Guild.find_by_url_safe_name(params[:guild_id]);
+    if @guild.nil?
+      @codes = @quest.codes.by_likes.paginate(page: params[:page])
+     else
+      @codes = @quest.guild_codes(@guild.id).paginate(page: params[:page])
+    end
 
     if user_signed_in?
       @code = Code.where(quest_id: @quest, user_id: current_user).first
@@ -19,7 +24,7 @@ class QuestsController < ApplicationController
 
     @greeting = params[:greeting]
   end
-
+  
   def new
     @quest = Quest.new(params[:quest])
     @code = Code.new(params[:code])
