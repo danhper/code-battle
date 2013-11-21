@@ -49,9 +49,9 @@ describe Quest do
     end
 
     context 'should return most liked codes for each guild' do
-      let(:finalist) { create(:code, author: User.find(2), guild: guild, quest: quest) }
-      let(:non_finalist) { create(:code, author: User.find(3), guild: guild, quest: quest) }
       let(:random_finalist) { create(:code, author: User.find(4), guild: other_guild, quest: quest) }
+      let(:non_finalist) { create(:code, author: User.find(3), guild: guild, quest: quest) }
+      let(:finalist) { create(:code, author: User.find(2), guild: guild, quest: quest) }
 
       before(:each) do
         finalist.update(likes_count: 4)

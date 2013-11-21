@@ -1,21 +1,27 @@
 development:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
-  database: db/development.sqlite3
+  database: code_battle_development
   pool: 5
   timeout: 5000
+  username: code_battle
+  password: foobar
+  host: localhost
 
 test:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
-  database: db/test.sqlite3
+  database: code_battle_test
   pool: 5
   timeout: 5000
+  username: code_battle
+  password: foobar
+  host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: dmtc_development
+  database: code_battle_production
   pool: 5
   timeout: 5000
   username: root

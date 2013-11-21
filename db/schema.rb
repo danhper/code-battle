@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131023074321) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "codes", force: true do |t|
     t.text     "source"
     t.integer  "user_id"
@@ -23,9 +26,9 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.integer  "likes_count", default: 0, null: false
   end
 
-  add_index "codes", ["guild_id"], name: "index_codes_on_guild_id"
-  add_index "codes", ["quest_id"], name: "index_codes_on_quest_id"
-  add_index "codes", ["user_id"], name: "index_codes_on_user_id"
+  add_index "codes", ["guild_id"], name: "index_codes_on_guild_id", using: :btree
+  add_index "codes", ["quest_id"], name: "index_codes_on_quest_id", using: :btree
+  add_index "codes", ["user_id"], name: "index_codes_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.integer  "code_id"
   end
 
-  add_index "comments", ["code_id"], name: "index_comments_on_code_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["code_id"], name: "index_comments_on_code_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "guilds", force: true do |t|
     t.string   "name"
@@ -53,9 +56,9 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.integer "vote_num"
   end
 
-  add_index "quest_total_votes", ["quest_id"], name: "index_quest_total_votes_on_quest_id"
-  add_index "quest_total_votes", ["voted_guild_id"], name: "index_quest_total_votes_on_voted_guild_id"
-  add_index "quest_total_votes", ["voting_guild_id"], name: "index_quest_total_votes_on_voting_guild_id"
+  add_index "quest_total_votes", ["quest_id"], name: "index_quest_total_votes_on_quest_id", using: :btree
+  add_index "quest_total_votes", ["voted_guild_id"], name: "index_quest_total_votes_on_voted_guild_id", using: :btree
+  add_index "quest_total_votes", ["voting_guild_id"], name: "index_quest_total_votes_on_voting_guild_id", using: :btree
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.integer  "creator_id"
   end
 
-  add_index "quests", ["creator_id"], name: "index_quests_on_creator_id"
+  add_index "quests", ["creator_id"], name: "index_quests_on_creator_id", using: :btree
 
   create_table "total_votes", force: true do |t|
     t.integer "voting_guild_id"
@@ -80,9 +83,9 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.datetime "updated_at"
   end
 
-  add_index "user_guilds", ["guild_id"], name: "index_user_guilds_on_guild_id"
-  add_index "user_guilds", ["user_id", "guild_id"], name: "index_user_guilds_on_user_id_and_guild_id"
-  add_index "user_guilds", ["user_id"], name: "index_user_guilds_on_user_id"
+  add_index "user_guilds", ["guild_id"], name: "index_user_guilds_on_guild_id", using: :btree
+  add_index "user_guilds", ["user_id", "guild_id"], name: "index_user_guilds_on_user_id_and_guild_id", using: :btree
+  add_index "user_guilds", ["user_id"], name: "index_user_guilds_on_user_id", using: :btree
 
   create_table "user_like_codes", force: true do |t|
     t.integer  "user_id"
@@ -91,9 +94,9 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.datetime "updated_at"
   end
 
-  add_index "user_like_codes", ["code_id"], name: "index_user_like_codes_on_code_id"
-  add_index "user_like_codes", ["user_id", "code_id"], name: "index_user_like_codes_on_user_id_and_code_id"
-  add_index "user_like_codes", ["user_id"], name: "index_user_like_codes_on_user_id"
+  add_index "user_like_codes", ["code_id"], name: "index_user_like_codes_on_code_id", using: :btree
+  add_index "user_like_codes", ["user_id", "code_id"], name: "index_user_like_codes_on_user_id_and_code_id", using: :btree
+  add_index "user_like_codes", ["user_id"], name: "index_user_like_codes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -114,16 +117,9 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username"
-
-  create_table "vote_like_guilds", force: true do |t|
-    t.integer "vote_id"
-    t.integer "guild_id"
-  end
-
-  add_index "vote_like_guilds", ["vote_id", "guild_id"], name: "index_vote_like_guilds_on_vote_id_and_guild_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
@@ -133,7 +129,7 @@ ActiveRecord::Schema.define(version: 20131023074321) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["guild_id"], name: "index_votes_on_guild_id"
-  add_index "votes", ["user_id", "quest_id"], name: "index_votes_on_user_id_and_quest_id"
+  add_index "votes", ["guild_id"], name: "index_votes_on_guild_id", using: :btree
+  add_index "votes", ["user_id", "quest_id"], name: "index_votes_on_user_id_and_quest_id", using: :btree
 
 end

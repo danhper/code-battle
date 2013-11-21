@@ -14,7 +14,7 @@ gem 'gravatar_image_tag'
 
 gem 'coveralls', require: false
 
-group :production do
+group :production, :test do
   gem 'pg'
 end
 
@@ -33,6 +33,7 @@ gem 'i18n-js'
 gem 'handlebars_assets'
 
 group :development do
+  gem 'sqlite3'
   gem 'better_errors'
   gem 'guard-livereload', '~> 2.0', require: false
   gem 'annotate'
@@ -48,10 +49,9 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'childprocess'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
+  gem 'jazz_hands'
   gem "rb-readline", "~> 0.5.0", require: false
   gem 'faker'
 end
