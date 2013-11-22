@@ -27,11 +27,6 @@ class Quest < ActiveRecord::Base
            class_name: 'Code',
            foreign_key: 'quest_id'
 
-  scope :with_finalists,
-        -> { includes(finalists: [:guild, :quest, :author])
-            .group('codes.guild_id', 'quests.id', 'codes.id')
-            .order('codes.likes_count DESC') }
-
   scope :by_date, -> { order(created_at: :desc) }
 
   delegate :username, to: :creator, prefix: true

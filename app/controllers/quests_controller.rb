@@ -7,7 +7,7 @@ class QuestsController < ApplicationController
   require 'will_paginate/array'
 
   def index
-    @quests = Quest.with_finalists.paginate(page: params[:page]).by_date
+    @quests = Quest.includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
   end
 
   def show
@@ -24,7 +24,7 @@ class QuestsController < ApplicationController
 
     @greeting = params[:greeting]
   end
-  
+
   def new
     @quest = Quest.new(params[:quest])
     @code = Code.new(params[:code])
