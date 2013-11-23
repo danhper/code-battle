@@ -43,6 +43,9 @@ class QuestsController < ApplicationController
     end
   end
 
+  def battle
+  end
+
   def edit
   end
 

@@ -34,17 +34,17 @@
          if(obj.value == "") {
            url = "/quests/" + <%= @quest.id %>;
          } else {
-           url = "/quests/" + <%= @quest.id %> + "/" + obj.value;
+           url = "/quests/" + <%= @quest.id %> + "?guild_id=" + obj.value;
          }
          location.href = url;
        }
       </script>
-        <%= select :code, :guild_id, guilds_array, { :include_blank => "ALL", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
+        <%= select :code, :guild_id, guilds_array, { :include_blank => "すべて表示", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
       <!-- add end -->
-      
+
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
     </section>
-    
+
   <%= will_paginate @codes %>
 
 </article>
