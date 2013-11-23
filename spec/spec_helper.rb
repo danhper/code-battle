@@ -29,6 +29,7 @@ Spork.prefork do
     config.order = "random"
 
     config.include FactoryGirl::Syntax::Methods
+    config.include Devise::TestHelpers, type: :controller
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :transaction

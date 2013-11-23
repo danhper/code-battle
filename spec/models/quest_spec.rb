@@ -2,21 +2,13 @@ require 'spec_helper'
 
 describe Quest do
 
-  before(:all) do
-    @guild = Guild.first
-    @creator = create(:user, guilds: [@guild])
-    @quest = create(:quest, creator: @creator)
-    @code = create(:code, author: @creator, guild: @guild, quest: @quest)
-    10.times do
-      user = create(:user)
-      create(:code, author: user, quest: @quest, guild: user.guilds.first)
-    end
-  end
+  let(:creator_guild) { Guild.first }
+  let!(:creator)       { create(:user, guilds: [creator_guild]) }
+  let!(:quest)         { create(:quest_with_codes, creator: creator) }
+  let!(:creator_code)  { create(:code, author: creator, guild: creator_guild, quest: quest) }
+  let(:users) { User.all }
 
-  subject { @quest }
-
-  let(:creator_guild) { @guild }
-  let(:creator_code) { @code }
+  subject { quest }
 
   it { should respond_to(:codes) }
   it { should respond_to(:votes) }
@@ -26,19 +18,17 @@ describe Quest do
   it { should respond_to(:finalists) }
 
   it 'should have right number of codes' do
-    expect(subject.codes.count).to be 11
+    expect(subject.codes.count).to eq 11
   end
 
   describe 'guild_codes' do
-    let(:guild) { Guild.first }
     it 'should only return guilds codes' do
-      codes = subject.guild_codes(guild)
-      expect(codes.pluck(:guild_id).uniq).to eq [guild.id]
+      codes = subject.guild_codes(creator_guild)
+      expect(codes.pluck(:guild_id).uniq).to eq [creator_guild.id]
     end
   end
 
   describe 'finalists' do
-    let(:quest) { @quest }
     let(:guild) { Guild.find(2) }
     let(:other_guild) { Guild.where.not(id: guild.id).first }
 
@@ -49,9 +39,9 @@ describe Quest do
     end
 
     context 'should return most liked codes for each guild' do
-      let(:random_finalist) { create(:code, author: User.find(4), guild: other_guild, quest: quest) }
-      let(:non_finalist) { create(:code, author: User.find(3), guild: guild, quest: quest) }
-      let(:finalist) { create(:code, author: User.find(2), guild: guild, quest: quest) }
+      let(:random_finalist) { create(:code, author: users[4], guild: other_guild, quest: quest) }
+      let(:non_finalist) { create(:code, author: users[3], guild: guild, quest: quest) }
+      let(:finalist) { create(:code, author: users[2], guild: guild, quest: quest) }
 
       before(:each) do
         finalist.update(likes_count: 4)
