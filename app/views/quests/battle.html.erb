@@ -1,0 +1,27 @@
+<article id="quest" class="clearfix">
+  <section class="battle">
+    <h3 class="title">
+      <span class="author">
+        <%= t('quest.from', username: link_to(@quest.creator_username, @quest.creator)).html_safe %>
+      </span>
+      <br>
+      <cite><%= @quest.title %></cite>
+      <br>
+    </h3>
+    <p class="desc">
+      <%= @quest.description %>
+    </p>
+    <div class="code own-code">
+      <span class="username own-name">
+        <%= current_user.username %>
+      </span>
+      <%= text_area :code, 'source', placeholder: t('code.placeholder') %>
+    </div>
+    <div class="code enemy-code">
+      <span class="username enemy-name">
+        Enemy name
+      </span>
+      <%= text_area :code, 'source', placeholder: t('code.enemy_code'), disabled: 'disabled' %>
+    </div>
+  </section>
+</article>
