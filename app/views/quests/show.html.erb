@@ -30,7 +30,7 @@
       <% end %>
 
       <!-- add -->
-      <label><span>閲覧したいコードの言語を選択</span></label>
+      <label><span><%= t 'quest.choose_language' %></span></label>
       <% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.url_safe_name] } %>
       <script>
        function selectl(obj){
@@ -43,7 +43,14 @@
          location.href = url;
        }
       </script>
-        <%= select :code, :guild_id, guilds_array, { :include_blank => "すべて表示", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
+        <%= select :code, :guild_id, guilds_array, {
+          include_blank: t('guild.show_all'),
+          selected: (@guild.nil? ? "" : params[:guild_id])
+        }, {
+          id: "lang",
+          class: "lang form-control input-lg",
+          onchange: "selectl(this)"
+        } %>
       <!-- add end -->
 
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>

@@ -29,6 +29,7 @@ ja:
     title: お題
     input_title: タイトルを入力
     title_placehoder: (例) 素数を数えるプログラムを作りたまえ
+    choose_language: 閲覧したいコードの言語を選択
     input_description: 問題の説明文を入力
     start_battle: バトル開始
     post_explanation: |
@@ -75,6 +76,7 @@ ja:
     territory: 現在の領土
     possession_rate: 支配率
     rank: '%{number}位'
+    show_all: すべて表示
   user:
     settings: ユーザー設定
     guilds: 所属ギルド
