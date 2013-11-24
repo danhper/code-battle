@@ -7,7 +7,11 @@ class QuestsController < ApplicationController
   require 'will_paginate/array'
 
   def index
-    @quests = Quest.includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
+    if !params[:regexp].nil? && params[:regexp] != ""
+      @quests = Quest.where("title like ?", "%#{params[:regexp]}%").includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
+    else
+      @quests = Quest.includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
+    end
   end
 
   def show
