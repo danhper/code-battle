@@ -1,6 +1,8 @@
 <% content_for :javascript do %>
   <script>
-    new Dmtc.Views.CodeBattle();
+    new Dmtc.Views.CodeBattle({
+      questId: <%= @quest.id %>
+    });
   </script>
 <% end %>
 
