@@ -2,11 +2,18 @@ require 'spec_helper'
 
 describe Quest do
 
-  let(:creator_guild) { Guild.first }
-  let!(:creator)       { create(:user, guilds: [creator_guild]) }
-  let!(:quest)         { create(:quest_with_codes, creator: creator) }
-  let!(:creator_code)  { create(:code, author: creator, guild: creator_guild, quest: quest) }
-  let(:users) { User.all }
+  before(:all) do
+    @creator_guild = Guild.first
+    @creator       = create(:user, guilds: [@creator_guild])
+    @quest         = create(:quest_with_codes, creator: @creator)
+    @creator_code  = create(:code, author: @creator, guild: @creator_guild, quest: @quest)
+  end
+
+  let(:creator_guild)  { @creator_guild }
+  let(:creator)        { @creator }
+  let(:quest)          { @quest }
+  let(:creator_code)   { @creator_code }
+  let(:users)          { User.all }
 
   subject { quest }
 

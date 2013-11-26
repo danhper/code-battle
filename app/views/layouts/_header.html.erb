@@ -19,23 +19,32 @@
         </li>
         <% end %>
       </ul>
-      <ul class="nav navbar-nav pull-right">
-        <% if user_signed_in? %>
-          <li>
-            <%= render 'users/avatar', user: current_user, text_before: true %>
-          </li>
-        <% end %>
-        <li>
-          <% if user_signed_in? %>
-            <%= link_to t('general.logout'), destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to '/users/auth/github' do %>
-            <i class="icon-github-sign"></i>
-            <%= t 'general.login_with_github' %>
+
+        <%# add  %>
+        <%= form_tag('/', :method => :get) do %>
+          <ul class="nav navbar-nav pull-right">
+            <li>
+              <%= text_field_tag "regexp","",class: "form-control input-lg", maxlength: "255", size: "23",style: "position:relative;top:6px;right:3px", placeholder: "クエストのタイトル検索" %>
+            </li>
+            <li>
+              <%= submit_tag(:search, value: "検索", class: "btn btn-default")  %>
+            </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= render 'users/avatar', user: current_user, text_before: true %>
+              </li>
             <% end %>
-          <% end %>
-          </a>
-        </li>
-      </ul>
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to t('general.logout'), destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to '/users/auth/github' do %>
+                  <i class="icon-github-sign"></i>
+                  <%= t 'general.login_with_github' %>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
     </div>
   </nav>

@@ -57,7 +57,7 @@ class Quest < ActiveRecord::Base
   end
 
   def best_code
-    self.finalists.first
+    self.medalists.first
   end
 
 end
