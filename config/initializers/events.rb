@@ -42,7 +42,6 @@ WebsocketRails::EventMap.describe do
   # Uncomment and edit the next line to handle the client connected event:
 
   subscribe :initialize_connection, to: BattleController, with_method: :handle_connection
-  subscribe :code_updated, to: BattleController, with_method: :update_code
 
   #
   # Here is an example of mapping namespaced events:

@@ -23,8 +23,4 @@ class BattleController < WebsocketRails::BaseController
     battles[quest_id] << new_battle
     trigger_success new_battle
   end
-
-  def update_code
-
-  end
 end
