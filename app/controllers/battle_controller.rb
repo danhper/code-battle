@@ -1,4 +1,8 @@
 class BattleController < WebsocketRails::BaseController
+  def initialize_session
+    controller_store[:battles] = []
+  end
+
   def handle_connection
     quest_id = message[:id]
     battles = controller_store[:battles]
@@ -7,6 +11,7 @@ class BattleController < WebsocketRails::BaseController
     battles[quest_id].each do |battle|
       if battle[:users].count < 2
         battle[:users] << current_user.as_json
+        WebsocketRails[battle[:token]].trigger(:new_user, battle)
         return trigger_success(battle)
       end
     end
@@ -20,5 +25,6 @@ class BattleController < WebsocketRails::BaseController
   end
 
   def update_code
+
   end
 end
