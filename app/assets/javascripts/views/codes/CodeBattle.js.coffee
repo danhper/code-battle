@@ -10,7 +10,10 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @dispatcher.on_open = (data) =>
       @dispatcher.trigger 'initialize_connection', {
         questId: @questId
-      }
+      }, (successData) ->
+        console.log successData
+      , (error) ->
+        console.log error
 
   updateCode: (e) ->
     data =

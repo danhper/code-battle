@@ -4,9 +4,9 @@ class BattleController < WebsocketRails::BaseController
   end
 
   def handle_connection
-    quest_id = message[:id]
+    quest_id = message[:questId]
     battles = controller_store[:battles]
-    return trigger_failure({ message: 'no such quest' }) unless Quest.exists(quest_id)
+    return trigger_failure({ message: 'no such quest' }) unless Quest.exists?(quest_id)
     battles[quest_id] = [] if battles[quest_id].nil?
     battles[quest_id].each do |battle|
       if battle[:users].count < 2
