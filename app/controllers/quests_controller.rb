@@ -1,5 +1,5 @@
 class QuestsController < ApplicationController
-  before_action :authenticate_user_with_username!, except: [:index, :show]
+  before_action :authenticate_user_with_username!, except: [:index, :show, :see_battle]
   before_action :set_quest, except: [:index, :new, :create]
   before_action :check_creator!, only: [:edit, :update, :destroy]
   before_action :check_guild!, only: [:new, :create]
@@ -48,6 +48,20 @@ class QuestsController < ApplicationController
   end
 
   def battle
+    @user_id = current_user.id
+    @battle_token = nil
+    @left_user = current_user
+    @right_user = User.new
+  end
+
+  def see_battle
+    @user_id = -1
+    @battle = Battle.find(params[:battle_id])
+    return if @battle.users.count != 2
+    @battle_token = @battle.token
+    @left_user = @battle.users.first
+    @right_user = @battle.users.last
+    render :battle
   end
 
   def edit

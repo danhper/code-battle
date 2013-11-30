@@ -29,7 +29,12 @@
         </div>
       <% end %>
 
-      <!-- add -->
+      <ul>
+        <% @quest.battles.each_with_index do |battle, i| %>
+          <li><%= link_to "バトル#{i + 1}", see_battle_quest_path(@quest, battle) %></li>
+        <% end %>
+      </ul>
+
       <label><span><%= t 'quest.choose_language' %></span></label>
       <% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.url_safe_name] } %>
       <script>
@@ -51,7 +56,6 @@
           class: "lang form-control input-lg",
           onchange: "selectl(this)"
         } %>
-      <!-- add end -->
 
       <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
     </section>

@@ -3,12 +3,13 @@
     .username {
       color: #ffffff;
     }
-    &.own-code {
-
-    }
-    &.enemy-code {
-      textarea {
+    &.code {
+      textarea[disabled] {
         background: #ededed;
+        color: #ababab;
+      }
+      &.spectator textarea {
+        color: #000000;
       }
     }
     textarea {

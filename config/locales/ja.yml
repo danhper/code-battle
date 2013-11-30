@@ -40,7 +40,8 @@ ja:
   battle:
     start: バトル開始
     will_start: バトルが始まる
-    waiting: 相手待ち
+    waiting: 接続中
+    waiting_opponent: 相手待ち
   code:
     author: 回答者
     read_more: 続きを読む

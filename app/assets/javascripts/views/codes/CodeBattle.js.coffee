@@ -5,16 +5,25 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     'keyup .own-code > textarea': 'updateCode'
 
   initialize: (options) ->
+    @token      = options.token
+    @spectator  = !_.isEmpty(@token)
     @questId    = options.questId
     @userId     = options.userId
     @dispatcher = new WebSocketRails('localhost:3000/websocket')
     @dispatcher.on_open = (data) =>
-      @dispatcher.trigger 'initialize_connection', {
-        questId: @questId
-      }, (data)  =>
-          @initializeConnection(data)
-       , (error) =>
-          @handleConnectionError(error)
+      if @spectator
+        @battleChannel = @dispatcher.subscribe(@token)
+        @battleChannel.bind 'code_updated', (battleData) =>
+          @handleCodeUpdated battleData
+        @startGame()
+        @dispatcher.trigger 'ready_to_start', { token: @token }
+      else
+        @dispatcher.trigger 'initialize_connection', {
+          questId: @questId
+        }, (data)  =>
+            @initializeConnection(data)
+         , (error) =>
+            @handleConnectionError(error)
     @$(".own-code > textarea").val('')
     @$(".own-code > textarea").prop 'disabled', true
     @$(".enemy-code > textarea").val('')
@@ -67,9 +76,10 @@ class Dmtc.Views.CodeBattle extends Backbone.View
 
   startGame: ->
     $('#game-messages').hide()
-    code = @$(".own-code > textarea")
-    code.prop 'disabled', false
-    code.focus()
+    unless @spectator
+      code = @$(".own-code > textarea")
+      code.prop 'disabled', false
+      code.focus()
 
   setOponentText: (battleData) ->
     opponent = @getOpponent battleData

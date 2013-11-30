@@ -17,6 +17,7 @@ Dmtc::Application.routes.draw do
   resources :quests do
     member do
       get 'battle'
+      get 'battle/:battle_id', to: 'quests#see_battle', as: :see_battle
     end
 
     resources :codes do

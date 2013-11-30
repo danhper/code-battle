@@ -1,8 +1,9 @@
 <% content_for :javascript do %>
   <script>
     new Dmtc.Views.CodeBattle({
-      questId: <%= @quest.id %>,
-      userId : <%= current_user.id %>
+      questId : <%= @quest.id %>,
+      userId  : <%= @user_id %>,
+      token   : "<%= @battle_token %>"
     });
   </script>
 <% end %>
@@ -14,27 +15,27 @@
         <%= t('quest.from', username: link_to(@quest.creator_username, @quest.creator)).html_safe %>
       </span>
       <br>
-      <cite><%= @quest.title %></cite>
+      <cite><%= link_to @quest.title, @quest %></cite>
       <br>
     </h3>
     <p class="desc">
       <%= @quest.description %>
     </p>
-    <div class="code own-code" data-id="<%= current_user.id %>">
+    <div class="code own-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @left_user.id %>">
       <span class="username own-name">
-        <%= current_user.username %>
+        <%= @left_user.username %>
       </span>
-      <%= text_area :code, 'own_source', placeholder: t('code.placeholder'), disabled: 'disabled' %>
+      <%= text_area :code, 'own_source', placeholder: @battle_token ? '' : t('code.placeholder'), disabled: 'disabled' %>
     </div>
-    <div class="code enemy-code">
+    <div class="code enemy-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @right_user.id %>">
       <span class="username enemy-name">
-        <%= t 'battle.waiting' %>
+        <%= @right_user.username ||  t('battle.waiting') %>
       </span>
-      <%= text_area :code, 'enemy_source', placeholder: t('code.enemy_code'), disabled: 'disabled' %>
+      <%= text_area :code, 'enemy_source', placeholder: @battle_token ? '' : t('code.enemy_code'), disabled: 'disabled' %>
     </div>
   </section>
 </article>
 
 <div id="game-messages">
-  <%= t 'battle.waiting' %>
+  <%= t (@battle_token ? 'battle.waiting' : 'battle.waiting_opponent') %>
 </div>
