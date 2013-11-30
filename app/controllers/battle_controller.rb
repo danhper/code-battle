@@ -1,5 +1,5 @@
 class BattleController < WebsocketRails::BaseController
-  before_action :set_quest, only: [:handle_connection]
+  before_action :set_quest, only: [:handle_initialization]
   before_action :set_battle, only: [:handle_ready]
 
   def initialize_session
@@ -20,20 +20,22 @@ class BattleController < WebsocketRails::BaseController
 
   def handle_initialization
     return if @quest.nil?
-    battle = @quest.battles.joins(:users).where(battles_users: { user_id: current_user.id }).first
+    battle = @quest.battles.joins(:gladiators).where(gladiators: { user_id: current_user.id }).first
     unless battle.nil?
       return trigger_success(battle)
     end
 
+    gladiator = current_user.current_battles.create!(guild_id: current_user.guilds.first.id)
     battle = @quest.battles.where("users_count < ?", 2).first
+
     unless battle.nil?
-      battle.users << current_user
+      battle.gladiators << gladiator
       WebsocketRails[battle.token].trigger(:new_user, battle)
       return trigger_success(battle)
     end
 
     battle = @quest.battles.create!(token: SecureRandom.urlsafe_base64(20, false))
-    battle.users << current_user
+    battle.gladiators << gladiator
     trigger_success battle
   end
 

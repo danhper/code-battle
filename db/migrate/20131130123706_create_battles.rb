@@ -3,7 +3,7 @@ class CreateBattles < ActiveRecord::Migration
     create_table :battles do |t|
       t.string :token
       t.integer :quest_id
-      t.integer :users_count
+      t.integer :users_count, default: 0
       t.datetime :started_at
 
       t.timestamps
@@ -11,10 +11,13 @@ class CreateBattles < ActiveRecord::Migration
     add_index :battles, :quest_id
     add_index :battles, :token
 
-    create_table :battles_users, id: false do |t|
+    create_table :gladiators do |t|
       t.references :battle, :user
+      t.references :guild
+
+      t.timestamps
     end
-    add_index :battles_users, :user_id
-    add_index :battles_users, [:battle_id, :user_id]
+    add_index :gladiators, :user_id
+    add_index :gladiators, [:battle_id, :user_id]
   end
 end
