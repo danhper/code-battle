@@ -16,7 +16,7 @@
     <%= render 'quests/current_winner', code: quest.best_code %>
     <strong><%= t 'quest.answers_number' %>:</strong>
     <%= quest.codes.count %> /
-    <strong><%= t 'posted_date' %>:</strong>
+    <strong><%= t 'quest.posted_date' %>:</strong>
     <%= l quest.created_at, format: :date_only %>
   </p>
 
