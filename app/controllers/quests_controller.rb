@@ -54,8 +54,8 @@ class QuestsController < ApplicationController
   def battle
     @user_id = current_user.id
     @battle_token = nil
-    @left_user = current_user
-    @right_user = User.new
+    @left_gladiator = Gladiator.find_by(user_id: current_user)
+    @right_gladiator = Gladiator.new
   end
 
   def see_battle
@@ -63,8 +63,8 @@ class QuestsController < ApplicationController
     @battle = Battle.find(params[:battle_id])
     return if @battle.users.count != 2
     @battle_token = @battle.token
-    @left_user = @battle.users.first
-    @right_user = @battle.users.last
+    @left_gladiator = @battle.gladiators.first
+    @right_gladiator = @battle.gladiators.last
     render :battle
   end
 

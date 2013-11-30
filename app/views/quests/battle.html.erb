@@ -21,17 +21,33 @@
     <p class="desc">
       <%= @quest.description %>
     </p>
-    <div class="code own-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @left_user.id %>">
-      <span class="username own-name">
-        <%= @left_user.username %>
-      </span>
-      <%= text_area :code, 'own_source', placeholder: @battle_token ? '' : t('code.placeholder'), disabled: 'disabled' %>
+    <div class="code-container">
+      <div class="code own-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @left_gladiator.user_id %>">
+        <span class="username own-name">
+          <%= @left_gladiator.username %> (<%= @left_gladiator.guild_name %>)
+        </span>
+        <%= text_area :code, 'own_source', placeholder: @battle_token ? '' : t('code.placeholder'), disabled: 'disabled' %>
+      </div>
+      <% if @battle_token %>
+        <br>
+        <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
     </div>
-    <div class="code enemy-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @right_user.id %>">
-      <span class="username enemy-name">
-        <%= @right_user.username ||  t('battle.waiting') %>
-      </span>
-      <%= text_area :code, 'enemy_source', placeholder: @battle_token ? '' : t('code.enemy_code'), disabled: 'disabled' %>
+    <div class="code-container">
+      <div class="code enemy-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @right_gladiator.user_id %>">
+        <span class="username enemy-name">
+          <% if @right_gladiator.username %>
+            <%= @right_gladiator.username %> (<%= @right_gladiator.guild_name %>)
+          <% else %>
+            <%= t('battle.waiting') %>
+          <% end %>
+        </span>
+        <%= text_area :code, 'enemy_source', placeholder: @battle_token ? '' : t('code.enemy_code'), disabled: 'disabled' %>
+      </div>
+      <% if @battle_token %>
+        <br>
+        <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
     </div>
   </section>
 </article>

@@ -1,21 +1,25 @@
 .battle {
-  .code {
-    .username {
-      color: #ffffff;
-    }
-    &.code {
-      textarea[disabled] {
-        background: #ededed;
-        color: #ababab;
+  .code-container {
+    float: left;
+    .code {
+      float: none ! important; // FIXME: choose a better selector and remove important
+      .username {
+        color: #ffffff;
       }
-      &.spectator textarea {
-        color: #000000;
+      &.code {
+        textarea[disabled] {
+          background: #ededed;
+          color: #ababab;
+        }
+        &.spectator textarea {
+          color: #000000;
+        }
       }
-    }
-    textarea {
-      width: 100%;
-      height: 100%;
-      resize: none;
+      textarea {
+        width: 100%;
+        height: 100%;
+        resize: none;
+      }
     }
   }
 }

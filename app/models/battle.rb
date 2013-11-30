@@ -8,7 +8,8 @@ class Battle < ActiveRecord::Base
   belongs_to :quest
 
   def as_json(options={})
-    super({ include: { users: { only: [:id, :username] } } }.merge(options))
+    g = { include: { user: { only: [:id, :username] } }, methods: :guild_name }
+    super({ include: { gladiators: g },  }.merge(options))
   end
 
 end

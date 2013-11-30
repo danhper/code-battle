@@ -29,9 +29,9 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @$(".enemy-code > textarea").val('')
 
   getOpponent: (battleData) ->
-    users = battleData.users
-    _.find users, (u) =>
-      u.id != @userId
+    gladiators = battleData.gladiators
+    _.find gladiators, (g) =>
+      g.user_id != @userId
 
   initializeConnection: (battleData) ->
     console.log battleData
@@ -86,9 +86,10 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     if opponent?
       @setText opponent, '.enemy-code'
 
-  setText: (user, selector) ->
-    @$(selector).attr 'data-id', user.id
-    @$(selector).find('.username').text(user.username)
+  setText: (gladiator, selector) ->
+    @$(selector).attr 'data-id', gladiator.user_id
+    text = gladiator.user.username + "(#{gladiator.guild_name})"
+    @$(selector).find('.username').text(text)
 
   handleConnectionError: (error) ->
     console.log error
