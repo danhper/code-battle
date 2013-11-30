@@ -1,6 +1,7 @@
 ja:
   btn:
     change: 変更
+    search: 検索
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -22,6 +23,7 @@ ja:
   quest:
     new: クエスト投稿
     quest: クエスト
+    search_placeholder: クエストのタイトル検索
     current_best: 現在の一位
     from: '%{username}からのクエスト'
     answers_number: 合計回答数
