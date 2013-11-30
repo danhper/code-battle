@@ -1,6 +1,7 @@
 ja:
   btn:
     change: 変更
+    search: 検索
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -22,6 +23,7 @@ ja:
   quest:
     new: クエスト投稿
     quest: クエスト
+    search_placeholder: クエストのタイトル検索
     current_best: 現在の一位
     from: '%{username}からのクエスト'
     answers_number: 合計回答数
@@ -29,12 +31,22 @@ ja:
     title: お題
     input_title: タイトルを入力
     title_placehoder: (例) 素数を数えるプログラムを作りたまえ
+    choose_language: 閲覧したいコードの言語を選択
     input_description: 問題の説明文を入力
     post_explanation: |
       このページからクエストを投稿することができます。<br>
       投稿のさいには、<strong>自分もコードを書くことが必須です。</strong><br>
       好きな言語を選んで、まずは自分で自分の問題を解いてから投稿しましょう。
+  battle:
+    see_battles: バトルを見る
+    in_progress: 現在のバトル
+    start: バトル開始
+    nth: 'バトル%{n}'
+    will_start: バトルが始まる
+    waiting: 接続中
+    waiting_opponent: 相手待ち
   code:
+    see_codes: コードを見る
     author: 回答者
     read_more: 続きを読む
     written_by: '%{username}の実装'
@@ -50,6 +62,7 @@ ja:
     edit_long: 自分のコードを編集する
     edit: 編集
     delete: 削除
+    enemy_code: 相手のコードがここに表示される
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
@@ -73,6 +86,7 @@ ja:
     territory: 現在の領土
     possession_rate: 支配率
     rank: '%{number}位'
+    show_all: すべて表示
   user:
     settings: ユーザー設定
     guilds: 所属ギルド

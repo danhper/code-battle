@@ -1,0 +1,61 @@
+<% content_for :javascript do %>
+  <script>
+    new Dmtc.Views.CodeBattle({
+      questId : <%= @quest.id %>,
+      userId  : <%= @user_id %>,
+      token   : "<%= @battle_token %>"
+    });
+  </script>
+<% end %>
+
+<article id="quest" class="clearfix">
+  <section class="battle">
+    <h3 class="title">
+      <span class="author">
+        <%= t('quest.from', username: link_to(@quest.creator_username, @quest.creator)).html_safe %>
+      </span>
+      <br>
+      <cite><%= link_to @quest.title, @quest %></cite>
+      <br>
+    </h3>
+    <p class="desc">
+      <%= @quest.description %>
+    </p>
+    <div class="code-container">
+      <div class="code own-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @left_gladiator.user_id %>">
+        <span class="username own-name">
+          <%= @left_gladiator.username %> (<%= @left_gladiator.guild_name %>)
+        </span>
+        <%= text_area :code, 'own_source', placeholder: @battle_token ? '' : t('code.placeholder'), disabled: 'disabled' %>
+      </div>
+      <% if false %>
+      <% if @battle_token %>
+        <br>
+        <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="code-container">
+      <div class="code enemy-code <%= @battle_token ? 'spectator' : '' %>" data-id="<%= @right_gladiator.user_id %>">
+        <span class="username enemy-name">
+          <% if @right_gladiator.username %>
+            <%= @right_gladiator.username %> (<%= @right_gladiator.guild_name %>)
+          <% else %>
+            <%= t('battle.waiting') %>
+          <% end %>
+        </span>
+        <%= text_area :code, 'enemy_source', placeholder: @battle_token ? '' : t('code.enemy_code'), disabled: 'disabled' %>
+      </div>
+      <% if false %>
+      <% if @battle_token %>
+        <br>
+        <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
+      <% end %>
+    </div>
+  </section>
+</article>
+
+<div id="game-messages">
+  <%= t (@battle_token ? 'battle.waiting' : 'battle.waiting_opponent') %>
+</div>

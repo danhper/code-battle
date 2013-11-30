@@ -1,5 +1,4 @@
   <article id="quest" class="clearfix">
-
     <section>
       <h3 class="title">
         <span class="author">
@@ -15,36 +14,20 @@
         <%= l @quest.created_at, format: :date_only %>
       </p>
 
-      <% if user_signed_in? %>
-        <div id="post-container">
-          <% if current_user.wrote_code?(@quest) %>
-            <%= link_to t('code.edit_long'), edit_quest_code_path(@quest, current_user.code_for_quest(@quest)), id: 'post', class: 'btn-default' %>
-          <% else %>
-            <%= link_to t('code.post'), new_quest_code_path(@quest), id: 'post', class: 'btn-default' %>
-          <% end %>
-        </div>
+      <ul class="nav nav-tabs">
+        <li class="<%= @battle_mode ? '': 'active' %>">
+          <%= link_to t('code.see_codes'), @quest %>
+        </li>
+        <li class="<%= @battle_mode ? 'active' : '' %>">
+          <%= link_to t('battle.see_battles'), quest_path(@quest, mode: 'battle') %>
+        </li>
+      </ul>
+
+      <% if @battle_mode %>
+        <%= render 'quests/battles' %>
+      <% else %>
+        <%= render 'quests/codes' %>
       <% end %>
 
-      <!-- add -->
-      <label><span>閲覧したいコードの言語を選択</span></label>
-      <% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.url_safe_name] } %>
-      <script>
-       function selectl(obj){
-         var url;
-         if(obj.value == "") {
-           url = "/quests/" + <%= @quest.id %>;
-         } else {
-           url = "/quests/" + <%= @quest.id %> + "/" + obj.value;
-         }
-         location.href = url;
-       }
-      </script>
-        <%= select :code, :guild_id, guilds_array, { :include_blank => "ALL", :selected => (@guild.nil? ? "" : params[:guild_id])} ,{id: "lang", class: "lang form-control input-lg", :onchange => "selectl(this)"} %>
-      <!-- add end -->
-      
-      <%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
     </section>
-    
-  <%= will_paginate @codes %>
-
 </article>

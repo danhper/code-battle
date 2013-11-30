@@ -48,6 +48,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  has_many :current_battles, class_name: 'Gladiator'
+
   validates :username, uniqueness: true, allow_nil: true, length: { in: 1..255 }
 
   def in_guild?(guild)
@@ -76,6 +78,10 @@ class User < ActiveRecord::Base
 
   def large_guild
     self.guilds.max{|x,y| x.users.count <=> y.users.count}
+  end
+
+  def as_json(options={})
+    super({ only: [:id, :username] }.merge(options))
   end
 
   def gravatar_url

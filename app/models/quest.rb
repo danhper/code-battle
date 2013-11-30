@@ -16,6 +16,7 @@ class Quest < ActiveRecord::Base
   has_many :guilds, through: :votes
   has_many :codes
   has_many :quest_total_votes
+  has_many :battles
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
 
   has_many :finalists,
