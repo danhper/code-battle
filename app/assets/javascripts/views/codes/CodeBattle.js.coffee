@@ -9,7 +9,7 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @spectator  = !_.isEmpty(@token)
     @questId    = options.questId
     @userId     = options.userId
-    @dispatcher = new WebSocketRails('localhost:3000/websocket')
+    @dispatcher = new WebSocketRails("#{options.host}/websocket")
     @dispatcher.on_open = (data) =>
       if @spectator
         @battleChannel = @dispatcher.subscribe(@token)
