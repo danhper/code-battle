@@ -8,6 +8,10 @@
 <h2><%= t 'battle.in_progress' %></h2>
 <ul>
   <% @battles.each_with_index do |battle, i| %>
-    <li><%= link_to t('battle.nth', n: i + 1), see_battle_quest_path(@quest, battle) %></li>
+    <% first_guild = battle.gladiators.first.guild_name %>
+    <% second_guild = battle.gladiators.last.guild_name %>
+    <li>
+      <%= link_to "#{first_guild}対#{second_guild}", see_battle_quest_path(@quest, battle) %>
+    </li>
   <% end %>
 </ul>

@@ -28,9 +28,11 @@
         </span>
         <%= text_area :code, 'own_source', placeholder: @battle_token ? '' : t('code.placeholder'), disabled: 'disabled' %>
       </div>
+      <% if false %>
       <% if @battle_token %>
         <br>
         <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
       <% end %>
     </div>
     <div class="code-container">
@@ -44,9 +46,11 @@
         </span>
         <%= text_area :code, 'enemy_source', placeholder: @battle_token ? '' : t('code.enemy_code'), disabled: 'disabled' %>
       </div>
+      <% if false %>
       <% if @battle_token %>
         <br>
         <%= link_to 'Vote', '#', class: 'btn btn-default' %>
+      <% end %>
       <% end %>
     </div>
   </section>
