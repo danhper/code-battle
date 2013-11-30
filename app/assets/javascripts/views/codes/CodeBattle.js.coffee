@@ -26,7 +26,8 @@ class Dmtc.Views.CodeBattle extends Backbone.View
 
   initializeConnection: (battleData) ->
     console.log battleData
-    @battleChannel = @dispatcher.subscribe(battleData.token)
+    @token = battleData.token
+    @battleChannel = @dispatcher.subscribe(@token)
     @battleChannel.bind 'new_user', (battleData) =>
       @handleNewUser battleData
     @battleChannel.bind 'ready', (data) =>
@@ -35,9 +36,13 @@ class Dmtc.Views.CodeBattle extends Backbone.View
       @handleCodeUpdated battleData
     @battleChannel.bind 'ready_to_start', =>
       @prepareStartGame()
+    @battleChannel.bind 'need_update', =>
+      @sendCode @$('.own-code > textarea').val()
     @setTexts battleData
-    if battleData.users.length == 2
-      @battleChannel.trigger 'ready_to_start'
+
+    @dispatcher.trigger 'ready_to_start', { token: @token }
+    if battleData.started_at?
+      @startGame()
 
   setTexts: (battleData) ->
     @setOponentText battleData
@@ -47,7 +52,6 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @setOponentText battleData
 
   prepareStartGame: ->
-    console.log "Starting game"
     textDiv = $('#game-messages')
     textDiv.text "バトルが始まる" # I18n.t('battle.will_start')
     setText = (i) -> setTimeout((-> textDiv.text(i)), (6 - i) * 1000)
@@ -83,8 +87,11 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     return if data.id == @userId
     @$(".code[data-id=#{data.id}] > textarea").val data.code
 
-  updateCode: (e) ->
+  sendCode: (code) ->
     data =
       id  : @userId
-      code: $(e.target).val()
+      code: code
     @battleChannel.trigger 'code_updated', data
+
+  updateCode: (e) ->
+    @sendCode $(e.target).val()

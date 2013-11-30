@@ -11,7 +11,7 @@ gem 'seedbank', github: 'james2m/seedbank'
 gem 'pygments.rb'
 gem 'will_paginate', '~> 3.0'
 gem 'gravatar_image_tag'
-gem 'websocket-rails'
+gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 
 gem 'coveralls', require: false
 
