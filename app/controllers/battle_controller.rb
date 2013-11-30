@@ -1,26 +1,23 @@
 class BattleController < WebsocketRails::BaseController
   def initialize_session
-    controller_store[:battles] = {}
   end
 
   def handle_connection
-    quest_id = message[:questId]
-    battles = controller_store[:battles]
-    return trigger_failure({ message: 'no such quest' }) unless Quest.exists?(quest_id)
-    battles[quest_id] = [] unless battles.has_key? quest_id
-    battles[quest_id].each do |battle|
-      if battle[:users].count < 2
-        battle[:users] << current_user.as_json
-        WebsocketRails[battle[:token]].trigger(:new_user, battle)
-        return trigger_success(battle)
-      end
+    quest = Quest.find(message[:questId]) rescue nil
+    return trigger_failure({ message: 'no such quest' }) if quest.nil?
+
+    battle = quest.battles.joins(:users).where(battles_users: { user_id: current_user.id }).first
+    return trigger_success(battle) unless battle.nil?
+
+    battle = quest.battles.where("users_count < ?", 2).first
+    unless battle.nil?
+      battle.users << current_user
+      WebsocketRails[battle.token].trigger(:new_user, battle)
+      return trigger_success(battle)
     end
-    battle_token = SecureRandom.urlsafe_base64(20, false)
-    new_battle = {
-      token: battle_token,
-      users: [current_user.as_json]
-    }
-    battles[quest_id] << new_battle
-    trigger_success new_battle
+
+    battle = quest.battles.create!(token: SecureRandom.urlsafe_base64(20, false))
+    battle.users << current_user
+    trigger_success battle
   end
 end

@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023074321) do
+ActiveRecord::Schema.define(version: 20131130123706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "battles", force: true do |t|
+    t.string   "token"
+    t.integer  "quest_id"
+    t.integer  "users_count"
+    t.datetime "started_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "battles", ["quest_id"], name: "index_battles_on_quest_id", using: :btree
+  add_index "battles", ["token"], name: "index_battles_on_token", using: :btree
+
+  create_table "battles_users", id: false, force: true do |t|
+    t.integer "battle_id"
+    t.integer "user_id"
+  end
+
+  add_index "battles_users", ["battle_id", "user_id"], name: "index_battles_users_on_battle_id_and_user_id", using: :btree
+  add_index "battles_users", ["user_id"], name: "index_battles_users_on_user_id", using: :btree
 
   create_table "codes", force: true do |t|
     t.text     "source"
