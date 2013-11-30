@@ -16,29 +16,46 @@ class Dmtc.Views.CodeBattle extends Backbone.View
        , (error) =>
           @handleConnectionError(error)
 
-  initializeConnection: (data) ->
-    console.log data
-    @battleChannel = @dispatcher.subscribe(data.token)
-    @battleChannel.bind 'new_user', (data) =>
-      @handleNewUser data
-    @battleChannel.bind 'code_updated', (data) =>
-      @handleCodeUpdated data
-
-  handleNewUser: (data) ->
-    console.log data
-    users = data.users
-    opponent = _.find users, (u) =>
+  getOpponent: (battleData) ->
+    users = battleData.users
+    _.find users, (u) =>
       u.id != @userId
+
+  initializeConnection: (battleData) ->
+    console.log battleData
+    @battleChannel = @dispatcher.subscribe(battleData.token)
+    @battleChannel.bind 'new_user', (battleData) =>
+      @handleNewUser battleData
+    @battleChannel.bind 'code_updated', (battleData) =>
+      @handleCodeUpdated battleData
+    @setTexts battleData
+
+  setTexts: (battleData) ->
+    @setOponentText battleData
+
+  handleNewUser: (battleData) ->
+    console.log battleData
+    @setOponentText battleData
+
+  setOponentText: (battleData) ->
+    opponent = @getOpponent battleData
     if opponent?
-      @$('.enemy-name').text(opponent.username)
+      @setText opponent, '.enemy-code'
+
+  setText: (user, selector) ->
+    @$(selector).attr 'data-id', user.id
+    @$(selector).find('.username').text(user.username)
 
   handleConnectionError: (error) ->
     console.log error
 
   handleCodeUpdated: (data) ->
     console.log data
+    return if data.id == @userId
+    @$(".code[data-id=#{data.id}] > textarea").text data.code
 
   updateCode: (e) ->
     data =
-      code: $(e.target).text()
+      id  : @userId
+      code: $(e.target).val()
     @battleChannel.trigger 'code_updated', data

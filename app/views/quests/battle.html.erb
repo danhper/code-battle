@@ -20,17 +20,17 @@
     <p class="desc">
       <%= @quest.description %>
     </p>
-    <div class="code own-code">
+    <div class="code own-code" data-id="<%= current_user.id %>">
       <span class="username own-name">
         <%= current_user.username %>
       </span>
-      <%= text_area :code, 'source', placeholder: t('code.placeholder') %>
+      <%= text_area :code, 'own_source', placeholder: t('code.placeholder') %>
     </div>
     <div class="code enemy-code">
       <span class="username enemy-name">
         Enemy name
       </span>
-      <%= text_area :code, 'source', placeholder: t('code.enemy_code'), disabled: 'disabled' %>
+      <%= text_area :code, 'enemy_source', placeholder: t('code.enemy_code'), disabled: 'disabled' %>
     </div>
   </section>
 </article>
