@@ -54,7 +54,7 @@ class QuestsController < ApplicationController
   def battle
     @user_id = current_user.id
     @battle_token = nil
-    @left_gladiator = Gladiator.find_by(user_id: current_user)
+    @left_gladiator = current_user.current_battles.build(guild: current_user.guilds.first)
     @right_gladiator = Gladiator.new
   end
 
