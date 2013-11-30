@@ -2,7 +2,7 @@ class Dmtc.Views.CodeBattle extends Backbone.View
   el: '.battle'
 
   events:
-    'keyup .own-code': 'updateCode'
+    'keyup .own-code > textarea': 'updateCode'
 
   initialize: (options) ->
     @questId    = options.questId
@@ -15,6 +15,9 @@ class Dmtc.Views.CodeBattle extends Backbone.View
           @initializeConnection(data)
        , (error) =>
           @handleConnectionError(error)
+    @$(".own-code > textarea").val('')
+    @$(".own-code > textarea").prop 'disabled', true
+    @$(".enemy-code > textarea").val('')
 
   getOpponent: (battleData) ->
     users = battleData.users
@@ -26,9 +29,15 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @battleChannel = @dispatcher.subscribe(battleData.token)
     @battleChannel.bind 'new_user', (battleData) =>
       @handleNewUser battleData
+    @battleChannel.bind 'ready', (data) =>
+      @prepareStartGame()
     @battleChannel.bind 'code_updated', (battleData) =>
       @handleCodeUpdated battleData
+    @battleChannel.bind 'ready_to_start', =>
+      @prepareStartGame()
     @setTexts battleData
+    if battleData.users.length == 2
+      @battleChannel.trigger 'ready_to_start'
 
   setTexts: (battleData) ->
     @setOponentText battleData
@@ -36,6 +45,27 @@ class Dmtc.Views.CodeBattle extends Backbone.View
   handleNewUser: (battleData) ->
     console.log battleData
     @setOponentText battleData
+
+  prepareStartGame: ->
+    console.log "Starting game"
+    textDiv = $('#game-messages')
+    textDiv.text "バトルが始まる" # I18n.t('battle.will_start')
+    setText = (i) -> setTimeout((-> textDiv.text(i)), (6 - i) * 1000)
+    setTimeout (-> textDiv.css 'left', '48%'), 1000
+    for i in [5..1]
+      setText(i)
+    setTimeout ->
+      textDiv.css 'left', '40%'
+      textDiv.text "Battle!"
+    , 6000
+    setTimeout (=> @startGame()), 7000
+    return
+
+  startGame: ->
+    $('#game-messages').hide()
+    code = @$(".own-code > textarea")
+    code.prop 'disabled', false
+    code.focus()
 
   setOponentText: (battleData) ->
     opponent = @getOpponent battleData
@@ -50,9 +80,8 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     console.log error
 
   handleCodeUpdated: (data) ->
-    console.log data
     return if data.id == @userId
-    @$(".code[data-id=#{data.id}] > textarea").text data.code
+    @$(".code[data-id=#{data.id}] > textarea").val data.code
 
   updateCode: (e) ->
     data =

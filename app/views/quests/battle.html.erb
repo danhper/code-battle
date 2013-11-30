@@ -24,13 +24,17 @@
       <span class="username own-name">
         <%= current_user.username %>
       </span>
-      <%= text_area :code, 'own_source', placeholder: t('code.placeholder') %>
+      <%= text_area :code, 'own_source', placeholder: t('code.placeholder'), disabled: 'disabled' %>
     </div>
     <div class="code enemy-code">
       <span class="username enemy-name">
-        Enemy name
+        <%= t 'battle.waiting' %>
       </span>
       <%= text_area :code, 'enemy_source', placeholder: t('code.enemy_code'), disabled: 'disabled' %>
     </div>
   </section>
 </article>
+
+<div id="game-messages">
+  <%= t 'battle.waiting' %>
+</div>
