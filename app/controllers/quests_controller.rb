@@ -15,12 +15,16 @@ class QuestsController < ApplicationController
   end
 
   def show
-    @guild = Guild.find_by_url_safe_name(params[:guild_id]);
+    @guild = Guild.find_by_url_safe_name(params[:guild_id])
     if @guild.nil?
       @codes = @quest.codes.by_likes.paginate(page: params[:page])
      else
       @codes = @quest.guild_codes(@guild.id).paginate(page: params[:page])
     end
+
+    @battles = @quest.battles.where.not(started_at: nil)
+
+    @battle_mode = !params[:mode].nil? && params[:mode] == 'battle'
 
     if user_signed_in?
       @code = Code.where(quest_id: @quest, user_id: current_user).first

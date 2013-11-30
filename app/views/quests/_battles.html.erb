@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <div class="battle-button">
+    <div id="post-container">
+      <%= link_to t('battle.start'), battle_quest_path(@quest), id: 'post', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+<h2><%= t 'battle.in_progress' %></h2>
+<ul>
+  <% @battles.each_with_index do |battle, i| %>
+    <li><%= link_to t('battle.nth', n: i + 1), see_battle_quest_path(@quest, battle) %></li>
+  <% end %>
+</ul>

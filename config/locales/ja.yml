@@ -38,11 +38,15 @@ ja:
       投稿のさいには、<strong>自分もコードを書くことが必須です。</strong><br>
       好きな言語を選んで、まずは自分で自分の問題を解いてから投稿しましょう。
   battle:
+    see_battles: バトルを見る
+    in_progress: 現在のバトル
     start: バトル開始
+    nth: 'バトル%{n}'
     will_start: バトルが始まる
     waiting: 接続中
     waiting_opponent: 相手待ち
   code:
+    see_codes: コードを見る
     author: 回答者
     read_more: 続きを読む
     written_by: '%{username}の実装'

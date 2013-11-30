@@ -16,6 +16,9 @@ class BattleController < WebsocketRails::BaseController
   end
 
   def handle_connection
+  end
+
+  def handle_initialization
     return if @quest.nil?
     battle = @quest.battles.joins(:users).where(battles_users: { user_id: current_user.id }).first
     unless battle.nil?
@@ -32,6 +35,9 @@ class BattleController < WebsocketRails::BaseController
     battle = @quest.battles.create!(token: SecureRandom.urlsafe_base64(20, false))
     battle.users << current_user
     trigger_success battle
+  end
+
+  def handle_disconnection
   end
 
   private

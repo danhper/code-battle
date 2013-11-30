@@ -1,0 +1,41 @@
+<% if user_signed_in? %>
+  <div id="post-container">
+    <% if current_user.wrote_code?(@quest) %>
+      <%= link_to t('code.edit_long'), edit_quest_code_path(@quest, current_user.code_for_quest(@quest)), id: 'post', class: 'btn-default' %>
+    <% else %>
+      <%= link_to t('code.post'), new_quest_code_path(@quest), id: 'post', class: 'btn-default' %>
+    <% end %>
+  </div>
+  <br>
+<% end %>
+
+
+<label><span><%= t 'quest.choose_language' %></span></label>
+<% guilds_array = Guild.all.map { |g| [g.name.capitalize, g.url_safe_name] } %>
+<script>
+ function selectl(obj){
+   var url;
+   if(obj.value == "") {
+     url = "/quests/" + <%= @quest.id %>;
+   } else {
+     url = "/quests/" + <%= @quest.id %> + "?guild_id=" + obj.value;
+   }
+   location.href = url;
+ }
+</script>
+  <%= select :code, :guild_id, guilds_array, {
+    include_blank: t('guild.show_all'),
+    selected: (@guild.nil? ? "" : params[:guild_id])
+  }, {
+    id: "lang",
+    class: "lang form-control input-lg",
+    onchange: "selectl(this)"
+  } %>
+
+<%= render partial: 'codes/simple_code', collection: @codes, as: :code, locals: { skip_title: true, print_author: true } %>
+
+
+<br>
+
+<%= will_paginate @codes %>
+
