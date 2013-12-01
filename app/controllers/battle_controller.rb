@@ -2,20 +2,14 @@ class BattleController < WebsocketRails::BaseController
   before_action :set_quest, only: [:handle_initialization]
   before_action :set_battle, only: [:handle_ready]
 
-  def initialize_session
-  end
-
   def handle_ready
     return if @battle.nil?
-    if @battle.users.count == 2 && @battle.started_at.nil?
+    if @battle.users.count == 2 && @battle.started_at?
       @battle.update(started_at: Time.now)
       WebsocketRails[@battle.token].trigger(:ready_to_start)
     else
       WebsocketRails[@battle.token].trigger(:need_update)
     end
-  end
-
-  def handle_connection
   end
 
   def handle_initialization
@@ -37,9 +31,6 @@ class BattleController < WebsocketRails::BaseController
     battle = @quest.battles.create!(token: SecureRandom.urlsafe_base64(20, false))
     battle.gladiators << gladiator
     trigger_success battle
-  end
-
-  def handle_disconnection
   end
 
   private
