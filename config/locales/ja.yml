@@ -2,6 +2,7 @@ ja:
   btn:
     change: 変更
     search: 検索
+    edit: 編集
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
