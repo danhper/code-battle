@@ -14,9 +14,9 @@
         <%= l @quest.created_at, format: :date_only %>
       </p>
 
-      <p class="quest-desc">
-        <%= @quest.description %>
-      </p>
+      <div class="quest-desc">
+        <%= simple_format @quest.description %>
+      </div>
 
       <ul class="nav nav-tabs">
         <li class="<%= @battle_mode ? '': 'active' %>">
