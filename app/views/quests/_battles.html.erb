@@ -1,17 +1,17 @@
 <% if user_signed_in? %>
   <div class="battle-button">
     <div id="post-container">
-      <%= link_to t('battle.start'), battle_quest_path(@quest), id: 'post', class: 'btn btn-default' %>
+      <%= link_to t('battle.start'), battle_quest_path(quest), id: 'post', class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>
 <h2><%= t 'battle.in_progress' %></h2>
 <ul>
-  <% @battles.each_with_index do |battle, i| %>
+  <% battles.each_with_index do |battle, i| %>
     <% first_guild = battle.gladiators.first.guild_name %>
     <% second_guild = battle.gladiators.last.guild_name %>
     <li>
-      <%= link_to "#{first_guild}対#{second_guild}", see_battle_quest_path(@quest, battle) %>
+      <%= link_to "#{first_guild}対#{second_guild}", see_battle_quest_path(quest, battle) %>
     </li>
   <% end %>
 </ul>

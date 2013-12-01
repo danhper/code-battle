@@ -28,9 +28,9 @@
       </ul>
 
       <% if @battle_mode %>
-        <%= render 'quests/battles' %>
+        <%= render 'quests/battles', quest: @quest, battles: @battles %>
       <% else %>
-        <%= render 'quests/codes' %>
+        <%= render 'quests/codes', quest: @quest, codes: @codes, guild: @guild %>
       <% end %>
 
     </section>
