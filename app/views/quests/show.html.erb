@@ -14,6 +14,10 @@
         <%= l @quest.created_at, format: :date_only %>
       </p>
 
+      <p class="quest-desc">
+        <%= @quest.description %>
+      </p>
+
       <ul class="nav nav-tabs">
         <li class="<%= @battle_mode ? '': 'active' %>">
           <%= link_to t('code.see_codes'), @quest %>
