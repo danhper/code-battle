@@ -53,11 +53,11 @@ class Quest < ActiveRecord::Base
     end
 
     if medalists_ary.length < 3
-      medalists_ary.concat(self.finalists)
+      medalists_ary.concat(self.finalists.sort{|i,j| j.likes_count <=> i.likes_count})
       medalists_ary.concat(self.codes) if medalists_ary.uniq.length < 3
     end
 
-    medalists_ary.uniq
+    medalists_ary.uniq{|c| c.guild_id }
   end
 
   def best_code
