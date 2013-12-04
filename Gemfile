@@ -50,10 +50,13 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :debug do
+  gem 'jazz_hands'
+  gem "rb-readline", "~> 0.5.0", require: false
+end
+
 group :development, :test do
   gem 'childprocess'
   gem 'factory_girl_rails'
-  gem 'jazz_hands'
-  gem "rb-readline", "~> 0.5.0", require: false
   gem 'faker'
 end
