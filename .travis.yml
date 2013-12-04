@@ -1,11 +1,11 @@
 language: ruby
 rvm:
   - 2.0.0
+bundler_args: --without development --deployment
 
 before_script:
   - "sed -i 's/username: code_battle/username: postgres/' config/database.yml"
   - "sed -i 's/password: foobar/password: /' config/database.yml"
-  - bundle install --without development
   - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
