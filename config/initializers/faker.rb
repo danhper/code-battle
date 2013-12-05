@@ -1,1 +1,1 @@
-Faker::Config.locale = :en
+Faker::Config.locale = :en if defined?(Faker)
