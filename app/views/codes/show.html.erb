@@ -83,6 +83,7 @@
     Dmtc.Globals.comments = <%= @code.comments.to_json.html_safe %>;
     Dmtc.Globals.liked = <%= @liked %>;
     Dmtc.Globals.voted = <%= @voted %>;
+    Dmtc.Globals.userId = <%= user_signed_in? ? current_user.id : -1 %>;
     I18n.translations.ja.code.unvote = "<%= I18n.t('code.unvote') %>";
   </script>
   <%= javascript_include_tag "quest_comments" %>
