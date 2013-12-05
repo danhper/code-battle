@@ -1,0 +1,55 @@
+task :prepare do
+  invoke 'prepare:default'
+  invoke 'prepare:upload_local_config'
+end
+
+namespace :prepare do
+  task :default do
+    invoke 'prepare:create_deploy_dir'
+    invoke 'prepare:check_permissions'
+    invoke 'prepare:create_deploy_subdirectories'
+  end
+
+  desc "Create the deploy directory if needed"
+  task :create_deploy_dir do
+    on roles(:all) do |host|
+      if test("[ ! -d #{fetch(:deploy_to)} ]")
+        if test("mkdir -p #{fetch(:deploy_to)}")
+          info "Created directory #{fetch(:deploy_to)} on #{host}"
+        else
+          error "Could not create #{fetch(:deploy_to)} on #{host}"
+        end
+      end
+    end
+  end
+
+  desc "Check that we can access everything"
+  task :check_permissions do
+    on roles(:all) do |host|
+      if test("[ -w #{fetch(:deploy_to)} ]")
+        info "#{fetch(:deploy_to)} is writable on #{host}"
+      else
+        error "#{fetch(:deploy_to)} is not writable on #{host}"
+      end
+    end
+  end
+
+  desc "Create deploy subdirectories"
+  after :check_permissions, :create_deploy_subdirectories do
+    on roles(:all) do |host|
+      if test("[ ! -d #{shared_path}/config/settings ]")
+        info "Created #{shared_path}/config/settings"
+        execute :mkdir, "-p #{shared_path}/config/settings"
+      end
+    end
+  end
+
+  desc "Upload local settings"
+  task :upload_local_config do
+    on roles(:all) do |host|
+      fetch(:linked_files).each do |f|
+        upload!(f, "#{shared_path}/#{f}")
+      end
+    end
+  end
+end
