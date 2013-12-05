@@ -79,15 +79,11 @@
 
 <% content_for :javascript do %>
   <script>
+    Dmtc.Globals.code = <%= @code.to_json(methods: :likes_number, include: :guild).html_safe %>;
+    Dmtc.Globals.comments = <%= @code.comments.to_json.html_safe %>;
+    Dmtc.Globals.liked = <%= @liked %>;
+    Dmtc.Globals.voted = <%= @voted %>;
     I18n.translations.ja.code.unvote = "<%= I18n.t('code.unvote') %>";
-    var codeJSON = _.extend(<%= @code.to_json(methods: :likes_number).html_safe %>, { liked: <%= @liked %> });
-    var codeModel = new Dmtc.Models.Code(codeJSON);
-    new Dmtc.Views.ShowCode({ model: codeModel });
-    var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
-    new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
-    new Dmtc.Views.CommentsIndex({ collection: comments });
-    var codeVoteJSON = _.extend(<%= @code.to_json(include: :guild).html_safe %>, { voted: <%= @voted %> });
-    var codeVote = new Dmtc.Models.CodeVote(codeVoteJSON);
-    new Dmtc.Views.CodeVote({ model: codeVote });
   </script>
+  <%= javascript_include_tag "quest_comments" %>
 <% end %>
