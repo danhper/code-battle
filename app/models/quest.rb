@@ -22,8 +22,8 @@ class Quest < ActiveRecord::Base
   has_many :finalists,
            -> { select('distinct on (codes.guild_id) codes.*')
                .where('codes.likes_count > 0')
-               .by_likes
                .order('codes.guild_id')
+               .by_likes
                .readonly },
            class_name: 'Code',
            foreign_key: 'quest_id'
