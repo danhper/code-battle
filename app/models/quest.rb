@@ -47,7 +47,7 @@ class Quest < ActiveRecord::Base
     end
     scores.sort_by { |_,v| -v }
     medalists_ary = Array.new
-    scores.each do |i|
+    scores = scores.each do |i|
       finalist = self.finalists.where(guild_id: i[0]).first
       medalists_ary << finalist unless finalist.nil?
     end
