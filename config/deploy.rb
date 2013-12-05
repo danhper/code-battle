@@ -6,7 +6,7 @@ set :scm, :git
 set :deploy_to, '/home/codebattle/code-battle'
 
 # set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 # set :pty, true
 
 # set :linked_files, %w{config/database.yml}
@@ -18,7 +18,7 @@ set :log_level, :info
 set :rails_env, 'production'
 
 set :bundle_flags, '--deployment --quiet'
-set :bundle_without, %w{development debug test deployment}
+set :bundle_without, %w{development debug test deployment}.join(' ')
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.0.0-p353'
