@@ -1,2 +1,3 @@
 ws:
   host: localhost:3000
+  standalone: false
