@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 gem 'devise'
 gem 'omniauth'
@@ -14,6 +14,13 @@ gem 'gravatar_image_tag'
 gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 
 gem 'coveralls', require: false
+
+group :deployment do
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
+end
 
 group :production, :test do
   gem 'pg'
@@ -35,7 +42,6 @@ gem 'handlebars_assets'
 gem 'rails_config'
 
 group :development do
-  gem 'sqlite3'
   gem 'better_errors'
   gem 'guard-livereload', '~> 2.0', require: false
   gem 'annotate'
