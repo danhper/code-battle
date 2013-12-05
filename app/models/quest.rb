@@ -45,7 +45,7 @@ class Quest < ActiveRecord::Base
     codes.each do |i|
       scores[i.voted_guild_id] += i.vote_num * i.voting_guild.get_guild_coefficient
     end
-    scores.sort_by { |_,v| -v }
+    scores = scores.sort_by { |_,v| -v }
     medalists_ary = Array.new
     scores.each do |i|
       finalist = self.finalists.where(guild_id: i[0]).first

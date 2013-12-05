@@ -90,7 +90,7 @@ class CodesController < ApplicationController
     if current_user.votes_quest?(@quest)
       Vote.where(user_id: current_user, quest_id: @quest.id).first.destroy
       qtv = QuestTotalVote.where(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id).first
-      #qtv.dec_num
+      qtv.dec_num
       tv = TotalVote.where(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id).first
       tv.dec_num
       head :no_content
