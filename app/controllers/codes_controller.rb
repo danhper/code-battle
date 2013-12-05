@@ -92,8 +92,8 @@ class CodesController < ApplicationController
       qtv = QuestTotalVote.where(quest_id: @quest.id, voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
       qtv.dec_num
       tv = TotalVote.where(voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
-      vote_temp.destroy
       tv.dec_num
+      vote_temp.destroy
       head :no_content
     else
       render json: { error: 'does not vote code' }, status: 400
