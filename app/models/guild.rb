@@ -58,7 +58,7 @@ class Guild < ActiveRecord::Base
     total = 0
     tvp = get_total_vote_point
     tvp.each{|i| total += i[1]}
-    return tvp.has_key?(self.id) ? tvp[self.id] / total : 0
+    return (tvp.has_key?(self.id) && total != 0)? tvp[self.id] / total : 0
   end
 
   def get_my_rank
