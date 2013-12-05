@@ -9,8 +9,8 @@
 #
 
 class TotalVote < ActiveRecord::Base
-  belongs_to :guild, foreign_key:"voting_guild_id"
-  belongs_to :guild, foreign_key:"voted_guild_id"
+  belongs_to :voting_guild, foreign_key:"voting_guild_id", class_name: "Guild"
+  belongs_to :voted_guild, foreign_key:"voted_guild_id", class_name: "Guild"
 
   def inc_num
     self.vote_num+=1
