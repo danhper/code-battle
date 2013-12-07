@@ -19,6 +19,7 @@ set :rails_env, 'production'
 
 set :bundle_flags, '--deployment'
 set :bundle_without, %w{development debug test deployment}.join(' ')
+set :bundle_bins, fetch(:bundle_bins).push("whenever")
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.0.0-p353'
@@ -43,7 +44,9 @@ namespace :deploy do
 
   before :restart, :wheneverize do
     on roles(:db), in: :sequence do
-      execute :whenever, "-w -f #{release_path.join('config/schedule.rb')}"
+      within release_path do
+        execute :bundle, 'exec', 'whenever', '-w'
+      end
     end
   end
 
