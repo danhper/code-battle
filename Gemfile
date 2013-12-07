@@ -20,6 +20,7 @@ group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
+  gem 'whenever'
 end
 
 group :production, :test do

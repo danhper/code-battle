@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'backup'
+gem 'net-ssh', '<= 2.5.2'
+gem 'net-scp', '<= 1.0.4'
+gem 'excon', '~> 0.17.0'
+gem 'fog', '~> 1.9.0'

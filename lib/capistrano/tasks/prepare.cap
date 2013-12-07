@@ -1,6 +1,5 @@
 task :prepare do
   invoke 'prepare:default'
-  invoke 'prepare:upload_local_config'
 end
 
 namespace :prepare do
@@ -8,6 +7,7 @@ namespace :prepare do
     invoke 'prepare:create_deploy_dir'
     invoke 'prepare:check_permissions'
     invoke 'prepare:create_deploy_subdirectories'
+    invoke 'prepare:upload_local_config'
   end
 
   desc "Create the deploy directory if needed"
@@ -48,8 +48,26 @@ namespace :prepare do
   task :upload_local_config do
     on roles(:all) do |host|
       fetch(:linked_files).each do |f|
-        upload!(f, "#{shared_path}/#{f}")
+        if File.basename(f).include? "production"
+          source = f.sub "production", fetch(:stage).to_s
+        else
+          source = f
+        end
+        upload! source, "#{shared_path}/#{f}"
       end
     end
   end
+
+  desc "Install backup gems"
+  task :install_backup_gems do
+    on roles(:db) do |host|
+      dir = "#{fetch(:tmp_dir)}/gem-install-#{Time.now.to_i}"
+      execute :mkdir, "-p #{dir}"
+      upload! "config/backup/Gemfile", dir
+      info "Installing backup gems"
+      execute :bundle, "install --gemfile=#{dir}/Gemfile"
+      execute :rm, "-r #{dir}"
+    end
+  end
+
 end

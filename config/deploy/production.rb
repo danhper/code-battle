@@ -15,7 +15,7 @@ set :stage, :production
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server '54.238.212.67', user: 'codebattle', roles: %w{db web app}
+server 'codebattle.tk', user: 'codebattle', roles: %w{db web app}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

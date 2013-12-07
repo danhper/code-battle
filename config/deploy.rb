@@ -9,7 +9,7 @@ set :deploy_to, '/home/codebattle/code-battle'
 set :log_level, :info
 # set :pty, true
 
-set :linked_files, %w{config/database.yml config/settings/production.local.yml}
+set :linked_files, %w{config/database.yml config/settings/production.local.yml config/settings.local.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -38,6 +38,12 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+    end
+  end
+
+  before :finishing, :wheneverize do
+    on roles(:db), in: :sequence do
+      execute :whenever, "-w"
     end
   end
 
