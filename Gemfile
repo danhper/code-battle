@@ -14,13 +14,13 @@ gem 'gravatar_image_tag'
 gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 
 gem 'coveralls', require: false
+gem 'whenever'
 
 group :deployment do
   gem 'capistrano', '~> 3.0'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
-  gem 'whenever'
 end
 
 group :production, :test do

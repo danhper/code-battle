@@ -41,9 +41,9 @@ namespace :deploy do
     end
   end
 
-  before :finishing, :wheneverize do
+  before :restart, :wheneverize do
     on roles(:db), in: :sequence do
-      execute :whenever, "-w"
+      execute :whenever, "-w -f #{release_path.join('config/schedule.rb')}"
     end
   end
 
