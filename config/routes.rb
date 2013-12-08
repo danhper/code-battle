@@ -12,7 +12,7 @@ Dmtc::Application.routes.draw do
     end
   end
 
-  resources :comments, only: [:create]
+  resources :comments, only: [:update, :create, :destroy]
 
   resources :quests do
     member do

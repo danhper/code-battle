@@ -3,6 +3,9 @@ ja:
     change: 変更
     search: 検索
     edit: 編集
+    delete: 削除
+    cancel: キャンセル
+    save: 保存
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -70,6 +73,7 @@ ja:
       そのため、他言語との決選に挑んでいる最中です。
   comment:
     post: コメントを投稿
+    confirm_delete: 本当に削除しますか？
     count:
       one: '1件のコメント'
       other: '%{count}件のコメント'

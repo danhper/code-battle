@@ -2,6 +2,16 @@
   <a class="pull-left" href="#">
     <img src="{{comment.user.gravatar_url}}" alt="Gravatar" class="avatar">
   </a>
+  {{#if comment.isOwner}}
+    <div class="pull-right comment-controls">
+      <a href="#" class="edit">
+        {{ t 'btn.edit' }}
+      </a>
+      <a href="#" class="delete">
+        {{ t 'btn.delete' }}
+      </a>
+    </div>
+  {{/if}}
   <div class="media-body">
     <h4 class="media-heading">
       <a href="/users/{{comment.user.id}}">

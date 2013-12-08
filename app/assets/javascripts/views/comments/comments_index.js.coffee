@@ -6,6 +6,7 @@ class Dmtc.Views.CommentsIndex extends Backbone.View
     @collection.on 'reset', @addAll, this
     @collection.on 'add', @addOne, this
     @collection.on 'add', @setTitle, this
+    @collection.on 'remove', @setTitle, this
     @title = @$('.comment-title')
     @render()
 

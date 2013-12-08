@@ -159,6 +159,22 @@ article#codepage {
 			margin-bottom:0;
 		}
 
+		.comment {
+			.comment-controls {
+				display: none;
+			}
+			&:hover {
+				.comment-controls {
+					display: block;
+				}
+			}
+			.edit-area {
+				width: 100%;
+				height: 80px;
+				resize: vertical;
+			}
+		}
+
 		h5 {
 			font-size:18px;
 			font-weight:bold;
@@ -183,6 +199,8 @@ article#codepage {
 			margin-top:5px;
 			width:100%;
 		}
+
+
 	}
 
 	#others {

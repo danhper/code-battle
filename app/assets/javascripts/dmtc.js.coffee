@@ -3,6 +3,7 @@ window.Dmtc =
   Collections: {}
   Views: {}
   Routers: {}
+  Globals: {}
   initialize: ->
 
 
