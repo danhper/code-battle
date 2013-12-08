@@ -16,7 +16,7 @@
 
 rack-insight.sqlite
 
-public/javascripts
+app/assets/javascripts/i18n
 
 config/settings.local.yml
 config/settings/*.local.yml
