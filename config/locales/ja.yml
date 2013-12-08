@@ -71,6 +71,7 @@ ja:
       そのため、他言語との決選に挑んでいる最中です。
   comment:
     post: コメントを投稿
+    confirm_delete: 本当に削除しますか？
     count:
       one: '1件のコメント'
       other: '%{count}件のコメント'
