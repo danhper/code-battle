@@ -1,0 +1,12 @@
+<div class="media comment">
+  <a class="pull-left" href="#">
+    <img src="{{comment.user.gravatar_url}}" alt="Gravatar" class="avatar">
+  </a>
+  <div class="media-body">
+    <textarea class="edit-area">{{{ comment.content }}}</textarea>
+    <div class="edit-controls">
+      <button class="btn btn-default cancel">{{ t 'btn.cancel' }}</button>
+      <button class="btn btn-primary save">{{ t 'btn.save' }}</button>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,20 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user_with_username!, only: [:create, :destroy]
-  before_action :set_comment, only: [:destroy]
-  before_action :check_user!, only: [:destroy]
+  before_action :set_comment, only: [:update, :destroy]
+  before_action :check_user!, only: [:update, :destroy]
 
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       render json: @comment, status: 201
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @comment.update(comment_params)
+      head :no_content
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
