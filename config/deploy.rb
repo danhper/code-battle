@@ -1,13 +1,13 @@
 set :application, 'code-battle'
 set :repo_url, 'https://github.com/tuvistavie/code-battle.git'
-set :branch, :develop
+set :branch, :master
 set :scm, :git
 
 
 set :deploy_to, '/home/codebattle/code-battle'
 
 # set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 # set :pty, true
 
 set :linked_files, %w{config/database.yml config/settings/production.local.yml config/settings.local.yml}
@@ -43,7 +43,9 @@ namespace :deploy do
   after :restart, :restart_websocket do
     on roles(:app), in: :sequence, wait: 3 do
       within release_path do
-        execute :rake, 'websocket_rails:stop_server'
+        if test("[ -f #{release_path}/tmp/pids/websocket_rails.pid ]")
+          execute :rake, 'websocket_rails:stop_server'
+        end
         execute :rake, 'websocket_rails:start_server'
       end
     end
