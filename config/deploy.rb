@@ -7,7 +7,7 @@ set :scm, :git
 set :deploy_to, '/home/codebattle/code-battle'
 
 # set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 # set :pty, true
 
 set :linked_files, %w{config/database.yml config/settings/production.local.yml config/settings.local.yml}
@@ -62,8 +62,10 @@ namespace :deploy do
 
   before :finishing, :wheneverize do
     on roles(:db), in: :sequence do
-      within release_path do
-        execute :bundle, 'exec', 'whenever', '-w'
+      if fetch(:stage) == :production
+        within release_path do
+          execute :bundle, 'exec', 'whenever', '-w'
+        end
       end
     end
   end
