@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'backup'
+gem 'rails_config'
 gem 'net-ssh', '<= 2.5.2'
 gem 'net-scp', '<= 1.0.4'
 gem 'excon', '~> 0.17.0'
