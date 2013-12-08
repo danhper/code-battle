@@ -1,22 +1,31 @@
-  <article id="profile">
+<% content_for :javascript do %>
+  <script>
+    Dmtc.Globals.guilds = new Dmtc.Collections.Guilds(<%= @languages_stats.to_json.html_safe %>);
+  </script>
+  <%= javascript_include_tag "https://www.google.com/jsapi" %>
+  <%= javascript_include_tag "languages_chart" %>
+<% end %>
 
-    <section>
-      <h3 class="title">
-        <%= render 'users/avatar', user: @user, text: true %>
-        <% if user_signed_in? && current_user.id == @user.id %>
-          <%= link_to t('btn.edit'), edit_user_path(current_user), class: 'btn btn-default' %>
-        <% end %>
-      </h3>
-      <div id="code-container" class="clearfix">
+<article id="profile">
+  <section>
+    <h3 class="title">
+      <%= render 'users/avatar', user: @user, text: true %>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to t('btn.edit'), edit_user_path(current_user), class: 'btn btn-default' %>
+      <% end %>
+    </h3>
+    <div id="code-container" class="clearfix">
 
-        <div id="guilds">
-          <h4 class="guild"><%= t 'user.guilds' %></h4>
-          <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
-        </div>
-
-        <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
+      <div id="guilds">
+        <h4 class="guild"><%= t 'user.guilds' %></h4>
+        <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
+        <br>
       </div>
-    </section>
+      <div id="guilds-piechart"></div>
 
-    <%= will_paginate @codes %>
+      <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
+    </div>
+  </section>
+
+  <%= will_paginate @codes %>
 </article>

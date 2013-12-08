@@ -92,6 +92,19 @@ class User < ActiveRecord::Base
     GravatarImageTag.gravatar_url self.email
   end
 
+  def language_usage_statistics
+    total_codes_count = self.created_codes.count
+    codes_per_guild = self.created_codes.includes(:guild).group(:guild).count
+    statistics = []
+    codes_per_guild.each do |guild, count|
+      statistics << guild.as_json.merge({
+        codes_count: count,
+        codes_percentage: count * 100.0 / total_codes_count
+      })
+    end
+    statistics
+  end
+
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
