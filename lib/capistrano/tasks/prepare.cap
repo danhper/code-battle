@@ -8,6 +8,7 @@ namespace :prepare do
     invoke 'prepare:check_permissions'
     invoke 'prepare:create_deploy_subdirectories'
     invoke 'prepare:upload_local_config'
+    invoke 'prepare:install_backup_gems'
   end
 
   desc "Create the deploy directory if needed"
@@ -67,6 +68,15 @@ namespace :prepare do
       info "Installing backup gems"
       execute :bundle, "install --gemfile=#{dir}/Gemfile"
       execute :rm, "-r #{dir}"
+    end
+  end
+
+  desc "Seed DB"
+  task :seed_db do
+    on roles(:db) do |host|
+      within release_path do
+        execute :rake, 'db:seed', "RAILS_ENV=#{fetch(:rails_env)}"
+      end
     end
   end
 

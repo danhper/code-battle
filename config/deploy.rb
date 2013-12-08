@@ -3,16 +3,22 @@ set :repo_url, 'https://github.com/tuvistavie/code-battle.git'
 set :branch, :develop
 set :scm, :git
 
+
 set :deploy_to, '/home/codebattle/code-battle'
 
 # set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 # set :pty, true
 
 set :linked_files, %w{config/database.yml config/settings/production.local.yml config/settings.local.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, {
+  global_gem_home: "/usr/local/rbenv/gems",
+  gem_home: "$HOME/.gem",
+  gem_path: "$GEM_HOME:$GLOBAL_GEM_HOME",
+  path: "$GEM_HOME/bin:$GLOBAL_GEM_HOME/bin:/usr/bin:$PATH",
+}
 # set :keep_releases, 5
 
 set :rails_env, 'production'
@@ -21,7 +27,7 @@ set :bundle_flags, '--deployment'
 set :bundle_without, %w{development debug test deployment}.join(' ')
 set :bundle_bins, fetch(:bundle_bins).push("whenever")
 
-set :rbenv_type, :user
+set :rbenv_type, :system
 set :rbenv_ruby, '2.0.0-p353'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
@@ -42,7 +48,7 @@ namespace :deploy do
     end
   end
 
-  before :restart, :wheneverize do
+  before :finishing, :wheneverize do
     on roles(:db), in: :sequence do
       within release_path do
         execute :bundle, 'exec', 'whenever', '-w'
