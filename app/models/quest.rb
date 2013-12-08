@@ -22,8 +22,8 @@ class Quest < ActiveRecord::Base
   has_many :finalists,
            -> { select('distinct on (codes.guild_id) codes.*')
                .where('codes.likes_count > 0')
-               .by_likes
                .order('codes.guild_id')
+               .by_likes
                .readonly },
            class_name: 'Code',
            foreign_key: 'quest_id'
@@ -45,7 +45,7 @@ class Quest < ActiveRecord::Base
     codes.each do |i|
       scores[i.voted_guild_id] += i.vote_num * i.voting_guild.get_guild_coefficient
     end
-    scores.sort_by { |_,v| -v }
+    scores = scores.sort_by { |_,v| -v }
     medalists_ary = Array.new
     scores.each do |i|
       finalist = self.finalists.where(guild_id: i[0]).first
@@ -53,11 +53,11 @@ class Quest < ActiveRecord::Base
     end
 
     if medalists_ary.length < 3
-      medalists_ary.concat(self.finalists)
+      medalists_ary.concat(self.finalists.sort{|i,j| j.likes_count <=> i.likes_count})
       medalists_ary.concat(self.codes) if medalists_ary.uniq.length < 3
     end
 
-    medalists_ary.uniq
+    medalists_ary.uniq{|c| c.guild_id }
   end
 
   def best_code

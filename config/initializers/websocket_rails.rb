@@ -1,3 +1,5 @@
+require File.expand_path('../rails_config', __FILE__)
+
 WebsocketRails.setup do |config|
 
   # Uncomment to override the default log level. The log level can be
@@ -15,7 +17,7 @@ WebsocketRails.setup do |config|
   # Change to true to enable standalone server mode
   # Start the standalone server with rake websocket_rails:start_server
   # * Requires Redis
-  config.standalone = false
+  config.standalone = Settings.ws.standalone
 
   # Change to true to enable channel synchronization between
   # multiple server instances.
