@@ -26,8 +26,9 @@
 
     <div id="quests">
       <%= render partial: 'quests/best_codes', collection: @quests, as: :quest %>
+
+      <%= will_paginate @quests, class: 'pagination-panel', inner_window: 1, outer_window: 0 %>
     </div>
 
-    <%= will_paginate @quests %>
 
   </article>

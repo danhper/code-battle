@@ -119,6 +119,29 @@ footer {
 
 }
 
+.main-background {
+	.background-image(~"linear-gradient(bottom, #eedfc7 0%, #eedfc7 80.22%, #fad9a4 100%)");
+}
+
+
+.pagination-panel {
+	.main-background;
+	width: 30%;
+	height: 40px;
+	margin: auto;
+	padding-top: 5px;
+	font-size: 18pt;
+	span, em, a {
+		height: 100%;
+		width: 50px;
+		display: inline-block;
+		border-right: 1px solid #cdcdcd;
+		&:last-child {
+			border: none;
+		}
+	}
+}
+
 .btn-inverse {
 	.button-variant(@btn-inverse-color; @btn-inverse-bg; @btn-inverse-border);
 }
