@@ -1,13 +1,8 @@
-require 'rails_config'
+require File.expand_path('../../initializers/rails_config', __FILE__)
 
 env = ENV['RAILS_ENV'] || 'production'
-
-config_dir = File.expand_path('../..', __FILE__)
-
-config_files = ["database.yml", "settings.local.yml", "settings.yml", "settings/#{env}.yml", "settings/#{env}.local.yml"]
-to_load = config_files.map { |f| File.expand_path(File.join(config_dir, f)) }
-
-RailsConfig.load_and_set_settings(to_load)
+Settings.add_source!(File.expand_path("../../database.yml", __FILE__))
+Settings.reload!
 
 Backup::Model.new(:db_backup, 'Database Backup to S3') do
 

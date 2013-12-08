@@ -1,3 +1,5 @@
+require File.expand_path('../rails_config', __FILE__)
+
 WebsocketRails.setup do |config|
 
   # Uncomment to override the default log level. The log level can be

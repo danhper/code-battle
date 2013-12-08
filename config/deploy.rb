@@ -39,6 +39,16 @@ namespace :deploy do
     end
   end
 
+  desc 'Restart websocket'
+  after :restart, :restart_websocket do
+    on roles(:app), in: :sequence, wait: 3 do
+      within release_path do
+        execute :rake, 'websocket_rails:stop_server'
+        execute :rake, 'websocket_rails:start_server'
+      end
+    end
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
