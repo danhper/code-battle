@@ -7,7 +7,7 @@ set :scm, :git
 set :deploy_to, '/home/codebattle/code-battle'
 
 # set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 # set :pty, true
 
 set :linked_files, %w{config/database.yml config/settings/production.local.yml config/settings.local.yml}
