@@ -3,13 +3,14 @@ class Dmtc.Views.NewComment extends Backbone.View
 
   events:
     'change #comment-textarea': 'updateModel'
+    'keyup  #comment-textarea': 'updateModel'
     'click .comment-post': 'postComment'
 
   initialize: (options) ->
     @resetModel()
 
   resetModel: ->
-    @model = new Dmtc.Models.Comment()
+    @model = new Dmtc.Models.Comment({}, collection: @options.comments)
 
   updateModel: (e) ->
     @model.set 'content', $(e.target).val()

@@ -1,7 +1,6 @@
 class Dmtc.Models.Comment extends Backbone.Model
 
   initialize: (options) ->
-    @set 'isOwner', @get('user_id') == Dmtc.Globals.userId
 
   toObject: (toBr) ->
     if toBr
@@ -9,4 +8,5 @@ class Dmtc.Models.Comment extends Backbone.Model
       attrs.content = attrs.content.replace("\n", "<br>")
     else
       attrs = @attributes
+    attrs.isOwner = @get('user_id') == Dmtc.Globals.userId
     { comment: attrs }
