@@ -1,2 +1,2 @@
-Handlebars.registerHelper 't', (key) ->
-  I18n.t key
+Handlebars.registerHelper 't', (key, options={}) ->
+  I18n.t key, options.hash
