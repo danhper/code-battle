@@ -2,7 +2,7 @@ class Dmtc.Models.Guild extends Backbone.Model
   url: '/guilds'
 
   initialize: (attributes, options) ->
-    @set 'inGuild', attributes.inGuild != ''
+    @set 'inGuild', attributes.inGuild
 
   toJSON: -> guild: _.clone @attributes
 

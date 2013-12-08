@@ -3,7 +3,7 @@ class GuildsController < ApplicationController
   before_action :set_guild, except: [:index, :new, :create]
 
   def index
-    @guilds = Guild.includes(:recent_users).all
+    @guilds = Guild.includes(:recent_users).order(url_safe_name: :asc).all
   end
 
   def show
