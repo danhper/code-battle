@@ -63,6 +63,7 @@ ja:
     edit_long: 自分のコードを編集する
     edit: 編集
     delete: 削除
+    created_date: 作成日
     enemy_code: 相手のコードがここに表示される
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。

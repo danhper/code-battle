@@ -15,13 +15,13 @@
     </h3>
     <p class="desc">
       <% unless @best_code.nil? %>
-        <strong><%= t 'code.current_first' %>:</strong>
+        <strong><%= t 'quest.current_best' %>:</strong>
         <%= @best_code.guild.name %>
         (<%= t('code.written_by', username: link_to(@best_code.author.username, @best_code.author)).html_safe %>) /
       <% end %>
       <strong><%= t 'quest.answers_number' %>:</strong>
       <%= @quest.codes.count %> /
-      <strong><%= t 'code.posted_date' %>:</strong>
+      <strong><%= t 'quest.posted_date' %>:</strong>
       <%= l @quest.created_at, format: :date_only %>
     </p>
 
@@ -79,11 +79,10 @@
 
 <% content_for :javascript do %>
   <script>
-    I18n.translations.ja.code.unvote = "<%= I18n.t('code.unvote') %>";
     var codeJSON = _.extend(<%= @code.to_json(methods: :likes_number).html_safe %>, { liked: <%= @liked %> });
     var codeModel = new Dmtc.Models.Code(codeJSON);
     new Dmtc.Views.ShowCode({ model: codeModel });
-    var comments = new Dmtc.Collections.Comments(<%= raw @code.comments.to_json %>);
+    var comments = new Dmtc.Collections.Comments(<%= @code.comments.to_json.html_safe %>);
     new Dmtc.Views.NewComment({ codeId: <%= @code.id %>, comments: comments });
     new Dmtc.Views.CommentsIndex({ collection: comments });
     var codeVoteJSON = _.extend(<%= @code.to_json(include: :guild).html_safe %>, { voted: <%= @voted %> });
