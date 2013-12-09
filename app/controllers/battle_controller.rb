@@ -1,3 +1,5 @@
+require 'pry'
+
 class BattleController < WebsocketRails::BaseController
   before_action :set_quest, only: [:handle_initialization]
   before_action :set_battle, only: [:handle_ready, :handle_code_update]
@@ -37,7 +39,7 @@ class BattleController < WebsocketRails::BaseController
   def handle_code_update
     gladiator = @battle.gladiators.where(user_id: current_user.id).first
     return if @failed || gladiator.nil?
-    gladiator.update(code: message[:code]) if Time.now - gladiator.updated_at >= 5
+    gladiator.update(code: message[:code]) if message[:code] != gladiator.code && Time.now - gladiator.updated_at >= 5
     WebsocketRails[@battle.token].trigger(:code_updated, message)
   end
 
