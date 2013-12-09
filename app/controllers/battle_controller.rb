@@ -4,7 +4,7 @@ class BattleController < WebsocketRails::BaseController
 
   def handle_ready
     return if @battle.nil?
-    if @battle.users.count == 2 && @battle.started_at?
+    if @battle.users.count == 2 && @battle.started_at.nil?
       @battle.update(started_at: Time.now)
       WebsocketRails[@battle.token].trigger(:ready_to_start)
     else
