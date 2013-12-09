@@ -39,7 +39,9 @@ class BattleController < WebsocketRails::BaseController
   def handle_code_update
     gladiator = @battle.gladiators.where(user_id: current_user.id).first
     return if @failed || gladiator.nil?
-    gladiator.update(code: message[:code]) if message[:code] != gladiator.code && Time.now - gladiator.updated_at >= 5
+    if message[:code] != gladiator.code && Time.now - gladiator.updated_at >= 5
+      gladiator.update(code: message[:code])
+    end
     WebsocketRails[@battle.token].trigger(:code_updated, message)
   end
 
@@ -55,7 +57,7 @@ class BattleController < WebsocketRails::BaseController
   end
 
   def check_user
-    if !user_signed_in? ||  current_user.id != message[:id]
+    if !user_signed_in? || current_user.id != message[:id]
       trigger_failure({ message: 'authentication error' })
       @failed = true
     end
