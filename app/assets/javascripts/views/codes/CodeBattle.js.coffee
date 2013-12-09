@@ -57,12 +57,11 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @setOponentText battleData
 
   handleNewUser: (battleData) ->
-    console.log battleData
     @setOponentText battleData
 
   prepareStartGame: ->
     textDiv = $('#game-messages')
-    textDiv.text "バトルが始まる" # I18n.t('battle.will_start')
+    textDiv.text I18n.t('battle.will_start')
     setText = (i) -> setTimeout((-> textDiv.text(i)), (6 - i) * 1000)
     setTimeout (-> textDiv.css 'left', '48%'), 1000
     for i in [5..1]
@@ -100,9 +99,10 @@ class Dmtc.Views.CodeBattle extends Backbone.View
 
   sendCode: (code) ->
     data =
-      id  : @userId
-      code: code
-    @battleChannel.trigger 'code_updated', data
+      id    : @userId
+      token : @token
+      code  : code
+    @dispatcher.trigger 'code_updated', data
 
   updateCode: (e) ->
     @sendCode $(e.target).val()

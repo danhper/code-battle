@@ -2,13 +2,13 @@
 #
 # Table name: votes
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  quest_id   :integer
-#  guild_id   :integer
-#  voting_guild_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  quest_id        :integer
+#  guild_id        :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  voting_guild_id :integer
 #
 
 class Vote < ActiveRecord::Base

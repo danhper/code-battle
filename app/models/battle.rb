@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: battles
+#
+#  id          :integer          not null, primary key
+#  token       :string(255)
+#  quest_id    :integer
+#  users_count :integer          default(0)
+#  started_at  :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Battle < ActiveRecord::Base
   has_many :gladiators,
     after_add:    -> (b, _) { b.increment!(:users_count) },
