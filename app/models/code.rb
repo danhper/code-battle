@@ -56,6 +56,6 @@ class Code < ActiveRecord::Base
 
   def self.dummy
     dummy_guild =  Guild.new(url_safe_name: 'text')
-    Code.new(source: "Error: signal 11:\n./NO_CODE[0x4006cc]\n/usr/lib/libc.so.6(+0x35450)[0x7f31d04ec450]\n./NO_CODE[0x400725]\n./NO_CODE[0x400748]\n./NO_CODE[0x400758]\n./NO_CODE[0x400782]\n/usr/lib/libc.so.6(__libc_start_main+0xf5)[0x7f31d04d8bc5]\n./NO_CODE[0x4005e9]\n", guild: dummy_guild)
+    Code.new(source: I18n.t('code.no_code_error'), guild: dummy_guild)
   end
 end

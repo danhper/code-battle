@@ -69,6 +69,16 @@ ja:
     created_date: 作成日
     enemy_code: 相手のコードがここに表示される
     no_code: コードが存在しません
+    no_code_error: |
+      Error: signal 11:
+      ./NO_CODE[0x4006cc]
+      /usr/lib/libc.so.6(+0x35450)[0x7fb1853b4450]
+      ./NO_CODE[0x400725]
+      ./NO_CODE[0x400748]
+      ./NO_CODE[0x400758]
+      ./NO_CODE[0x400782]
+      /usr/lib/libc.so.6(__libc_start_main+0xf5)[0x7fb1853a0bc5]
+      ./NO_CODE[0x4005e9]
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
@@ -101,7 +111,7 @@ ja:
     enter_mail: メールアドレスを入力
     enter_username: まずユーザー名を記入してください
     no_guild: このユーザーはまだどのギルドにも属していません
-    no_code: このユーザーはまだコード書いていません
+    no_code: 表示するコードがありません
   will_paginate:
     previous_label: "&larr;"
     next_label: "&rarr;"
