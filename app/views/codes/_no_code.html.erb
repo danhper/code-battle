@@ -1,0 +1,14 @@
+<div class="code">
+  <h4 class="">
+    <% unless defined?(skip_title) %>
+      <br>
+      <span class="title">
+        <%= t 'user.no_code' %>
+      </span>
+    <% end %>
+
+  </h4>
+    <%= code.formatted_source.html_safe %>
+
+</div>
+

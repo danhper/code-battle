@@ -18,12 +18,22 @@
 
       <div id="guilds">
         <h4 class="guild"><%= t 'user.guilds' %></h4>
-        <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
+        <% if @user.guilds.empty? %>
+          <%= t 'user.no_guild' %>
+        <% else %>
+          <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
+        <% end %>
         <br>
       </div>
       <div id="guilds-piechart"></div>
 
-      <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
+      <% if @codes.empty? %>
+        <div class="single-code">
+          <%= render 'codes/no_code', code: Code.dummy %>
+        </div>
+      <% else %>
+        <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
+      <% end %>
     </div>
   </section>
 

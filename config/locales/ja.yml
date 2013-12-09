@@ -68,6 +68,7 @@ ja:
     delete: 削除
     created_date: 作成日
     enemy_code: 相手のコードがここに表示される
+    no_code: コードが存在しません
     can_be_voted: |
       この回答が%{language}ギルドの中では現在"+1"数がNo.1です。
       そのため、他言語との決選に挑んでいる最中です。
@@ -99,6 +100,8 @@ ja:
     use_id: 使いたいIDを入力
     enter_mail: メールアドレスを入力
     enter_username: まずユーザー名を記入してください
+    no_guild: このユーザーはまだどのギルドにも属していません
+    no_code: このユーザーはまだコード書いていません
   will_paginate:
     previous_label: "&larr;"
     next_label: "&rarr;"

@@ -43,7 +43,7 @@ class Code < ActiveRecord::Base
   end
 
   def formatted_source(options={})
-    Pygments.highlight(self.source, options: { lexer: self.guild.url_safe_name }.merge(options)) || ''
+    Pygments.highlight(self.source, options: { lexer: self.guild_url_safe_name }.merge(options)) || ''
   end
 
   def increment_likes_counter!
@@ -52,5 +52,10 @@ class Code < ActiveRecord::Base
 
   def decrement_likes_counter!
     self.decrement!(:likes_count)
+  end
+
+  def self.dummy
+    dummy_guild =  Guild.new(url_safe_name: 'text')
+    Code.new(source: "Error: signal 11:\n./NO_CODE[0x4006cc]\n/usr/lib/libc.so.6(+0x35450)[0x7f31d04ec450]\n./NO_CODE[0x400725]\n./NO_CODE[0x400748]\n./NO_CODE[0x400758]\n./NO_CODE[0x400782]\n/usr/lib/libc.so.6(__libc_start_main+0xf5)[0x7f31d04d8bc5]\n./NO_CODE[0x4005e9]\n", guild: dummy_guild)
   end
 end
