@@ -25,3 +25,7 @@ class Dmtc.Collections.Guilds extends Backbone.Collection
   statsColors: ->
     @map (guild) =>
       @constructor.colors[guild.get 'url_safe_name']
+
+  getLikedData: ->
+    @map (guild) ->
+      [guild.get('name'), guild.get('liked_count')]
