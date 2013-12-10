@@ -1,10 +1,13 @@
 google.load "visualization", "1", { packages: ["corechart"] }
 
 $ ->
+  stats = Dmtc.Globals.guilds.getStatsData()
+
   drawChart = ->
     return unless Dmtc.Globals.guilds?
-    stats = Dmtc.Globals.guilds.getStatsData()
+    return unless stats.length > 0
     container = document.getElementById('guilds-piechart')
+    container.style.display = 'block'
     data = google.visualization.arrayToDataTable([['Guild', 'Codes']].concat stats)
     chart = new google.visualization.PieChart(container);
     options =
@@ -14,6 +17,7 @@ $ ->
     chart.draw data, options
 
 
-  google.setOnLoadCallback drawChart
+  if stats.length > 0
+    google.setOnLoadCallback drawChart
 
 

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: gladiators
+#
+#  id         :integer          not null, primary key
+#  battle_id  :integer
+#  user_id    :integer
+#  guild_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  code       :text
+#
+
 class Gladiator < ActiveRecord::Base
   belongs_to :user
   belongs_to :quest

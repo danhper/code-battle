@@ -43,7 +43,7 @@ class Code < ActiveRecord::Base
   end
 
   def formatted_source(options={})
-    Pygments.highlight(self.source, options: { lexer: self.guild.url_safe_name }.merge(options)) || ''
+    Pygments.highlight(self.source, options: { lexer: self.guild_url_safe_name }.merge(options)) || ''
   end
 
   def increment_likes_counter!
@@ -52,5 +52,10 @@ class Code < ActiveRecord::Base
 
   def decrement_likes_counter!
     self.decrement!(:likes_count)
+  end
+
+  def self.dummy
+    dummy_guild =  Guild.new(url_safe_name: 'text')
+    Code.new(source: I18n.t('code.no_code_error'), guild: dummy_guild)
   end
 end

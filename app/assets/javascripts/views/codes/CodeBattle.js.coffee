@@ -51,18 +51,17 @@ class Dmtc.Views.CodeBattle extends Backbone.View
 
     @dispatcher.trigger 'ready_to_start', { token: @token }
     if battleData.started_at?
-      @startGame()
+      @startGame battleData
 
   setTexts: (battleData) ->
     @setOponentText battleData
 
   handleNewUser: (battleData) ->
-    console.log battleData
     @setOponentText battleData
 
   prepareStartGame: ->
     textDiv = $('#game-messages')
-    textDiv.text "バトルが始まる" # I18n.t('battle.will_start')
+    textDiv.text I18n.t('battle.will_start')
     setText = (i) -> setTimeout((-> textDiv.text(i)), (6 - i) * 1000)
     setTimeout (-> textDiv.css 'left', '48%'), 1000
     for i in [5..1]
@@ -74,12 +73,17 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     setTimeout (=> @startGame()), 7000
     return
 
-  startGame: ->
+  startGame: (battleData) ->
     $('#game-messages').hide()
     unless @spectator
-      code = @$(".own-code > textarea")
-      code.prop 'disabled', false
-      code.focus()
+      code = _.find(battleData.gladiators, (g) =>
+        g.user_id == @userId
+      )?.code
+      $code = @$(".own-code > textarea")
+      $code.prop 'disabled', false
+      $code.val code if code?
+      $code.focus()
+      @updateCode()
 
   setOponentText: (battleData) ->
     opponent = @getOpponent battleData
@@ -99,10 +103,13 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @$(".code[data-id=#{data.id}] > textarea").val data.code
 
   sendCode: (code) ->
+    clearTimeout @sendCodeTimeout
     data =
-      id  : @userId
-      code: code
-    @battleChannel.trigger 'code_updated', data
+      id    : @userId
+      token : @token
+      code  : code
+    @dispatcher.trigger 'code_updated', data
+    @sendCodeTimeout = setTimeout (=> @updateCode()), 5000
 
-  updateCode: (e) ->
-    @sendCode $(e.target).val()
+  updateCode: ->
+    @sendCode @$('#code_own_source').val()
