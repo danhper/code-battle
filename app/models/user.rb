@@ -126,4 +126,15 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def liked_by_guilds
+    codes_per_guild = self.created_codes.includes(:guild).group(:guild).sum(:likes_count)
+    array = []
+    codes_per_guild.each do |guild, count|
+      array << guild.as_json.merge({
+        liked_count: count
+      })
+    end
+    array
+  end
 end

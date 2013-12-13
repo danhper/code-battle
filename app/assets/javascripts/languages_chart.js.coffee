@@ -15,9 +15,6 @@ $ ->
       backgroundColor: "#EEDFC7"
 
     chart.draw data, options
-
-
+    
   if stats.length > 0
     google.setOnLoadCallback drawChart
-
-
