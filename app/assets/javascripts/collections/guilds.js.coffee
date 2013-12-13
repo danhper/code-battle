@@ -37,3 +37,8 @@ class Dmtc.Collections.Guilds extends Backbone.Collection
   getName: ->
     @map (guild) ->
       guild.get('name')
+
+  maxLikes: ->
+    @max((guild) ->
+      guild.get('liked_count')
+    ).get 'liked_count'
