@@ -1,5 +1,3 @@
-require 'pry'
-
 class BattleController < WebsocketRails::BaseController
   before_action :set_quest, only: [:handle_initialization]
   before_action :set_battle, only: [:handle_ready, :handle_code_update]
