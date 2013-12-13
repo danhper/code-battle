@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209142611) do
+ActiveRecord::Schema.define(version: 20131213140358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20131209142611) do
   add_index "gladiators", ["battle_id", "user_id"], name: "index_gladiators_on_battle_id_and_user_id", using: :btree
   add_index "gladiators", ["guild_id"], name: "index_gladiators_on_guild_id", using: :btree
   add_index "gladiators", ["user_id"], name: "index_gladiators_on_user_id", using: :btree
+
+  create_table "guild_members_counts", force: true do |t|
+    t.integer  "guild_id"
+    t.datetime "datetime"
+    t.integer  "members_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guild_members_counts", ["guild_id"], name: "index_guild_members_counts_on_guild_id", using: :btree
 
   create_table "guilds", force: true do |t|
     t.string   "name"

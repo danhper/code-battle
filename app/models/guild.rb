@@ -14,11 +14,13 @@ class Guild < ActiveRecord::Base
   has_many :codes
   has_many :votes
   has_many :quests, through: :votes
+  has_many :guild_members_counts
+
   has_and_belongs_to_many :users,
                           -> { uniq },
                           join_table: 'user_guilds',
-                          after_add: -> (g, u) { g.increment_users_count! },
-                          after_remove: -> (g, u) { g.decrement_users_count! }
+                          after_add: -> (g, u) { g.handle_user_add },
+                          after_remove: -> (g, u) { g.handle_user_remove }
 
   has_and_belongs_to_many :recent_users,
                           -> { order(created_at: :desc)
@@ -69,11 +71,17 @@ class Guild < ActiveRecord::Base
     ary.size + 1
   end
 
-  def increment_users_count!
+  def handle_user_add
     self.increment!(:users_count)
+    self.log_users_count!
   end
 
-  def decrement_users_count!
+  def handle_user_remove
     self.decrement!(:users_count)
+    self.log_users_count!
+  end
+
+  def log_users_count!
+    self.guild_members_counts.create!(datetime: Time.now, members_count: self.users_count)
   end
 end
