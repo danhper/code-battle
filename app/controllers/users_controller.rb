@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @show_code = !params[:page].nil?
     @codes = @user.created_codes.paginate(page: params[:page])
     @languages_stats = @user.language_usage_statistics
   end

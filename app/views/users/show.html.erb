@@ -16,17 +16,17 @@
     </h3>
 
     <ul class="nav nav-tabs">
-      <li class="active">
+      <li class="<%= 'active' unless @show_code %>">
         <%= link_to t('user.guild_info'), '#guilds', data: { toggle: 'tab'} %>
       </li>
-      <li>
+      <li class="<%= 'active' if @show_code %>">
         <%= link_to t('user.codes'), '#codes', data: { toggle: 'tab'} %>
       </li>
     </ul>
 
     <div id="code-container" class="clearfix">
       <div class="tab-content">
-        <div class="tab-pane active" id="guilds">
+        <div class="tab-pane <%= 'active' unless @show_code %>" id="guilds">
           <div id="guilds">
             <h4 class="guild"><%= t 'user.guilds' %></h4>
             <% if @user.guilds.empty? %>
@@ -38,7 +38,7 @@
           </div>
           <div id="guilds-piechart"></div>
         </div>
-        <div class="tab-pane" id="codes">
+        <div class="tab-pane <%= 'active' if @show_code %>" id="codes">
           <% if @codes.empty? %>
             <div class="single-code">
               <%= render 'codes/no_code', code: Code.dummy %>
@@ -46,11 +46,12 @@
           <% else %>
             <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
           <% end %>
+          <div class="clear"></div>
+          <%= will_paginate @codes %>
         </div>
       </div>
 
     </div>
   </section>
 
-  <%= will_paginate @codes %>
 </article>

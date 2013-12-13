@@ -4,6 +4,9 @@ $ ->
   return unless Dmtc.Globals.guilds?
   stats = Dmtc.Globals.guilds.getStatsData()
 
+  $('a[href="#guilds"]').on 'shown.bs.tab', (e) ->
+    drawChart()
+
   drawChart = ->
     return unless stats.length > 0
     container = document.getElementById('guilds-piechart')
