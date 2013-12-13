@@ -1,9 +1,11 @@
 <% content_for :javascript do %>
   <script>
     Dmtc.Globals.guilds = new Dmtc.Collections.Guilds(<%= @languages_stats.to_json.html_safe %>);
+    Dmtc.Globals.guilds.liked = new Dmtc.Collections.Guilds(<%= @liked.to_json.html_safe %>);
   </script>
   <%= javascript_include_tag "https://www.google.com/jsapi" %>
   <%= javascript_include_tag "languages_chart" %>
+  <%= javascript_include_tag "liked_chart" %>
 <% end %>
 
 <article id="profile">
@@ -37,6 +39,7 @@
             <br>
           </div>
           <div id="guilds-piechart"></div>
+          <div id="liked-columnchart"></div>
         </div>
         <div class="tab-pane <%= 'active' if @show_code %>" id="codes">
           <% if @codes.empty? %>
