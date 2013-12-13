@@ -13,12 +13,14 @@ $ ->
     return unless sum > 0
     container = document.getElementById('liked-columnchart')
     container.style.display = 'block'
-    data = google.visualization.arrayToDataTable([['Guild', 'Liked', role:'style']].concat liked)
+    data = google.visualization.arrayToDataTable([['Guild', I18n.t('code.likes_number'), role:'style']].concat liked)
     chart = new google.visualization.ColumnChart(container);
     options =
       backgroundColor: "#EEDFC7"
+      vAxis:
+        maxValue: 4
 
     chart.draw data, options
-    
+
   if sum > 0
     google.setOnLoadCallback drawLikedChart

@@ -64,6 +64,7 @@ ja:
     publish_warning: 投稿したコードは、Web全体に公開されます。
     post: このクエストにコードで回答
     edit_long: 自分のコードを編集する
+    likes_number: Like合計
     edit: 編集
     delete: 削除
     created_date: 作成日
