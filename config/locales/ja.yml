@@ -69,6 +69,7 @@ ja:
     delete: 削除
     created_date: 作成日
     enemy_code: 相手のコードがここに表示される
+    usage_ratio: 投稿率
     no_code: コードが存在しません
     no_code_error: |
       Error: signal 11:

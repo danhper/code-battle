@@ -19,7 +19,7 @@
 
     <ul class="nav nav-tabs">
       <li class="<%= 'active' unless @show_code %>">
-        <%= link_to t('user.guild_info'), '#guilds', data: { toggle: 'tab'} %>
+        <%= link_to t('user.guild_info'), '#guilds-tab', data: { toggle: 'tab'} %>
       </li>
       <li class="<%= 'active' if @show_code %>">
         <%= link_to t('user.codes'), '#codes', data: { toggle: 'tab'} %>
@@ -28,18 +28,20 @@
 
     <div id="code-container" class="clearfix">
       <div class="tab-content">
-        <div class="tab-pane <%= 'active' unless @show_code %>" id="guilds">
-          <div id="guilds">
+        <div id="guilds-tab"class="tab-pane <%= 'active' unless @show_code %>" >
+          <div id="guilds" class="clearfix">
             <h4 class="guild"><%= t 'user.guilds' %></h4>
             <% if @user.guilds.empty? %>
               <%= t 'user.no_guild' %>
             <% else %>
               <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
             <% end %>
-            <br>
           </div>
-          <div id="guilds-piechart"></div>
-          <div id="liked-columnchart"></div>
+
+          <div class="graphs">
+            <div id="guilds-piechart"></div>
+            <div id="liked-columnchart"></div>
+          </div>
         </div>
         <div class="tab-pane <%= 'active' if @show_code %>" id="codes">
           <% if @codes.empty? %>
@@ -49,11 +51,10 @@
           <% else %>
             <%= render partial: 'codes/simple_code', collection: @codes, as: :code %>
           <% end %>
-          <div class="clear"></div>
+          <div class="clearfix"></div>
           <%= will_paginate @codes %>
         </div>
       </div>
-
     </div>
   </section>
 

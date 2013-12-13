@@ -7,7 +7,9 @@ $ ->
   colors =  Dmtc.Globals.guilds.liked.statsColors()
   liked = _.zip(guild_name,liked_count,colors)
   sum = _.reduce(liked_count,(x, y) -> x + y)
-  console.log maxLikes
+
+  $('a[href="#guilds-tab"]').on 'shown.bs.tab', (e) ->
+    drawLikedChart()
 
   drawLikedChart = ->
     return unless Dmtc.Globals.guilds.liked?
@@ -19,6 +21,11 @@ $ ->
     chart = new google.visualization.ColumnChart(container);
     options =
       backgroundColor: "#EEDFC7"
+      title: I18n.t('code.likes_number')
+      titleTextStyle:
+        fontSize: 18
+      legend:
+        position: 'none'
       vAxis:
         minValue: 0
         maxValue: Math.max(4, maxLikes)
