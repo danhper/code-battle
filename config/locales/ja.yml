@@ -106,6 +106,8 @@ ja:
     show_all: すべて表示
   user:
     settings: ユーザー設定
+    guild_info: ギルド情報
+    codes: コード一覧
     guilds: 所属ギルド
     use_id: 使いたいIDを入力
     enter_mail: メールアドレスを入力
