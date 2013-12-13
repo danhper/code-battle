@@ -1,4 +1,4 @@
-<%= link_to user do %>
+<%= link_to user, class: 'user-info', data: { id: user.id } do %>
   <% if defined?(text_before) %>
     <%= user.username %>
   <% end %>

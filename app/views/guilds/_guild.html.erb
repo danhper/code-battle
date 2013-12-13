@@ -9,7 +9,7 @@
         <span class="user-count"><%= guild.users_count %></span>
       <% end %>
     </h4>
-    <p>
+    <p class="users-list">
       <%= render partial: 'users/avatar', collection: guild.recent_users, as: :user %>
     </p>
     <% if user_signed_in? %>

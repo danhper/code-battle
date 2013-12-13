@@ -13,11 +13,11 @@
 </article>
 
 
-<% content_for :javascript do %>
-<script>
-  I18n.translations[I18n.locale].guild = I18n.translations[I18n.locale].guild || {};
-  I18n.translations[I18n.locale].guild.enter = "<%= t 'guild.enter' %>";
-  I18n.translations[I18n.locale].guild.leave = "<%= t 'guild.leave' %>";
-  new Dmtc.Views.GuildsIndex();
-</script>
+<% if user_signed_in? %>
+  <% content_for :javascript do %>
+    <script>
+      Dmtc.Globals.user = <%= current_user.to_json(methods: :gravatar_url).html_safe %>;
+      new Dmtc.Views.GuildsIndex();
+    </script>
+  <% end %>
 <% end %>

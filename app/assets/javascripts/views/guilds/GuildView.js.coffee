@@ -1,4 +1,6 @@
 class Dmtc.Views.GuildView extends Backbone.View
+  userTemplate: JST['users/avatar']
+
   events:
     'click .enter-link': 'enterGuild'
     'click .leave-link': 'leaveGuild'
@@ -25,11 +27,23 @@ class Dmtc.Views.GuildView extends Backbone.View
       @count -= 1
     @$('.user-count').text @count
 
+  updateIcon: ->
+    $usersList = @$('.users-list')
+    currentUser = Dmtc.Globals.user
+    if @model.get 'inGuild'
+      $users = $usersList.children '.user-info'
+      if $users.length >= 12
+        $users.last().remove()
+      $usersList.prepend @userTemplate({ user: currentUser })
+    else
+      $user = $usersList.find("a.user-info[data-id=#{currentUser.id}]")
+      $user.remove()
+
   enterLeaveSuccess: =>
     @model.set('inGuild', !@model.get('inGuild'))
     @setLink()
     @updateCount()
-
+    @updateIcon()
 
   enterGuild: (e) ->
     e.preventDefault()
