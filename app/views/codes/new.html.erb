@@ -4,7 +4,7 @@
       <%= @quest.title %>
     </h3>
     <p class="desc">
-      <%= @quest.description %>
+      <%= simple_format @quest.description %>
     </p>
     <%= render 'codes/form', quest: @quest, code: @code %>
   </section>
