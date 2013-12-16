@@ -2,7 +2,7 @@
   <% if defined?(text_before) %>
     <%= user.username %>
   <% end %>
-  <%= gravatar_image_tag user.email, alt: user.username, class: 'avatar' %>
+  <%= gravatar_image_tag user.email, alt: user.username, class: 'avatar', title: user.username %>
   <% if defined?(text) && text %>
     <br>
     <%= user.username %>
