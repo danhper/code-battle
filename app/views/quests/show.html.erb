@@ -7,6 +7,9 @@
         <br>
         <cite><%= @quest.title %></cite>
         <br>
+        <% if user_signed_in? && current_user.id == @quest.creator.id %>
+          <small><%= link_to t('btn.edit'), edit_quest_path(@quest) %></small>
+        <% end %>
       </h3>
       <p class="desc">
         <%= render 'quests/current_winner', code: @quest.best_code %>

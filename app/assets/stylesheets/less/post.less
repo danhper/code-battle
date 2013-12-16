@@ -67,12 +67,20 @@ article#post {
 			#select-title-section{
 				margin-left:20px;
 				width:480px;
+				&.large {
+					width: 100%;
+					margin-left: 0;
+				}
 			}
 			#select-desc-section{
 				width:700px;
 				margin:20px 0;
 				textarea {
 					height:120px;
+					resize: none;
+					&.large {
+						height: 400px;
+					}
 				}
 			}
 		}
@@ -119,6 +127,13 @@ article#post {
 			font-size:30px;
 			cursor:pointer;
 			border-bottom:5px solid rgba(0,0,0,.40);
+		}
+		a.btn-large {
+			padding-top: 20px;
+		}
+		.btn-large {
+			width: 200px;
+			height: 60px;
 		}
 	}
 

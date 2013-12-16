@@ -1,2 +1,11 @@
-<h1>Quest#edit</h1>
-<p>Find me in app/views/quests/edit.html.erb</p>
+<article id="post">
+  <section>
+    <h3 class="title">
+      <%= t 'quest.edit' %>
+    </h3>
+    <p class="desc clearfix">
+      <%= t('quest.post_explanation').html_safe %>
+    </p>
+    <%= render 'quests/form_without_code', quest: @quest %>
+  </section>
+</article>

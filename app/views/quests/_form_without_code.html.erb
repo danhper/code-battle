@@ -1,0 +1,22 @@
+<%= form_for quest do |f| %>
+  <div id="select-options">
+    <section id="select-title-section" class="large">
+      <%= f.label 'select-title' do %>
+      <span><%= t 'quest.input_title' %></span>
+      <% end %>
+      <%= f.text_field :title, class: "form-control input-lg", placeholder: t('quest.title_placehoder') %>
+    </section>
+
+    <section id="select-desc-section">
+      <%= f.label 'select-desc' do %>
+      <span><%= t 'quest.input_description' %></span>
+      <% end %>
+      <%= f.text_area :description, id: 'select-desc', class: "form-control quest-input-area large", placeholder: t('quest.quest_placehoder') %>
+    </section>
+  </div>
+
+  <div id="post-container">
+    <%= link_to t('btn.back'), quest, class: 'btn btn-default btn-large' %>
+    <%= f.submit t('general.submit'), class: "btn btn-default btn-large" %>
+  </div>
+<% end %>

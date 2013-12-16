@@ -6,6 +6,7 @@ ja:
     delete: 削除
     cancel: キャンセル
     save: 保存
+    back: 戻る
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
@@ -26,6 +27,8 @@ ja:
     mail_warning: メールアドレスには、サービスにまつわる情報が配信されます。
   quest:
     new: クエスト投稿
+    new_long: クエストの投稿
+    edit: クエストの編集
     quest: クエスト
     search_placeholder: クエストのタイトル検索
     current_best: 現在の一位

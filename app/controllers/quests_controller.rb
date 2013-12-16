@@ -39,7 +39,7 @@ class QuestsController < ApplicationController
   end
 
   def create
-    @quest = current_user.created_quests.build(quest)
+    @quest = current_user.created_quests.build(quest_params)
     @code = current_user.created_codes.build(code_params)
     @code.quest = @quest
     if @quest.valid? && @code.valid?
@@ -72,6 +72,11 @@ class QuestsController < ApplicationController
   end
 
   def update
+    if @quest.update(quest_params)
+      redirect_to @quest
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -82,7 +87,7 @@ class QuestsController < ApplicationController
     @quest = Quest.find(params[:id])
   end
 
-  def quest
+  def quest_params
     params.require(:quest).permit(:title, :description)
   end
 
