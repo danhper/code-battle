@@ -16,6 +16,8 @@ gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
 gem 'coveralls', require: false
 gem 'whenever'
 
+gem 'cancan'
+
 group :deployment do
   gem 'capistrano', '~> 3.0'
   gem 'capistrano-rails'
@@ -46,6 +48,8 @@ group :development do
   gem 'better_errors'
   gem 'guard-livereload', '~> 2.0', require: false
   gem 'annotate'
+  gem 'jazz_hands'
+  gem "rb-readline", "~> 0.5.0", require: false
 end
 
 group :test do
@@ -55,11 +59,6 @@ group :test do
   gem 'guard-rspec'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'database_cleaner'
-end
-
-group :debug do
-  gem 'jazz_hands'
-  gem "rb-readline", "~> 0.5.0", require: false
 end
 
 group :development, :test do

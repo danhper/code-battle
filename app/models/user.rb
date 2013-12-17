@@ -24,6 +24,8 @@
 class User < ActiveRecord::Base
   include GravatarImageTag
 
+  ROLES = %w[normal moderator admin]
+
   devise :database_authenticatable, :rememberable, :trackable
   devise :omniauthable, omniauth_providers: [:github]
 
@@ -51,6 +53,11 @@ class User < ActiveRecord::Base
   has_many :current_battles, class_name: 'Gladiator'
 
   validates :username, uniqueness: true, allow_nil: true, length: { in: 1..255 }
+
+  def role?(base_role)
+    return false if self.id.nil?
+    ROLES.index(base_role.to_s) <= ROLES.index(self.role)
+  end
 
   def in_guild?(guild)
     guilds.exists?(guild)
