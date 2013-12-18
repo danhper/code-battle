@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user
-  before_action :check_user!, only: [:edit, :update, :destroy]
-
   def index
     @users = User.all
   end
@@ -11,7 +8,6 @@ class UsersController < ApplicationController
     @codes = @user.created_codes.paginate(page: params[:page])
     @languages_stats = @user.language_usage_statistics
     @liked = @user.liked_by_guilds
-    #render :text => @liked
   end
 
   def edit
@@ -26,15 +22,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def user_params
     params.require(:user).permit(:username, :email)
-  end
-
-  def check_user!
-    redirect_to root_path unless current_user == @user
   end
 end

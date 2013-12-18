@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  load_and_authorize_resource unless: :devise_controller?
+
   before_action :check_username!
 
   def after_sign_in_path_for(resource)

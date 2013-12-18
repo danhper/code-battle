@@ -12,8 +12,8 @@
   <section>
     <h3 class="title">
       <%= render 'users/avatar', user: @user, text: true %>
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <%= link_to t('btn.edit'), edit_user_path(current_user), class: 'btn btn-default' %>
+      <% if can? :update, @user %>
+        <%= link_to t('btn.edit'), edit_user_path(@user), class: 'btn btn-default' %>
       <% end %>
     </h3>
 

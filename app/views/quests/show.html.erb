@@ -7,8 +7,11 @@
         <br>
         <cite><%= @quest.title %></cite>
         <br>
-        <% if user_signed_in? && current_user.id == @quest.creator.id %>
+        <% if can? :edit, @quest %>
           <small><%= link_to t('btn.edit'), edit_quest_path(@quest) %></small>
+        <% end %>
+        <% if can? :destroy, @quest %>
+          <small><%= link_to t('btn.delete'), quest_path(@quest), method: :delete, confirm: t('btn.confirm_delete') %></small>
         <% end %>
       </h3>
       <p class="desc">

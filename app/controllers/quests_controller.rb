@@ -1,13 +1,15 @@
 class QuestsController < ApplicationController
+  load_and_authorize_resource
+  skip_load_resource only: [:create]
+  skip_authorize_resource only: [:battle, :see_battle]
+
   before_action :authenticate_user_with_username!, except: [:index, :show, :see_battle]
-  before_action :set_quest, except: [:index, :new, :create]
-  before_action :check_creator!, only: [:edit, :update, :destroy]
   before_action :check_guild!, only: [:new, :create]
 
   require 'will_paginate/array'
 
   def index
-    if !params[:regexp].nil? && params[:regexp] != ""
+    if !params[:regexp].blank?
       @quests = Quest.where("title like ?", "%#{params[:regexp]}%").includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
     else
       @quests = Quest.includes(finalists: [:guild, :quest, :author]).paginate(page: params[:page]).by_date
@@ -80,25 +82,17 @@ class QuestsController < ApplicationController
   end
 
   def destroy
+    @quest.destroy
+    redirect_to root_path
   end
 
   private
-  def set_quest
-    @quest = Quest.find(params[:id])
-  end
-
   def quest_params
     params.require(:quest).permit(:title, :description)
   end
 
   def code_params
     params.require(:code).permit(:source, :guild_id)
-  end
-
-  def check_creator!
-    if @quest.creator != current_user
-      redirect_to root_path
-    end
   end
 
 end

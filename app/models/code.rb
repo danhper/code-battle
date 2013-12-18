@@ -23,7 +23,8 @@ class Code < ActiveRecord::Base
                           class_name: 'User',
                           after_add: -> (c, u) { c.increment_likes_counter! },
                           after_remove: -> (c, u) { c.decrement_likes_counter! }
-  has_many :comments
+
+  has_many :comments, dependent: :destroy
 
   scope :by_likes, -> { order(likes_count: :desc) }
   scope :liked, -> { where 'likes_count > 0' }

@@ -1,8 +1,8 @@
 class CodesController < ApplicationController
   before_action :authenticate_user_with_username!, except: [:index, :show]
-  before_action :set_quest
-  before_action :set_code, except: [:index, :new, :create]
-  before_action :check_creator!, only: [:edit, :update, :destroy]
+  load_and_authorize_resource :quest
+  skip_load_resource only: [:create]
+
   before_action :check_guild!, only: [:new, :create]
   before_action :check_existence!, only: [:new, :create]
 
@@ -101,13 +101,6 @@ class CodesController < ApplicationController
   end
 
   private
-  def set_quest
-    @quest = Quest.find(params[:quest_id])
-  end
-
-  def set_code
-    @code = Code.find(params[:id])
-  end
 
   def check_existence!
     redirect_to @quest if Code.where(user_id: current_user, quest_id: @quest).exists?
@@ -115,11 +108,5 @@ class CodesController < ApplicationController
 
   def code_params
     params.require(:code).permit(:source, :guild_id)
-  end
-
-  def check_creator!
-    if @code.author != current_user
-      redirect_to root_path
-    end
   end
 end

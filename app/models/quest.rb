@@ -30,6 +30,8 @@ class Quest < ActiveRecord::Base
 
   scope :by_date, -> { order(created_at: :desc) }
 
+  after_destroy :cleanup
+
   delegate :username, to: :creator, prefix: true
 
   self.per_page = 5
@@ -62,6 +64,15 @@ class Quest < ActiveRecord::Base
 
   def best_code
     self.medalists.first
+  end
+
+  private
+  def cleanup
+    self.codes.destroy_all
+    self.votes.destroy_all
+    self.quest_total_votes.destroy_all
+    self.battles.destroy_all
+    # TODO: add logic to update total vote table
   end
 
 end
