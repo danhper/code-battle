@@ -4,10 +4,14 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    alias_action :promote, :demote, to: :handle
+
     can :read, [User, Quest, Code, Comment, Guild]
 
     if user.role?(:admin)
       can :manage, :all
+      can :handle, User
+      cannot :handle, User, id: user.id
     elsif user.role?(:moderator)
       can :manage, Quest
       can :manage, Code

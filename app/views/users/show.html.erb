@@ -15,6 +15,13 @@
       <% if can? :update, @user %>
         <%= link_to t('btn.edit'), edit_user_path(@user), class: 'btn btn-default' %>
       <% end %>
+      <% if can? :handle, @user %>
+        <% if @user.role? :moderator %>
+          <%= link_to t('user.demote'), demote_user_path(@user), class: 'btn btn-default', method: :delete, confirm: t('user.demote_confirm', username: @user.username) %>
+        <% else %>
+          <%= link_to t('user.promote'), promote_user_path(@user), class: 'btn btn-default', method: :post, confirm: t('user.promote_confirm', username: @user.username) %>
+        <% end %>
+      <% end %>
     </h3>
 
     <ul class="nav nav-tabs">

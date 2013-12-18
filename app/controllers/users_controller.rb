@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def demote
+    @user.update! role: :normal
+    redirect_to @user
+  end
+
+  def promote
+    @user.update! role: :moderator
+    redirect_to @user
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email)

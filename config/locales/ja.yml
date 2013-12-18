@@ -122,6 +122,10 @@ ja:
     enter_username: まずユーザー名を記入してください
     no_guild: このユーザーはまだどのギルドにも属していません
     no_code: 表示するコードがありません
+    promote: 昇格
+    demote: 降格
+    promote_confirm: '本当に「%{username}」を昇格しますか？'
+    demote_confirm: '本当に「%{username}」を降格しますか？'
   will_paginate:
     previous_label: "&larr;"
     next_label: "&rarr;"

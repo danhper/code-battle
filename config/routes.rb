@@ -3,7 +3,13 @@ Dmtc::Application.routes.draw do
   root to: 'quests#index'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  resources :users, except: [:destroy, :new, :create]
+
+  resources :users, except: [:destroy, :new, :create] do
+    member do
+      post 'promote'
+      delete 'demote'
+    end
+  end
 
   resources :guilds do
     member do
