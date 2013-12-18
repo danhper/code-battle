@@ -18,6 +18,8 @@ gem 'whenever'
 
 gem 'cancan'
 
+gem 'jbuilder'
+
 group :deployment do
   gem 'capistrano', '~> 3.0'
   gem 'capistrano-rails'

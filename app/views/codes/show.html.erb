@@ -79,8 +79,8 @@
 
 <% content_for :javascript do %>
   <script>
+    Dmtc.Globals.comments = <%= render('comments/comment_list.json', comments: @code.comments).html_safe %>;
     Dmtc.Globals.code = <%= @code.to_json(methods: :likes_number, include: :guild).html_safe %>;
-    Dmtc.Globals.comments = <%= @code.comments.to_json.html_safe %>;
     Dmtc.Globals.liked = <%= @liked %>;
     Dmtc.Globals.voted = <%= @voted %>;
     Dmtc.Globals.userId = <%= user_signed_in? ? current_user.id : -1 %>;

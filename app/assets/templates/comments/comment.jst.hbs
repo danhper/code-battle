@@ -8,9 +8,9 @@
         {{ comment.user.username }}
       </a>
       <span class="date">
-        {{ comment.humanCreatedAt }}
+        {{ comment.friendly_created_date }}
       </span>
-      {{#if comment.isOwner}}
+      {{#if comment.can_edit }}
         <div class="pull-right comment-controls">
           <a href="#" class="edit">
             {{ t 'btn.edit' }}
