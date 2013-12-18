@@ -40,11 +40,11 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @battleChannel.bind 'new_user', (battleData) =>
       @handleNewUser battleData
     @battleChannel.bind 'ready', (data) =>
-      @prepareStartGame()
+      @prepareStartGame battleData
     @battleChannel.bind 'code_updated', (battleData) =>
       @handleCodeUpdated battleData
     @battleChannel.bind 'ready_to_start', =>
-      @prepareStartGame()
+      @prepareStartGame battleData
     @battleChannel.bind 'need_update', =>
       @sendCode @$('.own-code > textarea').val()
     @setTexts battleData
@@ -59,7 +59,7 @@ class Dmtc.Views.CodeBattle extends Backbone.View
   handleNewUser: (battleData) ->
     @setOponentText battleData
 
-  prepareStartGame: ->
+  prepareStartGame: (battleData) ->
     textDiv = $('#game-messages')
     textDiv.text I18n.t('battle.will_start')
     setText = (i) -> setTimeout((-> textDiv.text(i)), (6 - i) * 1000)
@@ -70,7 +70,7 @@ class Dmtc.Views.CodeBattle extends Backbone.View
       textDiv.css 'left', '40%'
       textDiv.text "Battle!"
     , 6000
-    setTimeout (=> @startGame()), 7000
+    setTimeout (=> @startGame battleData), 7000
     return
 
   startGame: (battleData) ->
