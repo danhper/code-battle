@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :code
 
+  default_scope { order(created_at: :asc) }
+
   def as_json(options={})
     user_json = { user: { exclude: [:name, :email], methods: :gravatar_url} }
     super({ include: user_json, methods: :friendly_created_date }.merge(options))
