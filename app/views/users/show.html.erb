@@ -40,6 +40,11 @@
             <h4 class="guild"><%= t 'user.guilds' %></h4>
             <% if @user.guilds.empty? %>
               <%= t 'user.no_guild' %>
+              <% if @user == current_user %>
+                <p>
+                  <%= link_to t('guild.choose'), guilds_path %>
+                </p>
+              <% end %>
             <% else %>
               <%= render partial: 'guilds/logo', collection: @user.guilds, as: :guild %>
             <% end %>
