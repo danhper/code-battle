@@ -14,8 +14,8 @@
     </p>
     <% if user_signed_in? %>
       <span class="more">
-        <% text_key = current_user.in_guild?(guild) ? 'guild.leave' : 'guild.enter' %>
-          <%= link_to t(text_key), guild, class: 'btn btn-default enter-leave-link' %>
+        <% text = current_user.in_guild?(guild) ? 'leave' : 'enter' %>
+          <%= link_to t("guild.#{text}"), guild, class: "btn btn-default enter-leave-link #{text}" %>
       </span>
     <% end %>
 </div>
