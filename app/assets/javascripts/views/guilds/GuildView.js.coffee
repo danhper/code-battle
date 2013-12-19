@@ -7,6 +7,7 @@ class Dmtc.Views.GuildView extends Backbone.View
 
   initialize: (options) ->
     @count = parseInt(@$('.user-count').text(), 10)
+    @waiting = false
     @setLink()
 
   setLink: ->
@@ -40,21 +41,41 @@ class Dmtc.Views.GuildView extends Backbone.View
       $user.remove()
 
   enterLeaveSuccess: =>
+    @stopWaiting()
     @model.set('inGuild', !@model.get('inGuild'))
     @setLink()
     @updateCount()
     @updateIcon()
 
+  handleError: (e) =>
+    @stopWaiting()
+
   enterGuild: (e) ->
+    return if @waiting
     e.preventDefault()
+    @startWaiting()
     @model.enter(
       success: @enterLeaveSuccess
+      error: @handleError
     )
     false
 
   leaveGuild: (e) ->
+    return if @waiting
     e.preventDefault()
+    @startWaiting()
     @model.leave(
       success: @enterLeaveSuccess
+      error: @handleError
     )
     false
+
+  startWaiting: ->
+    @waiting = true
+    link = @$('.enter-leave-link')
+    link.addClass 'waiting'
+    link.text I18n.t('btn.processing')
+
+  stopWaiting: ->
+    @waiting = false
+    @$('.enter-leave-link').removeClass 'waiting'

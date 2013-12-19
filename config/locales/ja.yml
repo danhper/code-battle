@@ -8,6 +8,7 @@ ja:
     save: 保存
     back: 戻る
     confirm_delete: 本当に削除しますか？
+    processing: 処理中...
   general:
     introduction: |
       CodeBattleは、プログラミングコードの戦場です。
