@@ -1,6 +1,6 @@
 class GuildsController < ApplicationController
-  before_action :authenticate_user_with_username!, only: [:enter, :leave]
   prepend_before_action :set_guild, except: [:index, :new, :create]
+  before_action :authenticate_user_with_username!, only: [:enter, :leave]
 
   def index
     @guilds = Guild.includes(:recent_users).order(url_safe_name: :asc).all
@@ -27,21 +27,13 @@ class GuildsController < ApplicationController
   end
 
   def enter
-    if @guild.users.exists?(current_user)
-      render json: { error: 'already in guild' }
-    else
-      @guild.users << current_user
-      head :no_content
-    end
+    @guild.users << current_user
+    head :no_content
   end
 
   def leave
-    if @guild.users.exists?(current_user)
-      @guild.users.delete(current_user)
-      head :no_content
-    else
-      render json: { error: 'already in guild' }
-    end
+    @guild.users.delete(current_user)
+    head :no_content
   end
 
   private

@@ -49,55 +49,32 @@ class CodesController < ApplicationController
   end
 
   def like
-    unless current_user.in_guild?(@code.guild)
-      render json: { error: 'can only like own guild' }, status: 400
-    end
-    if current_user.likes_code?(@code)
-      render json: { error: 'already likes code' }, status: 400
-    elsif @code.author == current_user
-      render json: { error: 'cannot like own code' }, status: 400
-    else
-      current_user.likes << @code
-      head :no_content
-    end
+    current_user.likes << @code
+    head :no_content
   end
 
   def unlike
-    if current_user.likes_code?(@code)
-      current_user.likes.delete(@code)
-      head :no_content
-    else
-      render json: { error: 'does not like code' }, status: 400
-    end
+    current_user.likes.delete(@code)
+    head :no_content
   end
 
   def vote
-    if current_user.votes_quest?(@quest)
-      render json: { error: 'already votes code' }, status: 400
-    elsif @code.author == current_user
-      render json: { error: 'cannot vote own code' }, status: 400
-    else
-      Vote.create!(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id, voting_guild_id: current_user.large_guild.id)
-      qtv = QuestTotalVote.create_with(vote_num: 0).find_or_create_by(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
-      qtv.inc_num
-      tv = TotalVote.create_with(vote_num: 0).find_or_create_by(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
-      tv.inc_num
-      head :no_content
-    end
+    Vote.create!(user_id: current_user.id, quest_id: @quest.id, guild_id: @code.guild_id, voting_guild_id: current_user.large_guild.id)
+    qtv = QuestTotalVote.create_with(vote_num: 0).find_or_create_by(quest_id: @quest.id, voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
+    qtv.inc_num
+    tv = TotalVote.create_with(vote_num: 0).find_or_create_by(voting_guild_id: current_user.large_guild.id, voted_guild_id: @code.guild_id)
+    tv.inc_num
+    head :no_content
   end
 
   def unvote
-    if current_user.votes_quest?(@quest)
-      vote_temp = Vote.where(user_id: current_user, quest_id: @quest.id).first
-      qtv = QuestTotalVote.where(quest_id: @quest.id, voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
-      qtv.dec_num
-      tv = TotalVote.where(voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
-      tv.dec_num
-      vote_temp.destroy
-      head :no_content
-    else
-      render json: { error: 'does not vote code' }, status: 400
-    end
+    vote_temp = Vote.where(user_id: current_user, quest_id: @quest.id).first
+    qtv = QuestTotalVote.where(quest_id: @quest.id, voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
+    qtv.dec_num
+    tv = TotalVote.where(voting_guild_id: vote_temp.voting_guild_id, voted_guild_id: @code.guild_id).first
+    tv.dec_num
+    vote_temp.destroy
+    head :no_content
   end
 
   private

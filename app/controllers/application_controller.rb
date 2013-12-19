@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :check_username!
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user, params[:action].to_sym)
+  end
+
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
       if resource.username.blank?
