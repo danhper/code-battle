@@ -34,7 +34,6 @@ class Guild < ActiveRecord::Base
     url_safe_name
   end
 
-
   def get_guild_coefficient
     1.0 - (self.users_count / User.count)
   end

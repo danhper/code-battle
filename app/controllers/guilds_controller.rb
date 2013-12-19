@@ -1,6 +1,6 @@
 class GuildsController < ApplicationController
-  before_filter :authenticate_user_with_username!, only: [:enter, :leave]
-  before_action :set_guild, except: [:index, :new, :create]
+  before_action :authenticate_user_with_username!, only: [:enter, :leave]
+  prepend_before_action :set_guild, except: [:index, :new, :create]
 
   def index
     @guilds = Guild.includes(:recent_users).order(url_safe_name: :asc).all
