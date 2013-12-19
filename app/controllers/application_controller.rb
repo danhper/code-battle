@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :check_username!
 
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from CanCan::AccessDenied, with: :rescue_access_denied
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_user, params[:action].to_sym)
   end
@@ -34,5 +38,13 @@ class ApplicationController < ActionController::Base
 
   def check_guild!
     redirect_to guilds_path, alert: 'guild.please_enter' if current_user.guilds.empty?
+  end
+
+  protected
+  def rescue_access_denied(e)
+    respond_to do |format|
+      format.html { redirect_to root_path, alert: e.message }
+      format.json { render json: { error: e.message}, status: 403 }
+    end
   end
 end
