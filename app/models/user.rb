@@ -91,10 +91,6 @@ class User < ActiveRecord::Base
     self.guilds.max{|x,y| x.users.count <=> y.users.count}
   end
 
-  def as_json(options={})
-    super({ only: [:id, :username] }.merge(options))
-  end
-
   def gravatar_url
     GravatarImageTag.gravatar_url self.email
   end
