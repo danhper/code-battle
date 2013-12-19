@@ -3,7 +3,7 @@ class GuildsController < ApplicationController
   before_action :authenticate_user_with_username!, only: [:enter, :leave]
 
   def index
-    @guilds = Guild.includes(:recent_users).order(url_safe_name: :asc).all
+    @guilds = Guild.includes(:recent_users).order(users_count: :desc).all
   end
 
   def show
