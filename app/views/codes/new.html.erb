@@ -6,6 +6,6 @@
     <p class="desc">
       <%= simple_format @quest.description %>
     </p>
-    <%= render 'codes/form', quest: @quest, code: @code %>
+    <%= render 'codes/form', quest: @quest, code: @code, user: current_user %>
   </section>
 </article>
