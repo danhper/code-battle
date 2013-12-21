@@ -26,10 +26,6 @@ class Dmtc.Collections.Guilds extends Backbone.Collection
     @map (guild) =>
       @constructor.colors[guild.get 'url_safe_name']
 
-  # getLikedData: ->
-  #   @map (guild) ->
-  #     [guild.get('name'), guild.get('liked_count')]
-
   getLikedCount: ->
     @map (guild) ->
       guild.get('liked_count')
@@ -42,3 +38,12 @@ class Dmtc.Collections.Guilds extends Backbone.Collection
     @max((guild) ->
       guild.get('liked_count')
     ).get 'liked_count'
+
+
+  getTerritory: ->
+    @map (guild) ->
+      [guild.get('name'), guild.get('territory')]
+
+  getTerritoryCount: ->
+    @map (guild) ->
+      guild.get('territory')
