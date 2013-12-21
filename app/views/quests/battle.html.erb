@@ -1,7 +1,7 @@
 <% content_for :javascript do %>
   <script>
     new Dmtc.Views.CodeBattle({
-      host    : "<%= Settings.ws.host %>",
+      host    : window.location.hostname + ":<%= Settings.ws.port %>",
       questId : <%= @quest.id %>,
       userId  : <%= @user_id %>,
       token   : "<%= @battle_token %>"

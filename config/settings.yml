@@ -1,5 +1,5 @@
 ws:
-  host: localhost:3000
+  port: 3000
   standalone: false
 github:
   access_key: ACCESS_KEY
