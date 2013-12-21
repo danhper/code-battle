@@ -9,6 +9,7 @@ class Dmtc.Views.CodeBattle extends Backbone.View
     @spectator  = !_.isEmpty(@token)
     @questId    = options.questId
     @userId     = options.userId
+    console.log "Connecting to #{options.host}"
     @dispatcher = new WebSocketRails("#{options.host}/websocket")
     @dispatcher.on_open = (data) =>
       if @spectator

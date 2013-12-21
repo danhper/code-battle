@@ -1,11 +1,19 @@
-<article id="guildlist">
+<% content_for :javascript do %>
+  <script>
+    Dmtc.Globals.guilds = new Dmtc.Collections.Guilds(<%= @territorys.to_json.html_safe %>);
+  </script>
+  <%= javascript_include_tag "https://www.google.com/jsapi" %>
+  <%= javascript_include_tag "territory_chart" %>
+<% end %>
 
+<article id="guildlist">
 
 <section>
     <h3 class="title">
       <%= t 'guild.index_title' %>
     </h3>
     <p class="desc"><%= t 'guild.choose' %></p>
+    <div id="territory-piechart"></div>
     <div id="code-container" class="guilds clearfix">
       <%= render @guilds %>
     </div>

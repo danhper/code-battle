@@ -83,4 +83,10 @@ class Guild < ActiveRecord::Base
   def log_users_count!
     self.guild_members_counts.create!(datetime: Time.now, members_count: self.users_count)
   end
+
+  def territorys
+    self.as_json.merge({
+        territory: self.get_territory_percent
+      })
+  end
 end
