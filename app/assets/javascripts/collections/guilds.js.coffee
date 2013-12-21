@@ -39,11 +39,10 @@ class Dmtc.Collections.Guilds extends Backbone.Collection
       guild.get('liked_count')
     ).get 'liked_count'
 
-
   getTerritory: ->
-    @map (guild) ->
-      [guild.get('name'), guild.get('territory')]
+    @map (guild) =>
+      [guild.get('name'), guild.roundedTerritory()]
 
   getTerritoryCount: ->
-    @map (guild) ->
-      guild.get('territory')
+    @map (guild) =>
+      guild.roundedTerritory()

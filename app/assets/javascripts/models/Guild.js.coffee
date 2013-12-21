@@ -6,6 +6,9 @@ class Dmtc.Models.Guild extends Backbone.Model
 
   toJSON: -> guild: _.clone @attributes
 
+  roundedTerritory: -> Math.floor(@get('territory') * 100) / 100
+
+
   enter: (options) ->
     options ?= {}
     options.url = "#{@url}/#{@get 'urlSafeName'}/enter"
