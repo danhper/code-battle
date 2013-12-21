@@ -4,6 +4,8 @@ class GuildsController < ApplicationController
 
   def index
     @guilds = Guild.includes(:recent_users).order(users_count: :desc).all
+    @territorys = Guild.all.map{ |g| g.territorys }
+    #render :text => @territorys
   end
 
   def show
