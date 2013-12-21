@@ -70,10 +70,10 @@ class Dmtc.Views.CodeBattle extends Backbone.View
       textDiv.css 'left', '40%'
       textDiv.text "Battle!"
     , 6000
-    setTimeout (=> @startGame battleData), 7000
+    setTimeout (=> @startGame battleData, true), 7000
     return
 
-  startGame: (battleData) ->
+  startGame: (battleData, startTimer = false) ->
     $('#game-messages').hide()
     unless @spectator
       code = _.find(battleData.gladiators, (g) =>
@@ -84,6 +84,18 @@ class Dmtc.Views.CodeBattle extends Backbone.View
       $code.val code if code?
       $code.focus()
       @updateCode()
+      @startStopWatch() if startTimer
+
+  startStopWatch: ->
+    $('#battle-time').show()
+    @startTime = new Date()
+    setInterval (=> @setTime()), 100
+
+  setTime: ->
+    currentTime = (Math.floor((new Date() - @startTime) / 10) / 100) + ""
+    currentTime += ".00" if currentTime.indexOf('.') == -1
+    currentTime += "0" if currentTime.split('.')[1].length < 2
+    $('#battle-time').text (currentTime + "s")
 
   setOponentText: (battleData) ->
     opponent = @getOpponent battleData
