@@ -46,7 +46,7 @@ class BattleController < WebsocketRails::BaseController
   private
   def set_quest
     @quest = Quest.find(message[:questId]) rescue nil
-    trigger_failure({ message: 'no such quest' }) if @quest.nil?
+    trigger_failure({ message: "no quest with id #{questId}" }) if @quest.nil?
   end
 
   def set_battle
