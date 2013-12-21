@@ -1,5 +1,5 @@
 <%= form_for quest do |f| %>
-  <% guilds_array = current_user.guilds.map { |g| [g.name.capitalize, g.id] } %>
+  <% guilds_array = current_user.guilds.map { |g| [g.name, g.id] } %>
   <div id="select-options">
     <section id="select-lang-section">
       <label for="select-lang">
