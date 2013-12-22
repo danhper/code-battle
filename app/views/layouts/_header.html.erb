@@ -18,6 +18,11 @@
           <%= link_to t('quest.new'), new_quest_path %>
         </li>
         <% end %>
+        <% if can? :read, :statistics %>
+          <li class="<%= "active" if request.path == statistics_path %>">
+            <%= link_to t('statistics.name'), statistics_path %>
+          </li>
+        <% end %>
       </ul>
 
         <%# add  %>

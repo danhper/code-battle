@@ -1,0 +1,19 @@
+.number-stats {
+  width: 60%;
+  text-align: left;
+  margin: auto;
+  &.table {
+    thead, tbody, tfoot {
+      & > tr {
+        & > th, & > td {
+          border-top: 1px solid black;
+        }
+      }
+    }
+    thead {
+      & > tr > th {
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+}

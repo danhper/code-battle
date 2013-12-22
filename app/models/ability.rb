@@ -15,6 +15,7 @@ class Ability
       can :manage, :all
       can :handle, User
       cannot :handle, User, id: user.id
+      can :read, :statistics
     elsif user.role?(:moderator)
       can :manage, Quest
       can :manage, Code

@@ -35,4 +35,6 @@ Dmtc::Application.routes.draw do
       end
     end
   end
+
+  get 'statistics', to: 'statistics#index'
 end

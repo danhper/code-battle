@@ -1,0 +1,21 @@
+<article id="post">
+  <section>
+    <h3 class="title">
+      <%= t 'statistics.list' %>
+    </h3>
+    <table class="table number-stats">
+      <thead>
+        <th><%= t 'statistics.entry' %></th>
+        <th><%= t 'statistics.value' %></th>
+      </thead>
+      <tbody>
+        <% @statistics.each do |index, value| %>
+          <tr>
+            <td><%= t "statistics.#{index}" %></td>
+            <td><%= value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</article>

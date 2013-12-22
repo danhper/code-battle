@@ -131,4 +131,12 @@ ja:
     previous_label: "&larr;"
     next_label: "&rarr;"
     page_gap: "&hellip;"
-
+  statistics:
+    name: 統計
+    list: 統計一覧
+    entry: 項目
+    value: 数
+    user_count: ユーザー数
+    quest_count: クエスト数
+    code_count: コード数
+    comment_count: コメント数
