@@ -15,11 +15,11 @@ class Ability
       can :manage, :all
       can :handle, User
       cannot :handle, User, id: user.id
-      can :read, :statistics
     elsif user.role?(:moderator)
       can :manage, Quest
       can :manage, Code
       can :manage, Comment
+      can :read, :statistics
     else
       can :create, [Quest, Code, Comment]
       can :update, Quest,   creator_id: user.id
