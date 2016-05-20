@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.3.0'
 
 gem 'rails', '4.0.2'
 
@@ -11,7 +11,7 @@ gem 'seedbank', github: 'james2m/seedbank'
 gem 'pygments.rb'
 gem 'will_paginate', '~> 3.0'
 gem 'gravatar_image_tag'
-gem 'websocket-rails', github: 'websocket-rails/websocket-rails'
+gem 'websocket-rails', '~> 0.7'
 
 gem 'coveralls', require: false
 gem 'whenever'
@@ -50,7 +50,6 @@ group :development do
   gem 'better_errors'
   gem 'guard-livereload', '~> 2.0', require: false
   gem 'annotate'
-  gem 'jazz_hands'
   gem "rb-readline", "~> 0.5.0", require: false
 end
 

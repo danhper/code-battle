@@ -4,8 +4,7 @@ development:
   database: code_battle_development
   pool: 5
   timeout: 5000
-  username: code_battle
-  password: foobar
+  username: postgres
   host: localhost
 
 test:
@@ -14,8 +13,7 @@ test:
   database: code_battle_test
   pool: 5
   timeout: 5000
-  username: code_battle
-  password: foobar
+  username: postgres
   host: localhost
 
 production:
